@@ -4,9 +4,11 @@ import { FreeFormQuestionResultsComponent } from './components/free-form-questio
 import { MultipleChoiceQuestionResultsComponent } from './components/multiple-choice-question-results/multiple-choice-question-results.component';
 import { ExtendedMatchingResultsComponent } from './components/extended-matching-results/extended-matching-results.component';
 import { VisualizationsComponent } from './components/visualizations/visualizations.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
+    CommonModule
   ],
   declarations: [
     Kypo2AssessmentsResultsVisualizationLibComponent, 

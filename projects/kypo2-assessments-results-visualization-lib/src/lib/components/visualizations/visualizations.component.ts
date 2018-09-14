@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ExerciseResults } from '../../models/exercise-results';
+import { FFQ } from '../../models/ffq';
+import { Assessment } from '../../models/assessment';
+import { Question } from '../../models/question';
 
 @Component({
   selector: 'kypo2-viz-assessments-results-visualizations',
@@ -13,7 +16,11 @@ export class VisualizationsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.data);
+    console.log(this.getFFQFromAssessment(this.data.assessments[0]));
+  }
+
+  getFFQFromAssessment(assessment: Assessment) {
+    return assessment.questions.filter((question: Question) => question.type.toUpperCase() === 'FFQ');
   }
 
 }
