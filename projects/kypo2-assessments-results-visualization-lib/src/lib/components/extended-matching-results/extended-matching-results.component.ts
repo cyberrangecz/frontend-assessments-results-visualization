@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { EMI } from '../../models/emi';
 import { EMIAnswer } from '../../models/emianswer';
+import { EMIChoice } from '../../models/emichoice';
 
 @Component({
   selector: 'kypo2-viz-assessments-results-extended-matching-results',
@@ -14,6 +15,7 @@ export class ExtendedMatchingResultsComponent implements OnInit {
   questionTitle: string;
   answers: EMIAnswer[];
   order: number;
+  choices: EMIChoice[];
 
   constructor() { }
 
@@ -21,6 +23,8 @@ export class ExtendedMatchingResultsComponent implements OnInit {
     this.questionTitle = this.EMIData.text;
     this.answers = this.EMIData.answers;
     this.order = this.EMIData.order;
+    this.choices = this.EMIData.choices;
+    console.log(this.EMIData.choices);
   }
 
 }
