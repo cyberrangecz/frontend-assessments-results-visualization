@@ -1,6 +1,9 @@
 <h1>Q{{ order }}: {{ questionTitle }}</h1>
 <ul>
-  <li *ngFor="let answer of answers">
+  <!-- <li *ngFor="let answer of answers">
     {{ answer.userName }} : {{ answer.choices | json}}
+  </li> -->
+  <li *ngFor="let choice of choices">
+    ({{ choice.order }}) : {{ answersCount[choice.order] | json }}  
   </li>
 </ul>
