@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MOCK_DATA } from './mocks/results.mock';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'kypo2-assessments-results-visualization';
+  data = MOCK_DATA;
 }

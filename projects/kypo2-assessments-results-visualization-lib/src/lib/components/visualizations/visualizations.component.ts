@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ExerciseResults } from '../../models/exercise-results';
 
 @Component({
   selector: 'kypo2-viz-assessments-results-visualizations',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VisualizationsComponent implements OnInit {
 
+  @Input() data: ExerciseResults;
+
   constructor() { }
 
   ngOnInit() {
+    console.log(this.data);
   }
 
 }
