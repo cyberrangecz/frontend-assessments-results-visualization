@@ -1,3 +1,6 @@
-<p>
-  multiple-choice-question-results works!
-</p>
+<h1>{{ questionTitle }}</h1>
+<ul>
+  <li *ngFor="let answer of answers">
+    {{ answer.userName }} : {{ answer.choices }}
+  </li>
+</ul>
