@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "kypo2-assessments-results-visualization-lib": [
+        "dist/kypo2-assessments-results-visualization-lib"
+      ],
+      "kypo2-assessments-results-visualization-lib/*": [
+        "dist/kypo2-assessments-results-visualization-lib/*"
+      ]
+    }
   }
 }

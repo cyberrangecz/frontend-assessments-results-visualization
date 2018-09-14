@@ -121,6 +121,46 @@
           }
         }
       }
+    },
+    "kypo2-assessments-results-visualization-lib": {
+      "root": "projects/kypo2-assessments-results-visualization-lib",
+      "sourceRoot": "projects/kypo2-assessments-results-visualization-lib/src",
+      "projectType": "library",
+      "prefix": "kypo2-viz-assessments-results",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/kypo2-assessments-results-visualization-lib/tsconfig.lib.json",
+            "project": "projects/kypo2-assessments-results-visualization-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/kypo2-assessments-results-visualization-lib/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/kypo2-assessments-results-visualization-lib/src/test.ts",
+            "tsConfig": "projects/kypo2-assessments-results-visualization-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/kypo2-assessments-results-visualization-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/kypo2-assessments-results-visualization-lib/tsconfig.lib.json",
+              "projects/kypo2-assessments-results-visualization-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "kypo2-assessments-results-visualization"
