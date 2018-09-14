@@ -17,13 +17,8 @@ export class FreeFormQuestionResultsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.FFQData);
     this.questionTitle = this.FFQData.text;
     this.answers = this.FFQData.answers;
-  }
-
-  get data() {
-    return JSON.stringify(this.FFQData, null, 4);
   }
 
 }
