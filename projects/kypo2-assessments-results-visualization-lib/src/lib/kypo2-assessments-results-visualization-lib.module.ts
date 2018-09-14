@@ -3,6 +3,7 @@ import { Kypo2AssessmentsResultsVisualizationLibComponent } from './kypo2-assess
 import { FreeFormQuestionResultsComponent } from './components/free-form-question-results/free-form-question-results.component';
 import { MultipleChoiceQuestionResultsComponent } from './components/multiple-choice-question-results/multiple-choice-question-results.component';
 import { ExtendedMatchingResultsComponent } from './components/extended-matching-results/extended-matching-results.component';
+import { VisualizationsComponent } from './components/visualizations/visualizations.component';
 
 @NgModule({
   imports: [
@@ -11,13 +12,15 @@ import { ExtendedMatchingResultsComponent } from './components/extended-matching
     Kypo2AssessmentsResultsVisualizationLibComponent, 
     FreeFormQuestionResultsComponent, 
     MultipleChoiceQuestionResultsComponent, 
-    ExtendedMatchingResultsComponent
+    ExtendedMatchingResultsComponent, 
+    VisualizationsComponent
   ],
   exports: [
     Kypo2AssessmentsResultsVisualizationLibComponent, 
     FreeFormQuestionResultsComponent, 
     MultipleChoiceQuestionResultsComponent, 
-    ExtendedMatchingResultsComponent
+    ExtendedMatchingResultsComponent,
+    VisualizationsComponent
   ]
 })
 export class Kypo2AssessmentsResultsVisualizationLibModule { }
