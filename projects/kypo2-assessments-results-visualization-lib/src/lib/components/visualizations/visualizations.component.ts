@@ -16,11 +16,7 @@ export class VisualizationsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.getFFQFromAssessment(this.data.assessments[0]));
-  }
 
-  getFFQFromAssessment(assessment: Assessment) {
-    return assessment.questions.filter((question: Question) => question.type.toUpperCase() === 'FFQ');
   }
 
 }

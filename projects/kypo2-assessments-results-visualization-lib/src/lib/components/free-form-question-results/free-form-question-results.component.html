@@ -1,3 +1,6 @@
-<p>
-  free-form-question-results works!
-</p>
+<h1>{{ questionTitle }}</h1>
+<ul>
+  <li *ngFor="let answer of answers">
+    {{ answer.userName}}: {{ answer.text }}
+  </li>
+</ul>

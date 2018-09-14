@@ -5,7 +5,7 @@
 
     <ng-container *ngFor="let question of assessment.questions" [ngSwitch]="question.type.toUpperCase()">
         
-        <kypo2-viz-assessments-results-free-form-question-results *ngSwitchCase="'FFQ'"></kypo2-viz-assessments-results-free-form-question-results>
+        <kypo2-viz-assessments-results-free-form-question-results *ngSwitchCase="'FFQ'" [FFQData]="question"></kypo2-viz-assessments-results-free-form-question-results>
         <kypo2-viz-assessments-results-multiple-choice-question-results *ngSwitchCase="'MCQ'"></kypo2-viz-assessments-results-multiple-choice-question-results>
         <kypo2-viz-assessments-results-extended-matching-results *ngSwitchCase="'EMI'"></kypo2-viz-assessments-results-extended-matching-results>
 
