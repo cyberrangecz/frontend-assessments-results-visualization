@@ -7,7 +7,7 @@
         
         <kypo2-viz-assessments-results-free-form-question-results *ngSwitchCase="'FFQ'" [FFQData]="question"></kypo2-viz-assessments-results-free-form-question-results>
         <kypo2-viz-assessments-results-multiple-choice-question-results *ngSwitchCase="'MCQ'" [MCQData]="question"></kypo2-viz-assessments-results-multiple-choice-question-results>
-        <kypo2-viz-assessments-results-extended-matching-results *ngSwitchCase="'EMI'"></kypo2-viz-assessments-results-extended-matching-results>
+        <kypo2-viz-assessments-results-extended-matching-results *ngSwitchCase="'EMI'" [EMIData]="question"></kypo2-viz-assessments-results-extended-matching-results>
 
     </ng-container>
 

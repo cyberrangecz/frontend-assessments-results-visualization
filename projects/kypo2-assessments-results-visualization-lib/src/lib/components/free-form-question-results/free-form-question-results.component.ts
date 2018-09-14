@@ -13,12 +13,14 @@ export class FreeFormQuestionResultsComponent implements OnInit {
 
   questionTitle: string;
   answers: FFQAnswer[];
+  order: number;
 
   constructor() { }
 
   ngOnInit() {
     this.questionTitle = this.FFQData.text;
     this.answers = this.FFQData.answers;
+    this.order = this.FFQData.order;
   }
 
 }

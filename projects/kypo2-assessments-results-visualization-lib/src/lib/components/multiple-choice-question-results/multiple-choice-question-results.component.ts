@@ -13,12 +13,14 @@ export class MultipleChoiceQuestionResultsComponent implements OnInit {
 
   questionTitle: string;
   answers: MCQAnswer[];
+  order: number;
 
   constructor() { }
 
   ngOnInit() {
     this.questionTitle = this.MCQData.text;
     this.answers = this.MCQData.answers;
+    this.order = this.MCQData.order;
   }
 
 }
