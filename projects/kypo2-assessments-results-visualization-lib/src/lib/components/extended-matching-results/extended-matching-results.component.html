@@ -3,11 +3,11 @@
   <!-- <li *ngFor="let answer of answers">
     {{ answer.userName }}: {{ answer.pairs | json }}
   </li> -->
-  <li *ngFor="let choice of choices">
-    ({{ choice.order }})
+  <li *ngFor="let first of firstChoices">
+   ({{ first.order }})
     <ul>
-      <li *ngFor="let pairChoice of choices">
-        ({{ pairChoice.order }})
+      <li *ngFor="let second of secondChoices">
+        ({{ second.order }}): {{ answersCount[first.order][second.order] | json}}
       </li>
     </ul>
   </li>

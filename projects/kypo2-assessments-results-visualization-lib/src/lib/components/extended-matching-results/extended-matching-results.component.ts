@@ -16,6 +16,10 @@ export class ExtendedMatchingResultsComponent implements OnInit {
   answers: EMIAnswer[];
   order: number;
   choices: EMIChoice[];
+  firstChoices: EMIChoice[];
+  secondChoices: EMIChoice[];
+
+  answersCount;
 
   constructor() { }
 
@@ -24,7 +28,30 @@ export class ExtendedMatchingResultsComponent implements OnInit {
     this.answers = this.EMIData.answers;
     this.order = this.EMIData.order;
     this.choices = this.EMIData.choices;
-    console.log(this.EMIData.choices);
+    this.firstChoices = this.EMIData.choices.slice(0, this.EMIData.choices.length/2);
+    this.secondChoices = this.EMIData.choices.slice(this.EMIData.choices.length/2, this.EMIData.choices.length);
+    this.countAnswers();
+  }
+
+  countAnswers() {
+    this.initializeAnswersCount();
+    this.answers.forEach((answer: EMIAnswer) => {
+      answer.pairs.forEach(pair => {
+        const firstChoice = pair[0];
+        const secondChoice = pair[1];
+        this.answersCount[firstChoice][secondChoice] = answer.userName;
+      })
+    });
+  }
+
+  initializeAnswersCount() {
+    this.answersCount = {};
+    this.firstChoices.forEach((first: EMIChoice) => {
+      this.answersCount[first.order] = {};
+      this.secondChoices.forEach((second: EMIChoice) => {
+        this.answersCount[first.order][second.order] = [];
+      });
+    });
   }
 
 }
