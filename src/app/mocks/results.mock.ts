@@ -23,10 +23,26 @@ export const MOCK_DATA = {
                    "bots"
                 ],
                 "answers":[
-                   {
-                      "userName":"Peter",
-                      "text":"trojans"
-                   }
+                    {
+                        "userName":"Peter",
+                        "text":"trojans"
+                    },
+                    {
+                        "userName":"John",
+                        "text":"viruses"
+                    },
+                    {
+                        "userName":"Martin",
+                        "text":"McAfee"
+                    },
+                    {
+                        "userName":"Lucas",
+                        "text":"keylogger"
+                    },
+                    {
+                        "userName":"Paul",
+                        "text":"dunno"
+                    }
                 ]
              },
              {
@@ -65,7 +81,33 @@ export const MOCK_DATA = {
                          0,
                          1
                       ]
-                   }
+                   },
+                   {
+                        "userName":"John",
+                        "choices":[
+                            1
+                    ]
+                    },
+                    {
+                        "userName":"Martin",
+                        "choices":[
+                            2,
+                            3,
+                            0
+                        ]
+                    },
+                    {
+                        "userName":"Lucas",
+                        "choices":[
+                            0
+                        ]
+                    },
+                    {
+                        "userName":"Paul",
+                        "choices":[
+                            1
+                        ]
+                    }
                 ]
              },
              {
@@ -138,7 +180,91 @@ export const MOCK_DATA = {
                             5
                          ]
                       ]
-                   }
+                   },
+                   {
+                    "userName":"Martin",
+                    "pairs":[
+                       [
+                          0,
+                          6
+                       ],
+                       [
+                          1,
+                          4
+                       ],
+                       [
+                          3,
+                          7
+                       ],
+                       [
+                          2,
+                          5
+                       ]
+                    ]
+                 },
+                 {
+                    "userName":"John",
+                    "pairs":[
+                       [
+                          3,
+                          6
+                       ],
+                       [
+                          2,
+                          4
+                       ],
+                       [
+                          1,
+                          7
+                       ],
+                       [
+                          0,
+                          5
+                       ]
+                    ]
+                 },
+                 {
+                    "userName":"Lucas",
+                    "pairs":[
+                       [
+                          0,
+                          6
+                       ],
+                       [
+                          2,
+                          4
+                       ],
+                       [
+                          1,
+                          7
+                       ],
+                       [
+                          3,
+                          5
+                       ]
+                    ]
+                 },
+                 {
+                    "userName":"Paul",
+                    "pairs":[
+                       [
+                          3,
+                          4
+                       ],
+                       [
+                          2,
+                          6
+                       ],
+                       [
+                          1,
+                          7
+                       ],
+                       [
+                          0,
+                          5
+                       ]
+                    ]
+                 }
                 ]
              }
           ]

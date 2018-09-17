@@ -39,7 +39,7 @@ export class ExtendedMatchingResultsComponent implements OnInit {
       answer.pairs.forEach(pair => {
         const firstChoice = pair[0];
         const secondChoice = pair[1];
-        this.answersCount[firstChoice][secondChoice] = answer.userName;
+        this.answersCount[firstChoice][secondChoice].push(answer.userName);
       })
     });
   }
