@@ -10,8 +10,16 @@
 
 <kypo2-viz-assessments-mci-chart 
   [answers]="answersCount"
+  [choices]="choices"
+  [questionTitle]="questionTitle"
   [options]="{
     height: 300,
-    width: 500
+    width: 700,
+    margin: {
+      top: 20,
+      right: 40,
+      bottom: 20,
+      left: 40
+    }
   }">
 </kypo2-viz-assessments-mci-chart>
