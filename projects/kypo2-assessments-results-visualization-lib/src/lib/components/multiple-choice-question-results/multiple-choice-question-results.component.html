@@ -7,3 +7,11 @@
     ({{ choice.order }}) : {{ answersCount[choice.order] | json }}  
   </li>
 </ul>
+
+<kypo2-viz-assessments-mci-chart 
+  [answers]="answersCount"
+  [options]="{
+    height: 300,
+    width: 500
+  }">
+</kypo2-viz-assessments-mci-chart>

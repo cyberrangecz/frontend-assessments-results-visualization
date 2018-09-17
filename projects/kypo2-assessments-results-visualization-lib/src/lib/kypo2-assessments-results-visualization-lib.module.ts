@@ -5,6 +5,7 @@ import { MultipleChoiceQuestionResultsComponent } from './components/multiple-ch
 import { ExtendedMatchingResultsComponent } from './components/extended-matching-results/extended-matching-results.component';
 import { VisualizationsComponent } from './components/visualizations/visualizations.component';
 import { CommonModule } from '@angular/common';
+import { MultipleChoiceQuestionChartComponent } from './components/multiple-choice-question-results/multiple-choice-question-chart/multiple-choice-question-chart.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,7 @@ import { CommonModule } from '@angular/common';
     FreeFormQuestionResultsComponent, 
     MultipleChoiceQuestionResultsComponent, 
     ExtendedMatchingResultsComponent, 
-    VisualizationsComponent
+    VisualizationsComponent, MultipleChoiceQuestionChartComponent
   ],
   exports: [
     Kypo2AssessmentsResultsVisualizationLibComponent, 
