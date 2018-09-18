@@ -16,9 +16,12 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
   @Input() options: any;
   @Input() choices: MCQChoice[];
   @Input() questionTitle: string;
+  @Input() countedAnswers;
 
   private d3: D3;
   private svgElement: Selection<BaseType, {}, null, undefined>;
+  private xScale;
+  private yScale;
 
   constructor(private d3service: D3Service) {
     this.d3 = this.d3service.getD3();
@@ -26,7 +29,8 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
 
   ngOnInit() {
     this.createSvg();
-    this.createBars();
+    this.initializeScales();
+    this.createChart();
   }
 
   createSvg() {
@@ -38,30 +42,47 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
       .attr('transform', `translate(${ this.options.margin.left }, ${ this.options.margin.top })`);
   }
 
-  createBars() {
-
-    const maxCountAnswers = Math.max(...Object.values(this.answers).map((array: Array<string>) => array.length));
-
-    const yScale = this.d3.scaleBand()
+  initializeScales() {
+    this.yScale = this.d3.scaleBand()
       .range([0, this.options.height])
-      .domain(this.choices.map((choice: MCQChoice) => choice.order.toString()))
+      .domain(this.choices.map(choice => choice.order.toString()))
       .padding(0.2);
 
-    const xScale = this.d3.scaleLinear()
-      .range([0, this.options.width])
-      .domain([0, maxCountAnswers]);
+    const totalAnswers = this.answers.length;
 
-    const object = Object.keys(this.answers).map(key => {return {order: key, count: this.answers[key].length}});
-
-    this.svgElement.selectAll('.bar')
-      .data(object)
-      .enter()
-      .append('rect')
-      .attr('class', 'bar')
-      .attr('width', (choice) => xScale(choice.count))
-      .attr('y', choice => yScale(choice.order))
-      .attr('height', yScale.bandwidth());
-
+    this.xScale = this.d3.scaleLinear()
+      .range([0, this.options.width * 0.8])
+      .domain([0, totalAnswers]);
   }
 
+  createChart() {    
+    this.createAxes();
+    this.createCircles();
+  }
+
+  createAxes() {
+    this.svgElement.append('g')
+      .attr('transform', `translate(0, ${ this.options.height })`)
+      .call(this.d3.axisBottom(this.xScale));
+
+    this.svgElement.append('g')
+      .attr('transform', `translate(0, 0)`)
+      .call(this.d3.axisLeft(this.yScale));
+  }
+
+  createCircles() {
+    const circleRadius = this.xScale(1)/2 < this.yScale.bandwidth()/2 ? this.xScale(1)/2 : this.yScale.bandwidth()/2;
+
+    this.countedAnswers.forEach(choice => {
+      this.svgElement.selectAll('.player choice-order-' + choice.order)
+        .data(choice.answers)
+        .enter()
+        .append('circle')
+        .attr('class', 'player')
+        .attr('cx', (userName, i) => this.xScale(i + 1))
+        .attr('cy', this.yScale(choice.order) + this.yScale.bandwidth()/2) // Align to center
+        .attr('r', circleRadius)
+        .attr('fill', 'red');
+    })
+  }
 }

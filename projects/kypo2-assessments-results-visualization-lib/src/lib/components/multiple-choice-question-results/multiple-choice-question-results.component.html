@@ -1,17 +1,10 @@
 <h1>Q{{ order }}: {{ questionTitle }}</h1>
-<ul>
-  <!-- <li *ngFor="let answer of answers">
-    {{ answer.userName }} : {{ answer.choices | json}}
-  </li> -->
-  <li *ngFor="let choice of choices">
-    ({{ choice.order }}) : {{ answersCount[choice.order] | json }}  
-  </li>
-</ul>
 
 <kypo2-viz-assessments-mci-chart 
-  [answers]="answersCount"
+  [answers]="answers"
   [choices]="choices"
   [questionTitle]="questionTitle"
+  [countedAnswers]="countedAnswers"
   [options]="{
     height: 300,
     width: 700,

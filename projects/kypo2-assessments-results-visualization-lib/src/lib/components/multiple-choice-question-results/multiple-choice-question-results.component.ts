@@ -17,7 +17,7 @@ export class MultipleChoiceQuestionResultsComponent implements OnInit {
   order: number;
   choices: MCQChoice[];
 
-  answersCount: any;
+  countedAnswers: any;
 
   constructor() { }
 
@@ -25,25 +25,21 @@ export class MultipleChoiceQuestionResultsComponent implements OnInit {
     this.questionTitle = this.MCQData.text;
     this.answers = this.MCQData.answers;
     this.order = this.MCQData.order;
-    this.choices = this.MCQData.choices;
+    this.choices = this.MCQData.choices.sort((choice: MCQChoice) => choice.order);
     this.countAnswers();
   }
 
   countAnswers() {
-    this.initializeAnswersCount();
-    
-    this.answers.forEach((answer: MCQAnswer) => {
-      answer.choices.forEach((choice: number) => {
-        this.answersCount[choice].push(answer.userName);
-      });
-    });
-  }
+    this.countedAnswers = this.choices.slice();
 
-  initializeAnswersCount() {
-    this.answersCount = {};
-    const correctChoices: MCQChoice[] = this.choices;
-    correctChoices.forEach((answer: MCQChoice) => {
-      this.answersCount[answer.order] = [];
+    this.countedAnswers.forEach((choice) => {
+      choice.answers = [];
+    });
+
+    this.answers.forEach((answer: MCQAnswer) => {
+      answer.choices.forEach((choiceOrder: number) => {
+        this.countedAnswers.find(choice => choice.order === choiceOrder).answers.push(answer.userName);
+      })
     });
   }
 
