@@ -25,7 +25,7 @@ export class MultipleChoiceQuestionResultsComponent implements OnInit {
     this.questionTitle = this.MCQData.text;
     this.answers = this.MCQData.answers;
     this.order = this.MCQData.order;
-    this.choices = this.MCQData.choices.sort((choice: MCQChoice) => choice.order);
+    this.choices = this.MCQData.choices.sort((choice: MCQChoice, choiceToBeCompared: MCQChoice) => choice.order - choiceToBeCompared.order);
     this.countAnswers();
   }
 

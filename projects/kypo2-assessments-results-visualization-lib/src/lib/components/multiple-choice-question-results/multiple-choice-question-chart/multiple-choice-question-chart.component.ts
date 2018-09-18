@@ -51,13 +51,14 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
     const totalAnswers = this.answers.length;
 
     this.xScale = this.d3.scaleLinear()
-      .range([0, this.options.width * 0.8])
+      .range([0, this.options.width * 0.8]) // To separate variable
       .domain([0, totalAnswers]);
   }
 
   createChart() {    
     this.createAxes();
     this.createCircles();
+    this.createStats();
   }
 
   createAxes() {
@@ -84,5 +85,35 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
         .attr('r', circleRadius)
         .attr('fill', 'red');
     })
+  }
+
+  createStats() {
+    this.svgElement.append('text')
+      .attr('x', this.options.width * 0.8)
+      .attr('y', 0)
+      .html('Σ');
+
+    this.svgElement.selectAll('.sum')
+      .data(this.countedAnswers)
+      .enter()
+      .append('text')
+      .attr('class', 'sum')
+      .attr('x', this.options.width * 0.8)
+      .attr('y', (choice: any) => this.yScale(choice.order.toString()) + this.yScale.bandwidth()/2)
+      .html((choice:any) => choice.answers.length);
+
+    this.svgElement.append('text')
+      .attr('x', this.options.width * 0.9)
+      .attr('y', 0)
+      .html('%');
+
+    this.svgElement.selectAll('.percentage')
+      .data(this.countedAnswers)
+      .enter()
+      .append('text')
+      .attr('class', 'percentage')
+      .attr('x', this.options.width * 0.9)
+      .attr('y', (choice: any) => this.yScale(choice.order.toString()) + this.yScale.bandwidth()/2)
+      .html((choice:any) => (choice.answers.length / this.answers.length * 100).toString() + ' %');
   }
 }
