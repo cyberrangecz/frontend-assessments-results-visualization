@@ -104,22 +104,28 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
   }
 
   highlightCorrectAnswers() {
-    const circleRadius = this.xScale(1)/2 < this.yScale.bandwidth()/2 ? this.xScale(1)/2 : this.yScale.bandwidth()/2;
+    const circleRadius = this.getCircleRadius();
     this.countedAnswers.forEach(choice => {
       if (!choice.isCorrect) return;
 
       this.svgElement.append('rect')
-        .attr('x', this.xScale(1) - circleRadius - 10)
+        .attr('x', this.xScale(1) - 2*circleRadius)
         .attr('y', this.yScale(choice.order))
         .attr('rx', circleRadius)
-        .attr('width', this.xScale(choice.answers.length-1) + 2*circleRadius + 10*2)
+        .attr('width', this.xScale(choice.answers.length-1) + 2*circleRadius)
         .attr('height', this.yScale.bandwidth())
         .attr('fill', '#EDC455');
     });
   }
 
+  getCircleRadius() {
+    let circleRadius = this.xScale(1)/2 < this.yScale.bandwidth()/2 ? this.xScale(1)/2 : this.yScale.bandwidth()/2;
+    circleRadius *= 0.9;
+    return circleRadius;
+  }
+
   createCircles() {
-    const circleRadius = this.xScale(1)/2 < this.yScale.bandwidth()/2 ? this.xScale(1)/2 : this.yScale.bandwidth()/2;
+    const circleRadius = this.getCircleRadius();
 
     this.countedAnswers.forEach(choice => {
       this.svgElement.selectAll('.player choice-order-' + choice.order)
@@ -127,7 +133,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
         .enter()
         .append('circle')
         .attr('class', 'player')
-        .attr('cx', (userName, i) => this.xScale(i + 1))
+        .attr('cx', (userName, i) => this.xScale(i + 1) - circleRadius)
         .attr('cy', this.yScale(choice.order) + this.yScale.bandwidth()/2) // Align to center
         .attr('r', circleRadius);
     });
