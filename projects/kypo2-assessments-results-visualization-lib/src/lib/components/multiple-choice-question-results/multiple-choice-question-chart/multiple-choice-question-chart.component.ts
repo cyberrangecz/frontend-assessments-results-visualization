@@ -40,6 +40,12 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
       .attr('height', this.options.height + this.options.margin.top + this.options.margin.bottom)
       .append('g')
       .attr('transform', `translate(${ this.options.margin.left }, ${ this.options.margin.top })`);
+    // Debug purpose
+    this.svgElement.append('rect')
+      .attr('height', this.options.height)
+      .attr('width', this.options.width)
+      .attr('fill', 'none')
+      .attr('stroke', 'lightgrey');
   }
 
   initializeScales() {
@@ -56,6 +62,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
   }
 
   createChart() {    
+    this.highlightCorrectAnswers();
     this.createAxes();
     this.createCircles();
     this.createStats();
@@ -71,6 +78,21 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
       .call(this.d3.axisLeft(this.yScale));
   }
 
+  highlightCorrectAnswers() {
+    const circleRadius = this.xScale(1)/2 < this.yScale.bandwidth()/2 ? this.xScale(1)/2 : this.yScale.bandwidth()/2;
+    this.countedAnswers.forEach(choice => {
+      if (!choice.isCorrect) return;
+
+      this.svgElement.append('rect')
+        .attr('x', this.xScale(1) - circleRadius - 10)
+        .attr('y', this.yScale(choice.order))
+        .attr('rx', circleRadius)
+        .attr('width', this.xScale(choice.answers.length-1) + 2*circleRadius + 10*2)
+        .attr('height', this.yScale.bandwidth())
+        .attr('fill', '#EDC455');
+    });
+  }
+
   createCircles() {
     const circleRadius = this.xScale(1)/2 < this.yScale.bandwidth()/2 ? this.xScale(1)/2 : this.yScale.bandwidth()/2;
 
@@ -82,9 +104,8 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
         .attr('class', 'player')
         .attr('cx', (userName, i) => this.xScale(i + 1))
         .attr('cy', this.yScale(choice.order) + this.yScale.bandwidth()/2) // Align to center
-        .attr('r', circleRadius)
-        .attr('fill', 'red');
-    })
+        .attr('r', circleRadius);
+    });
   }
 
   createStats() {
