@@ -45,7 +45,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
       .attr('height', this.options.height)
       .attr('width', this.options.width)
       .attr('fill', 'none')
-      .attr('stroke', 'lightgrey');
+      .attr('stroke', 'red');
   }
 
   initializeScales() {
@@ -62,6 +62,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
   }
 
   createChart() {    
+    this.createGridLines();
     this.highlightCorrectAnswers();
     this.createAxes();
     this.createCircles();
@@ -69,13 +70,37 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
   }
 
   createAxes() {
+    const xAxis = this.d3.axisBottom(this.xScale);
+
+    xAxis.tickValues(this.getTicksEveryFiveAnswers());
+    xAxis.tickFormat(this.d3.format("d"));
+
     this.svgElement.append('g')
       .attr('transform', `translate(0, ${ this.options.height })`)
-      .call(this.d3.axisBottom(this.xScale));
+      .call(xAxis);
 
     this.svgElement.append('g')
       .attr('transform', `translate(0, 0)`)
       .call(this.d3.axisLeft(this.yScale));
+  }
+
+  getTicksEveryFiveAnswers(): Array<number> {
+    const tickValues = [];
+    for (let i = 0; i <= this.answers.length; i += 5) {
+      tickValues.push(i);
+    }
+    return tickValues;
+  }
+
+  createGridLines() {
+    const verticalGridLines = this.d3.axisTop(this.xScale)
+      .tickValues(this.getTicksEveryFiveAnswers())
+      .tickFormat(() => '')
+      .tickSize(-this.options.height);
+
+    this.svgElement.append('g')
+      .attr('class', 'grid-lines')
+      .call(verticalGridLines);
   }
 
   highlightCorrectAnswers() {
@@ -135,6 +160,6 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
       .attr('class', 'percentage')
       .attr('x', this.options.width * 0.9)
       .attr('y', (choice: any) => this.yScale(choice.order.toString()) + this.yScale.bandwidth()/2)
-      .html((choice:any) => (choice.answers.length / this.answers.length * 100).toString() + ' %');
+      .html((choice:any) => (choice.answers.length / this.answers.length * 100).toFixed(1).toString() + ' %');
   }
 }

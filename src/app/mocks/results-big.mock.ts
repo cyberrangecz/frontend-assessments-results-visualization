@@ -82,6 +82,10 @@ export const MOCK_DATA_BIG = {
                     {
                         "userName":"999",
                         "text":"dunno"
+                    },
+                    {
+                        "userName":"extra",
+                        "text": "extra"
                     }
                 ]
              },
@@ -193,16 +197,26 @@ export const MOCK_DATA_BIG = {
                     {
                         "userName":"777",
                         "choices":[
-                            0,1,2,3
+                            0,1
                         ]
                     },
                     {
                         "userName":"888",
-                        "text":"keylogger"
+                        "choices":[
+                            0,1,2,3
+                        ]
                     },
                     {
                         "userName":"999",
-                        "text":"dunno"
+                        "choices":[
+                            0,1
+                        ]
+                    },
+                    {
+                        "userName":"extra",
+                        "choices":[
+                            0,1
+                        ]
                     }
                 ]
              },

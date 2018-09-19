@@ -5,3 +5,7 @@ svg {
 .player {
     fill: #00A7FF;
 }
+
+.grid-lines {
+    opacity: 0.1;
+}
