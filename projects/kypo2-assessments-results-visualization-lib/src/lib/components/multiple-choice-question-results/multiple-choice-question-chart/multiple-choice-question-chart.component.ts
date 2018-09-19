@@ -57,7 +57,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
     const totalAnswers = this.answers.length;
 
     this.xScale = this.d3.scaleLinear()
-      .range([0, this.options.width * 0.8]) // To separate variable
+      .range([0, this.options.chart.width]) // To separate variable
       .domain([0, totalAnswers]);
   }
 
@@ -134,32 +134,45 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
   }
 
   createStats() {
-    this.svgElement.append('text')
-      .attr('x', this.options.width * 0.8)
+    this.createSumColumn();
+    this.createPercentageColumn();
+  }
+
+  createSumColumn() {
+    const sumColumn = this.svgElement.append('g').attr('class', 'sum-column');
+
+    sumColumn.append('text').attr('class', 'sum-label')
+      .attr('x', this.options.chart.width + this.options.stats.sum.marginLeft)
       .attr('y', 0)
       .html('Σ');
 
-    this.svgElement.selectAll('.sum')
+    sumColumn.selectAll('.sum-value')
       .data(this.countedAnswers)
       .enter()
       .append('text')
-      .attr('class', 'sum')
-      .attr('x', this.options.width * 0.8)
+      .attr('class', 'sum-value')
+      .attr('x', this.options.chart.width + this.options.stats.sum.marginLeft)
       .attr('y', (choice: any) => this.yScale(choice.order.toString()) + this.yScale.bandwidth()/2)
       .html((choice:any) => choice.answers.length);
+  }
 
-    this.svgElement.append('text')
-      .attr('x', this.options.width * 0.9)
-      .attr('y', 0)
-      .html('%');
+  createPercentageColumn() {
+    const percentageColumn = this.svgElement.append('g').attr('class', 'percentage-column');
+  
+    const x = this.options.chart.width + this.options.stats.sum.marginLeft + this.options.stats.percentage.marginLeft;
 
-    this.svgElement.selectAll('.percentage')
+    percentageColumn.append('text').attr('class', 'percentage-label')
+    .attr('x', x)
+    .attr('y', 0)
+    .html('%');
+
+    percentageColumn.selectAll('.percentage-value')
       .data(this.countedAnswers)
       .enter()
       .append('text')
-      .attr('class', 'percentage')
-      .attr('x', this.options.width * 0.9)
+      .attr('class', 'percentage-value')
+      .attr('x', x)
       .attr('y', (choice: any) => this.yScale(choice.order.toString()) + this.yScale.bandwidth()/2)
-      .html((choice:any) => (choice.answers.length / this.answers.length * 100).toFixed(1).toString() + ' %');
+      .html((choice:any) => (choice.answers.length / this.answers.length * 100).toFixed(1).toString());
   }
 }

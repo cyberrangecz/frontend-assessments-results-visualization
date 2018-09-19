@@ -1,5 +1,6 @@
 svg {
     border: 1px solid brown;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .player {
@@ -8,4 +9,15 @@ svg {
 
 .grid-lines {
     opacity: 0.1;
+}
+
+.sum-label, .percentage-label {
+    font-size: 2em;
+    text-anchor: middle;
+}
+
+.sum-value, .percentage-value {
+    font-size: 1.5em;
+    text-anchor: middle;
+    alignment-baseline: middle;
 }
