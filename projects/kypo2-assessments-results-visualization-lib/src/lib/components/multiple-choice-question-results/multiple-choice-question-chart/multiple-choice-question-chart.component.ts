@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Input } from '@angular/core';
 import { D3, D3Service, BaseType, Selection } from 'd3-ng2-service';
 import { MCQChoice } from '../../../models/mcqchoice';
-import { MCQAnswer } from '../../../models/mcqanswer';
 
 @Component({
   selector: 'kypo2-viz-assessments-mci-chart',
@@ -41,11 +40,11 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
       .append('g')
       .attr('transform', `translate(${ this.options.margin.left }, ${ this.options.margin.top })`);
     // Debug purpose
-    this.svgElement.append('rect')
-      .attr('height', this.options.height)
-      .attr('width', this.options.width)
-      .attr('fill', 'none')
-      .attr('stroke', 'red');
+    // this.svgElement.append('rect')
+    //   .attr('height', this.options.height)
+    //   .attr('width', this.options.width)
+    //   .attr('fill', 'none')
+    //   .attr('stroke', 'red');
   }
 
   initializeScales() {
@@ -70,18 +69,36 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
   }
 
   createAxes() {
+    this.createXAxis();
+    this.createYAxis();
+  }
+
+  createXAxis() {
     const xAxis = this.d3.axisBottom(this.xScale);
 
     xAxis.tickValues(this.getTicksEveryFiveAnswers());
     xAxis.tickFormat(this.d3.format("d"));
+    xAxis.tickSize(0);
 
-    this.svgElement.append('g')
+    this.svgElement.append('g').attr('class', 'x-axis')
       .attr('transform', `translate(0, ${ this.options.height })`)
       .call(xAxis);
+  }
 
-    this.svgElement.append('g')
+  createYAxis() {
+    const yAxis = this.d3.axisLeft(this.yScale)
+
+    yAxis.tickPadding(this.options.margin.left/3);
+    yAxis.tickSize(0);
+    yAxis.tickFormat((tickValue) => {
+      const codeShift = +tickValue + 65; // To start of the alphabet
+      return String.fromCharCode(codeShift);
+    });
+
+
+    this.svgElement.append('g').attr('class', 'y-axis')
       .attr('transform', `translate(0, 0)`)
-      .call(this.d3.axisLeft(this.yScale));
+      .call(yAxis);
   }
 
   getTicksEveryFiveAnswers(): Array<number> {
@@ -108,13 +125,13 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
     this.countedAnswers.forEach(choice => {
       if (!choice.isCorrect) return;
 
-      this.svgElement.append('rect')
+      this.svgElement.append('g').attr('class', 'bar-highlighted')
+        .append('rect')
         .attr('x', this.xScale(1) - 2*circleRadius)
         .attr('y', this.yScale(choice.order))
         .attr('rx', circleRadius)
         .attr('width', this.xScale(choice.answers.length-1) + 2*circleRadius)
-        .attr('height', this.yScale.bandwidth())
-        .attr('fill', '#EDC455');
+        .attr('height', this.yScale.bandwidth());
     });
   }
 

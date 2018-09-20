@@ -21,3 +21,11 @@ svg {
     text-anchor: middle;
     alignment-baseline: middle;
 }
+
+.bar-highlighted {
+    fill: #EDC455;
+}
+
+.x-axis path, .y-axis path, .grid-lines path {
+    visibility: hidden;
+}
