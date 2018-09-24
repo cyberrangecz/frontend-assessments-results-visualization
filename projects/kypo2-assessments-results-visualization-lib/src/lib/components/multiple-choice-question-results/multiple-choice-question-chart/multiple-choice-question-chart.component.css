@@ -1,10 +1,19 @@
-svg {
-    border: 1px solid brown;
+h1 {
+    background: #5C75A7;
+    color: white;
+    border-radius: 5px;
+    padding: 0.5em;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+svg {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border: 1px solid rgb(226, 229, 231);
+    border-radius: 5px;
+    background: #fff;
 }
 
 .player {
-    fill: #00A7FF;
+    fill: #3e5888;
 }
 
 .grid-lines {
@@ -22,10 +31,19 @@ svg {
     alignment-baseline: middle;
 }
 
-.bar-highlighted {
-    fill: #EDC455;
+.bar-highlighted, .choice-highlight {
+    fill: #ffb834;
 }
 
 .x-axis path, .y-axis path, .grid-lines path {
     visibility: hidden;
+}
+
+.y-axis > g > text {
+    font-size: 2em;
+    
+}
+
+.x-axis > g > text {
+    font-size: 2em;
 }

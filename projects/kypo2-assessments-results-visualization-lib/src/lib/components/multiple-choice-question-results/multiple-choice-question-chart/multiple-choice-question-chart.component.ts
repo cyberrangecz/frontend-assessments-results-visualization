@@ -40,11 +40,6 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
       .append('g')
       .attr('transform', `translate(${ this.options.margin.left }, ${ this.options.margin.top })`);
     // Debug purpose
-    // this.svgElement.append('rect')
-    //   .attr('height', this.options.height)
-    //   .attr('width', this.options.width)
-    //   .attr('fill', 'none')
-    //   .attr('stroke', 'red');
   }
 
   initializeScales() {
@@ -79,6 +74,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
     xAxis.tickValues(this.getTicksEveryFiveAnswers());
     xAxis.tickFormat(this.d3.format("d"));
     xAxis.tickSize(0);
+    xAxis.tickPadding(this.options.margin.bottom/3);
 
     this.svgElement.append('g').attr('class', 'x-axis')
       .attr('transform', `translate(0, ${ this.options.height })`)
@@ -94,11 +90,22 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
       const codeShift = +tickValue + 65; // To start of the alphabet
       return String.fromCharCode(codeShift);
     });
-
-
-    this.svgElement.append('g').attr('class', 'y-axis')
+    const axisGroup = this.svgElement.append('g').attr('class', 'y-axis')
       .attr('transform', `translate(0, 0)`)
       .call(yAxis);
+    
+    const x = +axisGroup.select('text').attr('x') - 6;
+    const dy = axisGroup.select('text').attr('dy');
+    
+    axisGroup.selectAll('g')
+      .filter((choice: number) => {
+        const choices: MCQChoice[] = this.choices;
+        return choices[choice].isCorrect;})
+      .insert('circle', ':nth-child(2)')
+      .attr('class', 'choice-highlight')
+      .attr('cx', x)
+      .attr('cy', 0)
+      .attr('r', 20);
   }
 
   getTicksEveryFiveAnswers(): Array<number> {
