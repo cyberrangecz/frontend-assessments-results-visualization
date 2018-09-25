@@ -7,6 +7,7 @@ import { VisualizationsComponent } from './components/visualizations/visualizati
 import { CommonModule } from '@angular/common';
 import { MultipleChoiceQuestionChartComponent } from './components/multiple-choice-question-results/multiple-choice-question-chart/multiple-choice-question-chart.component';
 import { D3Service } from 'd3-ng2-service';
+import { EventsService } from './services/events.service';
 
 @NgModule({
   imports: [
@@ -26,6 +27,9 @@ import { D3Service } from 'd3-ng2-service';
     ExtendedMatchingResultsComponent,
     VisualizationsComponent
   ],
-  providers: [D3Service]
+  providers: [
+    D3Service,
+    EventsService
+  ]
 })
 export class Kypo2AssessmentsResultsVisualizationLibModule { }
