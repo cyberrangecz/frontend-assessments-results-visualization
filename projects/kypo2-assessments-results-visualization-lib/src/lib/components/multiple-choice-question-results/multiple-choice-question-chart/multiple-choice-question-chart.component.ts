@@ -22,7 +22,6 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
   private xScale;
   private yScale;
   private tooltip = null;
-  private players;
 
   constructor(private d3service: D3Service) {
     this.d3 = this.d3service.getD3();
