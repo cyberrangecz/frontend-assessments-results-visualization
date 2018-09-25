@@ -21,7 +21,8 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
   private svgElement: Selection<BaseType, {}, null, undefined>;
   private xScale;
   private yScale;
-  private tooltip;
+  private tooltip = null;
+  private players;
 
   constructor(private d3service: D3Service) {
     this.d3 = this.d3service.getD3();
@@ -63,6 +64,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
     this.createCircles();
     this.createStats();
     this.createTooltips();
+    this.addEvents();
   }
 
   createAxes() {
@@ -160,7 +162,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
         .data(choice.answers)
         .enter()
         .append('circle')
-        .attr('class', 'player')
+        .attr('class', (userName) => 'player player-' + userName)
         .attr('cx', (userName, i) => this.xScale(i + 1) - circleRadius)
         .attr('cy', this.yScale(choice.order) + this.yScale.bandwidth()/2) // Align to center
         .attr('r', circleRadius);
@@ -228,28 +230,47 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
   }
 
   createChoiceTooltip() {
+    this.disablePointerEventsForIncorrectAnswers();
     const choiceTicks = this.svgElement.selectAll('.y-axis > .tick');
     choiceTicks.on('mouseover', (tickOrder: number, i, selection) => {
       const choiceData: MCQChoice = this.choices[tickOrder];
       const choiceTitle = choiceData.text;
-      const node = selection[i];
-      this.createTooltip(node, choiceTitle);
+      const node: BaseType = this.d3.select(selection[i]).select('text').node(); // Center tooltip to the <text> element
+      this.createTooltip(node, choiceTitle, {top: 10, left: 0});
     });
     choiceTicks.on('mouseout', () => {this.hideTooltip();});
   }
 
-  createTooltip(node: BaseType, content) {
+  disablePointerEventsForIncorrectAnswers() {
+    this.svgElement.selectAll('.y-axis > .tick > text')
+    .filter((order: number) => {
+      return this.choices[order].isCorrect;
+    })
+    .style('pointer-events', 'none');
+  }
+
+  createTooltip(node: BaseType, content, offset?) {
+    if (offset == null) {
+      offset = {top: 0, left: 0}
+    };
+
     const playerBoundingRect: DOMRect = (node as any).getBoundingClientRect();
     
-    let top = playerBoundingRect.top + window.scrollY;
-    let left = playerBoundingRect.left + window.scrollX;
+    let top = playerBoundingRect.top + window.scrollY - offset.top;
+    let left = playerBoundingRect.left + window.scrollX - offset.left;
 
     this.tooltip = this.d3.select('body')
       .append('div')
       .attr('class', 'player-tooltip')
       .style('top',  top + 'px')
-      .style('left', left + 'px')
-      .html(content);
+      .style('left', left + 'px');
+    
+    this.tooltip
+      .style('opacity', 0)
+      .html(content)
+      .transition()
+      .duration(200)
+      .style('opacity', 1);
 
     const tooltipBoundingRect =  (this.tooltip.node() as any).getBoundingClientRect();
     const tooltipCenterOffset = tooltipBoundingRect.width/2 - playerBoundingRect.width/2;
@@ -260,8 +281,50 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
   }
 
   hideTooltip() {
+    if (this.tooltip == null) return;
     this.tooltip.remove();
     this.tooltip = null;
+  }
+
+  addEvents() {
+    this.addContainerEvents();
+    this.addPlayerEvents();
+    this.addTickEvents();
+  }
+
+  addContainerEvents() {
+    this.d3.select(this.chartContainer.nativeElement)
+      .on('click', () => {
+        this.unhighlightPlayer();
+    });
+  }
+
+  addPlayerEvents() {
+    this.svgElement.selectAll('.player')
+      .on('click', (userName) => {
+        this.d3.event.stopPropagation(); // Override containers mouse events
+        this.highlightPlayer(userName);
+    });
+  }
+
+  addTickEvents() {
+    
+  }
+
+  highlightPlayer(userName) {
+    const transition = this.d3.transition().duration(700).ease(this.d3.easeElasticOut);
+    this.svgElement.selectAll('.player-' + userName)
+      .classed('player-highlighted', true)
+      .transition(transition)
+      .attr('r', this.getCircleRadius() * 1.2);
+  }
+
+  unhighlightPlayer() {
+    const transition = this.d3.transition().duration(700).ease(this.d3.easeElasticOut);
+    this.svgElement.selectAll('.player')
+      .classed('player-highlighted', false)
+      .transition(transition)
+      .attr('r', this.getCircleRadius());
   }
 
 }

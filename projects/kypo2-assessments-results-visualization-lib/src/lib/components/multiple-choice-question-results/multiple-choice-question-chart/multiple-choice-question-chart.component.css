@@ -82,3 +82,7 @@ svg {
     border-style: solid;
     border-color: rgb(226, 229, 231) transparent transparent transparent;
 }
+
+.player-highlighted {
+    fill: #f94848;
+}
