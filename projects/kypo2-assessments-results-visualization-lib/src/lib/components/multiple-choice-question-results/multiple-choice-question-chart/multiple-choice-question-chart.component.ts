@@ -134,12 +134,14 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
     this.countedAnswers.forEach(choice => {
       if (!choice.isCorrect) return;
 
+      const padding = 3;
+
       this.svgElement.append('g').attr('class', 'bar-highlighted')
         .append('rect')
-        .attr('x', this.xScale(1) - 2*circleRadius)
+        .attr('x', this.xScale(1) - 2*circleRadius - padding)
         .attr('y', this.yScale(choice.order))
         .attr('rx', circleRadius)
-        .attr('width', this.xScale(choice.answers.length-1) + 2*circleRadius)
+        .attr('width', this.xScale(choice.answers.length-1) + 2*circleRadius + padding*2)
         .attr('height', this.yScale.bandwidth());
     });
   }

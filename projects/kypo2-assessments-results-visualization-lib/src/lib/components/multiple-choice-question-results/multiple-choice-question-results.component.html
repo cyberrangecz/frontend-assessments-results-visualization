@@ -1,29 +1,31 @@
 <h1>Q{{ order }}: {{ questionTitle }}</h1>
 
-<kypo2-viz-assessments-mci-chart 
-  [answers]="answers"
-  [choices]="choices"
-  [questionTitle]="questionTitle"
-  [countedAnswers]="countedAnswers"
-  [options]="{
-    height: 300,
-    width: 700,
-    margin: {
-      top: 40,
-      right: 40,
-      bottom: 40,
-      left: 60
-    },
-    chart: {
-      width: 700*0.8
-    },
-    stats: {
-      sum: {
-        marginLeft: 40
+<div style="margin-left: 2em">
+  <kypo2-viz-assessments-mci-chart 
+    [answers]="answers"
+    [choices]="choices"
+    [questionTitle]="questionTitle"
+    [countedAnswers]="countedAnswers"
+    [options]="{
+      height: 300,
+      width: 700,
+      margin: {
+        top: 40,
+        right: 40,
+        bottom: 40,
+        left: 60
       },
-      percentage: {
-        marginLeft: 60
+      chart: {
+        width: 700*0.8
+      },
+      stats: {
+        sum: {
+          marginLeft: 40
+        },
+        percentage: {
+          marginLeft: 60
+        }
       }
-    }
-  }">
-</kypo2-viz-assessments-mci-chart>
+    }">
+  </kypo2-viz-assessments-mci-chart>
+</div>
