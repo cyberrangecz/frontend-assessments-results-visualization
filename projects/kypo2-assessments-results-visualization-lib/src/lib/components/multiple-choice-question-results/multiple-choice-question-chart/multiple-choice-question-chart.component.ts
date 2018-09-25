@@ -21,6 +21,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
   private svgElement: Selection<BaseType, {}, null, undefined>;
   private xScale;
   private yScale;
+  private tooltip;
 
   constructor(private d3service: D3Service) {
     this.d3 = this.d3service.getD3();
@@ -61,6 +62,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
     this.createAxes();
     this.createCircles();
     this.createStats();
+    this.createTooltips();
   }
 
   createAxes() {
@@ -205,4 +207,59 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
       .attr('y', (choice: any) => this.yScale(choice.order.toString()) + this.yScale.bandwidth()/2)
       .html((choice:any) => (choice.answers.length / this.answers.length * 100).toFixed(1).toString());
   }
+
+  createTooltips() {
+    this.createPlayerTooltip();
+    this.createChoiceTooltip();
+  }
+
+  createPlayerTooltip() {
+    const players = this.svgElement.selectAll('.player');
+
+    players.on('mouseover', (playerName: string, i, sel) => {
+      const selection = this.d3.select(sel[i]);
+      const node = selection.node();
+      this.createTooltip(node, playerName);
+    });
+
+    players.on('mouseout', () => {this.hideTooltip();});
+  }
+
+  createChoiceTooltip() {
+    const choiceTicks = this.svgElement.selectAll('.y-axis > .tick');
+    choiceTicks.on('mouseover', (tickOrder: number, i, selection) => {
+      const choiceData: MCQChoice = this.choices[tickOrder];
+      const choiceTitle = choiceData.text;
+      const node = selection[i];
+      this.createTooltip(node, choiceTitle);
+    });
+    choiceTicks.on('mouseout', () => {this.hideTooltip();});
+  }
+
+  createTooltip(node: BaseType, content) {
+    const playerBoundingRect: DOMRect = (node as any).getBoundingClientRect();
+    
+    let top = playerBoundingRect.top + window.scrollY;
+    let left = playerBoundingRect.left + window.scrollX;
+
+    this.tooltip = this.d3.select('body')
+      .append('div')
+      .attr('class', 'player-tooltip')
+      .style('top',  top + 'px')
+      .style('left', left + 'px')
+      .html(content);
+
+    const tooltipBoundingRect =  (this.tooltip.node() as any).getBoundingClientRect();
+    const tooltipCenterOffset = tooltipBoundingRect.width/2 - playerBoundingRect.width/2;
+    left -= tooltipCenterOffset;
+    top -= tooltipBoundingRect.height + 10; // 10 matches arrow size
+    this.tooltip.style('left', left + 'px');
+    this.tooltip.style('top', top + 'px');
+  }
+
+  hideTooltip() {
+    this.tooltip.remove();
+    this.tooltip = null;
+  }
+
 }

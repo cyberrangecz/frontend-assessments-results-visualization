@@ -47,3 +47,37 @@ svg {
 .x-axis > g > text {
     font-size: 2em;
 }
+
+.player-tooltip {
+    position: absolute;
+    box-sizing: border-box;
+    background: #fff;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    opacity: 0.95;
+    pointer-events: none;
+    border: 1px solid rgb(226, 229, 231);
+}
+
+.player-tooltip::after {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -10px;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+}
+
+.player-tooltip::before {
+    content: " ";
+    position: absolute;
+    top: 100%; /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -11px;
+    border-width: 11px;
+    border-style: solid;
+    border-color: rgb(226, 229, 231) transparent transparent transparent;
+}
