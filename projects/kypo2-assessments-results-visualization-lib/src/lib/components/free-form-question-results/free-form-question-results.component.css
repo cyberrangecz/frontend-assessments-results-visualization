@@ -1,0 +1,17 @@
+table {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1.3em;
+    padding: 1em;
+    border-radius: 5px;
+    background: #fff;
+    border: 1px solid rgb(226, 229, 231);
+}
+
+table thead th {
+    border-bottom: 1px solid rgb(226, 229, 231);
+    padding-bottom: 0.75em;
+}
+
+table th, table td {
+    text-align: right;
+}

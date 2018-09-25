@@ -41,7 +41,7 @@ export const MOCK_DATA_BIG = {
                     },
                     {
                         "userName":"Paul",
-                        "text":"dunno"
+                        "text":"dunnoooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
                     },
                     {
                         "userName":"000",

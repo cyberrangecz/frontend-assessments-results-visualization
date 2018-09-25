@@ -1,6 +1,12 @@
 <h1>Q{{ order }}: {{ questionTitle }}</h1>
-<ul>
-  <li *ngFor="let answer of answers">
-    {{ answer.userName}}: {{ answer.text }}
-  </li>
-</ul>
+
+<table>
+  <thead>
+    <tr><th>Username</th><th>Answer</th></tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let answer of answers">
+      <td>{{ answer.userName }}</td> <td style="padding-left: 2em">{{ answer.text }}</td>
+    </tr>
+  </tbody>
+</table>
