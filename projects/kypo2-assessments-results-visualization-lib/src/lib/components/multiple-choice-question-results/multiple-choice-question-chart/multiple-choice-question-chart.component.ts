@@ -26,6 +26,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   private tooltip = null;
 
   private playerClicked: Subscription;
+  private containerClicked: Subscription;
 
   constructor(private d3service: D3Service, private eventsService: EventsService) {
     this.d3 = this.d3service.getD3();
@@ -39,10 +40,17 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       this.unhighlightPlayer();
       this.highlightPlayer(userName);
     });
+
+    this.containerClicked = this.eventsService.containerClicked$.subscribe(
+      () => {
+        this.unhighlightPlayer();
+      }
+    );
   }
 
   ngOnDestroy() {
     this.playerClicked.unsubscribe();
+    this.containerClicked.unsubscribe();
   }
 
   ngOnInit() {
@@ -306,13 +314,12 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   addEvents() {
     this.addContainerEvents();
     this.addPlayerEvents();
-    this.addTickEvents();
   }
 
   addContainerEvents() {
     this.d3.select(this.chartContainer.nativeElement)
       .on('click', () => {
-        this.unhighlightPlayer();
+        this.eventsService.clickOnContainer();
     });
   }
 
@@ -321,10 +328,6 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       .on('click', (userName: string) => {
         this.eventsService.clickOnPlayer(userName);
     });
-  }
-
-  addTickEvents() {
-    
   }
 
   highlightPlayer(userName) {

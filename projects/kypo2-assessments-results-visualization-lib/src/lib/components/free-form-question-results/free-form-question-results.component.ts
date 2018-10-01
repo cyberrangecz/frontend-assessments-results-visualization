@@ -20,6 +20,7 @@ export class FreeFormQuestionResultsComponent implements OnInit, OnDestroy {
   highlightedPlayer: string;
 
   private playerClicked: Subscription;
+  private containerClicked: Subscription;
 
   constructor(private eventsService: EventsService) {
     this.subscribeToEvents();
@@ -29,10 +30,17 @@ export class FreeFormQuestionResultsComponent implements OnInit, OnDestroy {
     this.playerClicked = this.eventsService.playerClicked$.subscribe((userName: string) => {
       this.highlightPlayer(userName);
     });
+
+    this.containerClicked = this.eventsService.containerClicked$.subscribe(
+      () => {
+        this.unhighlightPlayer();
+      }
+    );
   }
 
   ngOnDestroy() {
     this.playerClicked.unsubscribe();
+    this.containerClicked.unsubscribe();
   }
 
   ngOnInit() {
@@ -43,6 +51,10 @@ export class FreeFormQuestionResultsComponent implements OnInit, OnDestroy {
 
   highlightPlayer(userName: string) {
     this.highlightedPlayer = userName;
+  }
+
+  unhighlightPlayer() {
+    this.highlightedPlayer = null;
   }
 
 }
