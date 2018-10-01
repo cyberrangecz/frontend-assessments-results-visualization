@@ -36,7 +36,9 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   subscribeToEvents() {
     this.playerClicked = this.eventsService.playerClicked$.subscribe(
     (userName: string) => {
-      this.d3.event.stopPropagation();
+      if (this.d3.event != null) {
+        this.d3.event.stopPropagation();
+      }
       this.unhighlightPlayer();
       this.highlightPlayer(userName);
     });

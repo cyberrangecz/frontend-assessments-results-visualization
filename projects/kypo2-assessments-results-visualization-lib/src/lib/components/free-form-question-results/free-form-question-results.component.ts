@@ -57,4 +57,13 @@ export class FreeFormQuestionResultsComponent implements OnInit, OnDestroy {
     this.highlightedPlayer = null;
   }
 
+  onRowClicked(answer: FFQAnswer, event: MouseEvent) {
+    event.stopPropagation();
+    this.eventsService.clickOnPlayer(answer.userName);
+  }
+
+  onContainerClicked() {
+    this.eventsService.clickOnContainer();
+  }
+
 }
