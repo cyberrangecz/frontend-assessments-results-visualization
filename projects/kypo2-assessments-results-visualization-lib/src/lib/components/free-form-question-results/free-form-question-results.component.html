@@ -5,7 +5,7 @@
     <tr><th>Username</th><th>Answer</th></tr>
   </thead>
   <tbody>
-    <tr *ngFor="let answer of answers">
+    <tr *ngFor="let answer of answers" [bgColor]="(highlightedPlayer === answer.userName) ? '#ffb834' : ''">
       <td>{{ answer.userName }}</td> <td style="padding-left: 2em">{{ answer.text }}</td>
     </tr>
   </tbody>

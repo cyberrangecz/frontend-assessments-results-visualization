@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Input } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
 import { D3, D3Service, BaseType, Selection } from 'd3-ng2-service';
 import { MCQChoice } from '../../../models/mcqchoice';
+import { EventsService } from '../../../services/events.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'kypo2-viz-assessments-mci-chart',
@@ -8,7 +10,7 @@ import { MCQChoice } from '../../../models/mcqchoice';
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./multiple-choice-question-chart.component.css']
 })
-export class MultipleChoiceQuestionChartComponent implements OnInit {
+export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
 
   @ViewChild('chart') private chartContainer: ElementRef;
   @Input() answers: any;
@@ -23,9 +25,25 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
   private yScale;
   private tooltip = null;
 
-  constructor(private d3service: D3Service) {
+  private playerClicked: Subscription;
+
+  constructor(private d3service: D3Service, private eventsService: EventsService) {
     this.d3 = this.d3service.getD3();
+    this.subscribeToEvents();
    }
+
+  subscribeToEvents() {
+    this.playerClicked = this.eventsService.playerClicked$.subscribe(
+    (userName: string) => {
+      this.d3.event.stopPropagation();
+      this.unhighlightPlayer();
+      this.highlightPlayer(userName);
+    });
+  }
+
+  ngOnDestroy() {
+    this.playerClicked.unsubscribe();
+  }
 
   ngOnInit() {
     this.createSvg();
@@ -300,9 +318,8 @@ export class MultipleChoiceQuestionChartComponent implements OnInit {
 
   addPlayerEvents() {
     this.svgElement.selectAll('.player')
-      .on('click', (userName) => {
-        this.d3.event.stopPropagation(); // Override containers mouse events
-        this.highlightPlayer(userName);
+      .on('click', (userName: string) => {
+        this.eventsService.clickOnPlayer(userName);
     });
   }
 

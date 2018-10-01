@@ -1,10 +1,10 @@
 table {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1.3em;
-    padding: 1em;
     border-radius: 5px;
     background: #fff;
     border: 1px solid rgb(226, 229, 231);
+    border-collapse: collapse;
 }
 
 table thead th {
@@ -14,4 +14,6 @@ table thead th {
 
 table th, table td {
     text-align: right;
+    padding: 0.3em 0.5em;
+    border-radius: 10px;
 }
