@@ -1,14 +1,31 @@
 <h1>Q{{ order }}: {{ questionTitle }}</h1>
-<ul>
-  <!-- <li *ngFor="let answer of answers">
-    {{ answer.userName }}: {{ answer.pairs | json }}
-  </li> -->
-  <li *ngFor="let first of firstChoices">
-   ({{ first.order }})
-    <ul>
-      <li *ngFor="let second of secondChoices">
-        ({{ second.order }}): {{ answersCount[first.order][second.order] | json}}
-      </li>
-    </ul>
-  </li>
-</ul>
+
+<ng-container *ngFor="let counted of countedAnswers; let i = index">
+  <h2 style="float: left; vertical-align: middle">{{ i }}</h2>
+  <kypo2-viz-assessments-mci-chart 
+    [answers]="answers"
+    [questionTitle]="'foo'"
+    [countedAnswers]="counted"
+    [options]="{
+      height: 150,
+      width: 450,
+      margin: {
+        top: 40,
+        right: 40,
+        bottom: 40,
+        left: 60
+      },
+      chart: {
+        width: 450*0.8
+      },
+      stats: {
+        sum: {
+          marginLeft: 40
+        },
+        percentage: {
+          marginLeft: 60
+        }
+      }
+    }">
+  </kypo2-viz-assessments-mci-chart>
+</ng-container>

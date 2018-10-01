@@ -58,6 +58,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     this.createSvg();
     this.initializeScales();
     this.createChart();
+    console.log(this.countedAnswers);
   }
 
   createSvg() {
@@ -130,7 +131,8 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     axisGroup.selectAll('g')
       .filter((choice: number) => {
         const choices: MCQChoice[] = this.countedAnswers;
-        return choices[choice].isCorrect;})
+        const find = choices.find((a: MCQChoice) => +a.order === +choice);
+        return find.isCorrect;})
       .insert('circle', ':nth-child(2)')
       .attr('class', 'choice-highlight')
       .attr('cx', x)
@@ -259,7 +261,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     this.disablePointerEventsForIncorrectAnswers();
     const choiceTicks = this.svgElement.selectAll('.y-axis > .tick');
     choiceTicks.on('mouseover', (tickOrder: number, i, selection) => {
-      const choiceData: MCQChoice = this.countedAnswers[tickOrder];
+      const choiceData: MCQChoice = this.countedAnswers.find(answer => +answer.order === +tickOrder);
       const choiceTitle = choiceData.text;
       const node: BaseType = this.d3.select(selection[i]).select('text').node(); // Center tooltip to the <text> element
       this.createTooltip(node, choiceTitle, {top: 10, left: 0});
@@ -270,7 +272,8 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   disablePointerEventsForIncorrectAnswers() {
     this.svgElement.selectAll('.y-axis > .tick > text')
     .filter((order: number) => {
-      return this.countedAnswers[order].isCorrect;
+      const answer = this.countedAnswers.find((answer) => +answer.order === +order);
+      return answer.isCorrect;
     })
     .style('pointer-events', 'none');
   }

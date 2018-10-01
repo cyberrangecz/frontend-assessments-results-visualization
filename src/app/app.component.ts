@@ -12,5 +12,5 @@ import { MOCK_DATA_BIG } from './mocks/results-big.mock';
 export class AppComponent {
   MCQData: any = MOCK_DATA.assessments[0].questions[1];
   MCQData_big = MOCK_DATA_BIG.assessments[0].questions[1];
-  data = MOCK_DATA;
+  data = MOCK_DATA_BIG;
 }
