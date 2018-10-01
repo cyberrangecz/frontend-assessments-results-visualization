@@ -15,7 +15,6 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   @ViewChild('chart') private chartContainer: ElementRef;
   @Input() answers: any;
   @Input() options: any;
-  @Input() choices: MCQChoice[];
   @Input() questionTitle: string;
   @Input() countedAnswers;
 
@@ -74,7 +73,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   initializeScales() {
     this.yScale = this.d3.scaleBand()
       .range([0, this.options.height])
-      .domain(this.choices.map(choice => choice.order.toString()))
+      .domain(this.countedAnswers.map(choice => choice.order.toString()))
       .padding(0.2);
 
     const totalAnswers = this.answers.length;
@@ -130,7 +129,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     
     axisGroup.selectAll('g')
       .filter((choice: number) => {
-        const choices: MCQChoice[] = this.choices;
+        const choices: MCQChoice[] = this.countedAnswers;
         return choices[choice].isCorrect;})
       .insert('circle', ':nth-child(2)')
       .attr('class', 'choice-highlight')
@@ -260,7 +259,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     this.disablePointerEventsForIncorrectAnswers();
     const choiceTicks = this.svgElement.selectAll('.y-axis > .tick');
     choiceTicks.on('mouseover', (tickOrder: number, i, selection) => {
-      const choiceData: MCQChoice = this.choices[tickOrder];
+      const choiceData: MCQChoice = this.countedAnswers[tickOrder];
       const choiceTitle = choiceData.text;
       const node: BaseType = this.d3.select(selection[i]).select('text').node(); // Center tooltip to the <text> element
       this.createTooltip(node, choiceTitle, {top: 10, left: 0});
@@ -271,7 +270,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   disablePointerEventsForIncorrectAnswers() {
     this.svgElement.selectAll('.y-axis > .tick > text')
     .filter((order: number) => {
-      return this.choices[order].isCorrect;
+      return this.countedAnswers[order].isCorrect;
     })
     .style('pointer-events', 'none');
   }
