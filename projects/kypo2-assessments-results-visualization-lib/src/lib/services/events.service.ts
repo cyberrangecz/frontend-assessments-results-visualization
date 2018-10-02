@@ -8,7 +8,7 @@ export class EventsService {
 
   private playerClicked  = new Subject<any>();
   private containerClicked = new Subject<any>();
-  private isPlayerHighlighted: boolean = false;
+  private highlightedPlayer: string;
 
   playerClicked$ = this.playerClicked.asObservable();
   containerClicked$ = this.containerClicked.asObservable();
@@ -16,12 +16,14 @@ export class EventsService {
   constructor() { }
 
   clickOnPlayer(userName: string) {
-    if (this.isPlayerHighlighted) {
-      this.containerClicked.next();
+    const isPlayerAlreadyHighlighted = userName === this.highlightedPlayer;
+    if (isPlayerAlreadyHighlighted) {
+      this.clickOnContainer();
+      this.highlightedPlayer = null;
     } else {
       this.playerClicked.next(userName);
+      this.highlightedPlayer = userName;
     }
-    this.isPlayerHighlighted = !this.isPlayerHighlighted;
   }
 
   clickOnContainer() {

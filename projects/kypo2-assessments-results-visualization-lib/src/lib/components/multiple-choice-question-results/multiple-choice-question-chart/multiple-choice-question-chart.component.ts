@@ -58,7 +58,6 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     this.createSvg();
     this.initializeScales();
     this.createChart();
-    console.log(this.countedAnswers);
   }
 
   createSvg() {
