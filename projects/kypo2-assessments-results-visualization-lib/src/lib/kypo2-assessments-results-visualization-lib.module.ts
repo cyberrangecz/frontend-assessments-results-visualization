@@ -8,10 +8,12 @@ import { CommonModule } from '@angular/common';
 import { MultipleChoiceQuestionChartComponent } from './components/multiple-choice-question-results/multiple-choice-question-chart/multiple-choice-question-chart.component';
 import { D3Service } from 'd3-ng2-service';
 import { EventsService } from './services/events.service';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    NgbTooltipModule
   ],
   declarations: [
     Kypo2AssessmentsResultsVisualizationLibComponent, 

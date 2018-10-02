@@ -19,7 +19,6 @@ export class EventsService {
     const isPlayerAlreadyHighlighted = userName === this.highlightedPlayer;
     if (isPlayerAlreadyHighlighted) {
       this.clickOnContainer();
-      this.highlightedPlayer = null;
     } else {
       this.playerClicked.next(userName);
       this.highlightedPlayer = userName;
@@ -28,6 +27,7 @@ export class EventsService {
 
   clickOnContainer() {
     this.containerClicked.next();
+    this.highlightedPlayer = null;
   }
 
 }
