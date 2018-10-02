@@ -1,6 +1,9 @@
 <h1>Q{{ order }}: {{ questionTitle }}</h1>
 
-<ng-container *ngFor="let counted of countedAnswers; let i = index">
+<div 
+  *ngFor="let counted of countedAnswers; let i = index"
+  class="chart-container"
+  >
   <h2 style="float: left; vertical-align: middle">{{ i }}</h2>
   <kypo2-viz-assessments-mci-chart 
     [answers]="answers"
@@ -28,4 +31,6 @@
       }
     }">
   </kypo2-viz-assessments-mci-chart>
-</ng-container>
+</div>
+ 
+

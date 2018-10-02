@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'kypo2-viz-assessments-mci-chart',
-  template: '<div #chart></div>',
+  template: '<div id="chart-container" #chart></div>',
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./multiple-choice-question-chart.component.css']
 })

@@ -12,6 +12,11 @@ svg {
     background: #fff;
 }
 
+#chart-container {
+    display: flex;
+    align-items: center;
+}
+
 .player {
     fill: #3e5888;
     cursor: pointer;
