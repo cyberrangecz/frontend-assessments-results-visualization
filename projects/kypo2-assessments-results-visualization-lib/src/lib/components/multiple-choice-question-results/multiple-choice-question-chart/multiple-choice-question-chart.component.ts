@@ -67,7 +67,6 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       .attr('height', this.options.height + this.options.margin.top + this.options.margin.bottom)
       .append('g')
       .attr('transform', `translate(${ this.options.margin.left }, ${ this.options.margin.top })`);
-    // Debug purpose
   }
 
   initializeScales() {
@@ -113,12 +112,24 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
 
   createYAxis() {
     const yAxis = this.d3.axisLeft(this.yScale)
-
-    yAxis.tickPadding(this.options.margin.left/3);
+    const tickPadding = 30;
+    yAxis.tickPadding(tickPadding);
     yAxis.tickSize(0);
     yAxis.tickFormat((tickValue) => {
+      // const codeShift = +tickValue + 65; // To start of the alphabet
+      // return String.fromCharCode(codeShift);
+      const answer = this.countedAnswers.find((answer) => +answer.order === +tickValue);
+      const text: string = answer.text;
+      const textElement = this.svgElement.append('text').style('font-size', '20px').html(text);
+      const textLength = (textElement.node() as SVGTSpanElement).getComputedTextLength();
+      textElement.remove();
+      console.log(textLength, this.options.margin.left - tickPadding);
+      if (textLength < this.options.margin.left - tickPadding) {
+        return answer.text;
+      } else {
       const codeShift = +tickValue + 65; // To start of the alphabet
       return String.fromCharCode(codeShift);
+      }
     });
     const axisGroup = this.svgElement.append('g').attr('class', 'y-axis')
       .attr('transform', `translate(0, 0)`)
