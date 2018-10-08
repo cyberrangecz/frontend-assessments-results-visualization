@@ -123,7 +123,6 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       const textElement = this.svgElement.append('text').style('font-size', '20px').html(text);
       const textLength = (textElement.node() as SVGTSpanElement).getComputedTextLength();
       textElement.remove();
-      console.log(textLength, this.options.margin.left - tickPadding);
       if (textLength < this.options.margin.left - tickPadding) {
         return answer.text;
       } else {
@@ -138,16 +137,43 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     const x = +axisGroup.select('text').attr('x') - 6;
     const dy = axisGroup.select('text').attr('dy');
     
+    const p = 15;
+
     axisGroup.selectAll('g')
       .filter((choice: number) => {
         const choices: MCQChoice[] = this.countedAnswers;
         const find = choices.find((a: MCQChoice) => +a.order === +choice);
         return find.isCorrect;})
-      .insert('circle', ':nth-child(2)')
+      .insert('rect', ':nth-child(2)')
       .attr('class', 'choice-highlight')
-      .attr('cx', x)
-      .attr('cy', 0)
-      .attr('r', 20);
+      .attr('x', (choice, i, selections) => {
+        const parentNode = (selections[i] as any).parentNode;
+        const textElement = this.d3.select(parentNode).select('text');
+        return textElement.attr('x') - p;
+      })
+      .attr('y', (choice, i, selections) => {
+        const parentNode = (selections[i] as any).parentNode;
+        const textElement = this.d3.select(parentNode).select('text');
+        return textElement.attr('y') - p;
+      })
+      .attr('height', (choice, i, selections) => {
+        const parentNode = (selections[i] as any).parentNode;
+        const textElement = this.d3.select(parentNode).select('text');
+        const box = textElement.node().getBoundingClientRect();
+        return box.height + p;
+      })
+      .attr('width', (choice, i, selections) => {
+        const parentNode = (selections[i] as any).parentNode;
+        const textElement = this.d3.select(parentNode).select('text');
+        const box = textElement.node().getBoundingClientRect();
+        return box.width + p; 
+      })
+      .attr('transform', (choice, i, selections) => {
+        const currentSelection = this.d3.select(selections[i]);
+        return `translate(${ -currentSelection.attr('width') + p*1.5 }, ${ -currentSelection.attr('height')/2 + p })`;
+      })
+      .attr('rx', 5)
+      .attr('ry', 5);
   }
 
   getTicksEveryFiveAnswers(): Array<number> {
