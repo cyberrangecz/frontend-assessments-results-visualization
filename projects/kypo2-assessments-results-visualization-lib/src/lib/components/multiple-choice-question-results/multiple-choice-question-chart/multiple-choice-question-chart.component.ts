@@ -93,7 +93,9 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   }
 
   createAxes() {
-    this.createXAxis();
+    if (this.options.axes.showBottomLabel) {
+      this.createXAxis();
+    }
     this.createYAxis();
   }
 

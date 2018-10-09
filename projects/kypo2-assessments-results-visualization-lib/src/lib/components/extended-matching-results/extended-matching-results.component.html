@@ -13,9 +13,9 @@
       height: 150,
       width: 450,
       margin: {
-        top: (i == 0 || i == countedAnswers.length) ? 40 : 10,
+        top: (i == 0) ? 40 : 10,
         right: 60,
-        bottom: 40,
+        bottom: (i == countedAnswers.length - 1) ? 40 : 10,
         left: 220
       },
       chart: {
@@ -29,6 +29,9 @@
           marginLeft: 60
         },
         showLabel: (i == 0)
+      },
+      axes: {
+        showBottomLabel: (i == countedAnswers.length - 1)
       }
     }">
   </kypo2-viz-assessments-mci-chart>
