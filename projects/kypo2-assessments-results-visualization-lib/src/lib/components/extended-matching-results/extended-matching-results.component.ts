@@ -33,7 +33,7 @@ export class ExtendedMatchingResultsComponent implements OnInit {
     this.firstChoices = this.EMIData.choices.slice(0, this.EMIData.choices.length/2);
     this.secondChoices = this.EMIData.choices.slice(this.EMIData.choices.length/2, this.EMIData.choices.length);
     this.countAnswers();
-    this.foo();
+    this.convertToCountedAnswerFormat();
   }
 
   countAnswers() {
@@ -57,7 +57,7 @@ export class ExtendedMatchingResultsComponent implements OnInit {
     });
   }
 
-  foo() {
+  convertToCountedAnswerFormat() {
     this.countedAnswers = [];
     this.firstChoices.forEach((first: EMIChoice) => {
       (this.countedAnswers[first.order] as any) = [];
