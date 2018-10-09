@@ -84,8 +84,8 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
 
   createChart() {    
     this.createGridLines();
-    this.highlightCorrectAnswers();
     this.createAxes();
+    this.highlightCorrectAnswers();
     this.createCircles();
     this.createStats();
     this.createTooltips();
@@ -132,48 +132,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     });
     const axisGroup = this.svgElement.append('g').attr('class', 'y-axis')
       .attr('transform', `translate(0, 0)`)
-      .call(yAxis);
-    
-    const x = +axisGroup.select('text').attr('x') - 6;
-    const dy = axisGroup.select('text').attr('dy');
-    
-    const p = 15;
-
-    axisGroup.selectAll('g')
-      .filter((choice: number) => {
-        const choices: MCQChoice[] = this.countedAnswers;
-        const find = choices.find((a: MCQChoice) => +a.order === +choice);
-        return find.isCorrect;})
-      .insert('rect', ':nth-child(2)')
-      .attr('class', 'choice-highlight')
-      .attr('x', (choice, i, selections) => {
-        const parentNode = (selections[i] as any).parentNode;
-        const textElement = this.d3.select(parentNode).select('text');
-        return textElement.attr('x') - p;
-      })
-      .attr('y', (choice, i, selections) => {
-        const parentNode = (selections[i] as any).parentNode;
-        const textElement = this.d3.select(parentNode).select('text');
-        return textElement.attr('y') - p;
-      })
-      .attr('height', (choice, i, selections) => {
-        const parentNode = (selections[i] as any).parentNode;
-        const textElement = this.d3.select(parentNode).select('text');
-        const box = textElement.node().getBoundingClientRect();
-        return box.height + p;
-      })
-      .attr('width', (choice, i, selections) => {
-        const parentNode = (selections[i] as any).parentNode;
-        const textElement = this.d3.select(parentNode).select('text');
-        const box = textElement.node().getBoundingClientRect();
-        return box.width + p; 
-      })
-      .attr('transform', (choice, i, selections) => {
-        const currentSelection = this.d3.select(selections[i]);
-        return `translate(${ -currentSelection.attr('width') + p*1.5 }, ${ -currentSelection.attr('height')/2 + p })`;
-      })
-      .attr('rx', 5)
-      .attr('ry', 5);
+      .call(yAxis);    
   }
 
   getTicksEveryFiveAnswers(): Array<number> {
@@ -196,6 +155,11 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   }
 
   highlightCorrectAnswers() {
+    this.highlightCorrectCircles();
+    this.highlightCorrectChoices();
+  }
+
+  highlightCorrectCircles() {
     const circleRadius = this.getCircleRadius();
     this.countedAnswers.forEach(choice => {
       if (!choice.isCorrect) return;
@@ -210,6 +174,38 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
         .attr('width', this.xScale(choice.answers.length-1) + 2*circleRadius + padding*2)
         .attr('height', this.yScale.bandwidth());
     });
+  }
+
+  highlightCorrectChoices() {
+    const rectHighlightPadding = 15;
+
+    this.svgElement.selectAll('.y-axis > g')  
+      .filter((choice: number) => {
+        const choices: MCQChoice[] = this.countedAnswers;
+        const find = choices.find((a: MCQChoice) => +a.order === +choice);
+        return find.isCorrect;})
+      .insert('rect', ':nth-child(2)')
+      .each((choice, i, nodes) => {
+        const rectNode = nodes[i] as any;
+        const parentNode = rectNode.parentNode;
+        const textElement = this.d3.select(parentNode).select('text');
+        const x = +textElement.attr('x') - rectHighlightPadding;
+        const y = +textElement.attr('y') - rectHighlightPadding;
+        const boundingRect = (textElement.node() as any).getBoundingClientRect();
+        const height = boundingRect.height + rectHighlightPadding;
+        const width = boundingRect.width + rectHighlightPadding;
+        const translate = `translate(${ -width + rectHighlightPadding*1.5 }, ${ -height/2 + rectHighlightPadding })`;
+        const rectSelection = this.d3.select(rectNode);
+
+        rectSelection.attr('x', x)
+          .attr('y', y)
+          .attr('width', width)
+          .attr('height', height)
+          .attr('transform', translate)
+          .attr('rx', 15)
+          .attr('ry', 15)
+          .attr('class', 'choice-highlight');
+      });
   }
 
   getCircleRadius() {
