@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MCQ } from '../../models/mcq';
 import { MCQAnswer } from '../../models/mcqanswer';
 import { MCQChoice } from '../../models/mcqchoice';
+import { CountedAnswer } from './models/counted-answer.model';
 
 @Component({
   selector: 'kypo2-viz-assessments-results-multiple-choice-question-results',
@@ -17,7 +18,7 @@ export class MultipleChoiceQuestionResultsComponent implements OnInit {
   order: number;
   choices: MCQChoice[];
 
-  countedAnswers: any;
+  countedAnswers: CountedAnswer[];
 
   constructor() { }
 
@@ -30,7 +31,7 @@ export class MultipleChoiceQuestionResultsComponent implements OnInit {
   }
 
   countAnswers() {
-    this.countedAnswers = this.choices.slice();
+    this.countedAnswers = (this.choices.slice() as any);
 
     this.countedAnswers.forEach((choice) => {
       choice.answers = [];

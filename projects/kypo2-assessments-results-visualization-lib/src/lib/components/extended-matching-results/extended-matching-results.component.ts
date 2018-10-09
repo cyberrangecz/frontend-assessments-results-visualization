@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { EMI } from '../../models/emi';
 import { EMIAnswer } from '../../models/emianswer';
 import { EMIChoice } from '../../models/emichoice';
+import { CountedAnswer } from '../multiple-choice-question-results/models/counted-answer.model';
 
 @Component({
   selector: 'kypo2-viz-assessments-results-extended-matching-results',
@@ -20,7 +21,7 @@ export class ExtendedMatchingResultsComponent implements OnInit {
   secondChoices: EMIChoice[];
 
   answersCount;
-  countedAnswers;
+  countedAnswers: CountedAnswer[];
 
   constructor() { }
 
@@ -59,7 +60,7 @@ export class ExtendedMatchingResultsComponent implements OnInit {
   foo() {
     this.countedAnswers = [];
     this.firstChoices.forEach((first: EMIChoice) => {
-      this.countedAnswers[first.order] = [];
+      (this.countedAnswers[first.order] as any) = [];
       this.secondChoices.forEach((second: EMIChoice) => {
         const newPair = {
           order: second.order,
@@ -67,7 +68,7 @@ export class ExtendedMatchingResultsComponent implements OnInit {
           isCorrect: +first.order === +second.pair,
           answers: this.answersCount[first.order][second.order]
         };
-        this.countedAnswers[first.order].push(newPair);
+        (this.countedAnswers[first.order] as any).push(newPair);
       });
     });
   }

@@ -3,6 +3,7 @@ import { D3, D3Service, BaseType, Selection } from 'd3-ng2-service';
 import { MCQChoice } from '../../../models/mcqchoice';
 import { EventsService } from '../../../services/events.service';
 import { Subscription } from 'rxjs';
+import { CountedAnswer } from '../models/counted-answer.model';
 
 @Component({
   selector: 'kypo2-viz-assessments-mci-chart',
@@ -16,7 +17,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   @Input() answers: any;
   @Input() options: any;
   @Input() questionTitle: string;
-  @Input() countedAnswers;
+  @Input() countedAnswers: CountedAnswer[];
 
   private d3: D3;
   private svgElement: Selection<BaseType, {}, null, undefined>;
