@@ -234,6 +234,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   createStats() {
     this.createSumColumn();
     this.createPercentageColumn();
+    this.createSeparatingLine();
   }
 
   createSumColumn() {
@@ -276,6 +277,16 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       .attr('x', x)
       .attr('y', (choice: any) => this.yScale(choice.order.toString()) + this.yScale.bandwidth()/2)
       .html((choice:any) => (choice.answers.length / this.answers.length * 100).toFixed(1).toString());
+  }
+
+  createSeparatingLine() {
+    const sumColumnX = +this.svgElement.select('.sum-column > .sum-value').attr('x');
+    const percentageColumnX = +this.svgElement.select('.percentage-column > .percentage-value').attr('x');
+    const x = (sumColumnX + percentageColumnX) / 2;
+    const line = this.svgElement.select('.grid-lines').append('line')
+      .attr('y2', this.options.height)
+      .style('stroke', 'black')
+      .attr('transform', `translate(${x}, 0)`);
   }
 
   createTooltips() {
