@@ -13,8 +13,8 @@
       height: 150,
       width: 450,
       margin: {
-        top: 40,
-        right: 40,
+        top: (i == 0 || i == countedAnswers.length) ? 40 : 10,
+        right: 60,
         bottom: 40,
         left: 220
       },
@@ -27,7 +27,8 @@
         },
         percentage: {
           marginLeft: 60
-        }
+        },
+        showLabel: (i == 0)
       }
     }">
   </kypo2-viz-assessments-mci-chart>

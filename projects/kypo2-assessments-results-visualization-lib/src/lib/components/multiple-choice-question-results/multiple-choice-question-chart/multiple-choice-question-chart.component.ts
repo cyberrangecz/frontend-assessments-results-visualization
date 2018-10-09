@@ -237,10 +237,12 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   createSumColumn() {
     const sumColumn = this.svgElement.append('g').attr('class', 'sum-column');
 
-    sumColumn.append('text').attr('class', 'sum-label')
-      .attr('x', this.options.chart.width + this.options.stats.sum.marginLeft)
-      .attr('y', 0)
-      .html('Σ');
+    if (this.options.stats.showLabel) {
+      sumColumn.append('text').attr('class', 'sum-label')
+        .attr('x', this.options.chart.width + this.options.stats.sum.marginLeft)
+        .attr('y', 0)
+        .html('Σ');
+    }
 
     sumColumn.selectAll('.sum-value')
       .data(this.countedAnswers)
@@ -257,10 +259,12 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   
     const x = this.options.chart.width + this.options.stats.sum.marginLeft + this.options.stats.percentage.marginLeft;
 
-    percentageColumn.append('text').attr('class', 'percentage-label')
-    .attr('x', x)
-    .attr('y', 0)
-    .html('%');
+    if (this.options.stats.showLabel) {
+      percentageColumn.append('text').attr('class', 'percentage-label')
+      .attr('x', x)
+      .attr('y', 0)
+      .html('%');
+    }
 
     percentageColumn.selectAll('.percentage-value')
       .data(this.countedAnswers)
