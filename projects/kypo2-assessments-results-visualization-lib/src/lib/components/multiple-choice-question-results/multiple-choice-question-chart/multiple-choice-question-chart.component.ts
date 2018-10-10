@@ -109,7 +109,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     this.yScale = this.d3.scaleBand()
       .range([0, this.options.height])
       .domain(this.countedAnswers.map(choice => choice.order.toString()))
-      .padding(0.2); //TODO: extract
+      .padding(0.2);
 
     const totalAnswers: number = this.answers.length;
 
@@ -144,7 +144,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     xAxis.tickValues(this.getTicksEveryFiveAnswers());
     xAxis.tickFormat(this.d3.format("d"));
     xAxis.tickSize(0);
-    xAxis.tickPadding(this.options.margin.bottom / 3); //TODO: extract
+    xAxis.tickPadding(this.options.margin.bottom / 3);
 
     this.svgElement.append('g').attr('class', 'x-axis')
       .attr('transform', `translate(0, ${ this.options.height })`)
@@ -165,7 +165,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   createYAxis() {
     const yAxis = this.d3.axisLeft(this.yScale)
 
-    const tickPadding = 30; //TODO: extract
+    const tickPadding = 30;
     yAxis.tickPadding(tickPadding);
     yAxis.tickSize(0);
 
@@ -175,7 +175,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       const textElement = this.svgElement.append('text').style('font-size', '20px').html(text);
       const textLength = (textElement.node() as SVGTSpanElement).getComputedTextLength();
       textElement.remove();
-      
+
       const textFitsTheSpace: boolean = textLength < this.options.margin.left - tickPadding;
       if (textFitsTheSpace) {
         return answer.text;
@@ -215,12 +215,12 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
 
   highlightCorrectCircles() {
     const circleRadius = this.getCircleRadius();
+    const padding = 3; // Side padding
     this.countedAnswers.forEach(choice => {
       if (!choice.isCorrect) return;
 
-      const padding = 3;
-
-      this.svgElement.append('g').attr('class', 'bar-highlighted')
+      this.svgElement.append('g')
+        .attr('class', 'bar-highlighted')
         .append('rect')
         .attr('x', this.xScale(1) - 2 * circleRadius - padding)
         .attr('y', this.yScale(choice.order.toString()))
@@ -230,6 +230,9 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Draw a rect underneath the <text> element of the correct choice
+   */
   highlightCorrectChoices() {
     const rectHighlightPadding = 15;
 
@@ -263,6 +266,9 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       });
   }
 
+  /**
+   * Calculate circle's radius according to bandwidth
+   */
   getCircleRadius() {
     let circleRadius = this.xScale(1) / 2 < this.yScale.bandwidth() / 2 ? this.xScale(1) / 2 : this.yScale.bandwidth() / 2;
     circleRadius *= 0.9;
@@ -284,6 +290,9 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     });
   }
 
+  /**
+   * Create stats columns
+   */
   createStats() {
     this.createSumColumn();
     this.createPercentageColumn();
@@ -342,6 +351,9 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       .attr('transform', `translate(${x}, 0)`);
   }
 
+  /**
+   * Create tooltips and add listeners to wanted mouse events
+   */
   createTooltips() {
     this.createPlayerTooltip();
     this.createChoiceTooltip();
@@ -350,9 +362,8 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   createPlayerTooltip() {
     const players = this.svgElement.selectAll('.player');
 
-    players.on('mouseover', (playerName: string, i, sel) => {
-      const selection = this.d3.select(sel[i]);
-      const node = selection.node();
+    players.on('mouseover', (playerName: string, i, nodes) => {
+      const node = nodes[i];
       this.createTooltip(node, playerName);
     });
 
@@ -362,12 +373,12 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   }
 
   createChoiceTooltip() {
-    this.disablePointerEventsForIncorrectAnswers();
+    this.disablePointerEventsForIncorrectAnswers(); // Otherwise mouse events would not fire
     const choiceTicks = this.svgElement.selectAll('.y-axis > .tick');
-    choiceTicks.on('mouseover', (tickOrder: number, i, selection) => {
+    choiceTicks.on('mouseover', (tickOrder: number, i, nodes) => {
       const choiceData: MCQChoice = this.countedAnswers.find(answer => +answer.order === +tickOrder);
       const choiceTitle = choiceData.text;
-      const node: BaseType = this.d3.select(selection[i]).select('text').node(); // Center tooltip to the <text> element
+      const node: BaseType = this.d3.select(nodes[i]).select('text').node(); // Center tooltip to the <text> element
       this.createTooltip(node, choiceTitle, {
         top: 10,
         left: 0
@@ -427,6 +438,9 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     this.tooltip = null;
   }
 
+  /**
+   * Add event listeners, notify events service that the event was fired
+   */
   addEvents() {
     this.addContainerEvents();
     this.addPlayerEvents();
@@ -446,6 +460,9 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       });
   }
 
+  /**
+   * Highlight the player on click
+   */
   highlightPlayer(userName) {
     const transition = this.d3.transition().duration(700).ease(this.d3.easeElasticOut);
     this.svgElement.selectAll('.player-' + userName)
