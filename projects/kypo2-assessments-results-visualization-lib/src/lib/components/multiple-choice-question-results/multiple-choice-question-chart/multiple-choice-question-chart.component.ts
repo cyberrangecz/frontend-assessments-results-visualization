@@ -1,9 +1,32 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
-import { D3, D3Service, BaseType, Selection } from 'd3-ng2-service';
-import { MCQChoice } from '../../../models/mcqchoice';
-import { EventsService } from '../../../services/events.service';
-import { Subscription } from 'rxjs';
-import { CountedAnswer } from '../models/counted-answer.model';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  ViewChild,
+  ElementRef,
+  Input,
+  OnDestroy
+} from '@angular/core';
+import {
+  D3,
+  D3Service,
+  BaseType,
+  Selection,
+  ScaleLinear,
+  ScaleBand
+} from 'd3-ng2-service';
+import {
+  MCQChoice
+} from '../../../models/mcqchoice';
+import {
+  EventsService
+} from '../../../services/events.service';
+import {
+  Subscription
+} from 'rxjs';
+import {
+  CountedAnswer
+} from '../models/counted-answer.model';
 
 @Component({
   selector: 'kypo2-viz-assessments-mci-chart',
@@ -20,10 +43,10 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   @Input() countedAnswers: CountedAnswer[];
 
   private d3: D3;
-  private svgElement: Selection<BaseType, {}, null, undefined>;
-  private xScale;
-  private yScale;
-  private tooltip = null;
+  private svgElement: Selection < BaseType, {}, null, undefined > ;
+  private xScale: ScaleLinear < number, number > ;
+  private yScale: ScaleBand < string > ;
+  private tooltip: Selection < BaseType, {}, HTMLElement, any > = null;
 
   private playerClicked: Subscription;
   private containerClicked: Subscription;
@@ -31,17 +54,20 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   constructor(private d3service: D3Service, private eventsService: EventsService) {
     this.d3 = this.d3service.getD3();
     this.subscribeToEvents();
-   }
+  }
 
+  /**
+   * Subscribe to user events and handle them
+   */
   subscribeToEvents() {
     this.playerClicked = this.eventsService.playerClicked$.subscribe(
-    (userName: string) => {
-      if (this.d3.event != null) {
-        this.d3.event.stopPropagation();
-      }
-      this.unhighlightPlayer();
-      this.highlightPlayer(userName);
-    });
+      (userName: string) => {
+        if (this.d3.event != null) {
+          this.d3.event.stopPropagation();
+        }
+        this.unhighlightPlayer();
+        this.highlightPlayer(userName);
+      });
 
     this.containerClicked = this.eventsService.containerClicked$.subscribe(
       () => {
@@ -50,17 +76,23 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     );
   }
 
+  /**
+   * Unsubscribing prevents memory leaks
+   */
   ngOnDestroy() {
     this.playerClicked.unsubscribe();
     this.containerClicked.unsubscribe();
   }
 
   ngOnInit() {
-    this.createSvg();
     this.initializeScales();
+    this.createSvg();
     this.createChart();
   }
 
+  /**
+   * Add main SVG element to the chart's container. Add margin according to D3's convention.
+   */
   createSvg() {
     const containerElement = this.chartContainer.nativeElement;
     this.svgElement = this.d3.select(containerElement).append('svg')
@@ -70,20 +102,23 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       .attr('transform', `translate(${ this.options.margin.left }, ${ this.options.margin.top })`);
   }
 
+  /**
+   * Initialize main vertical and horizontal scale
+   */
   initializeScales() {
     this.yScale = this.d3.scaleBand()
       .range([0, this.options.height])
       .domain(this.countedAnswers.map(choice => choice.order.toString()))
-      .padding(0.2);
+      .padding(0.2); //TODO: extract
 
-    const totalAnswers = this.answers.length;
+    const totalAnswers: number = this.answers.length;
 
     this.xScale = this.d3.scaleLinear()
-      .range([0, this.options.chart.width]) // To separate variable
+      .range([0, this.options.chart.width])
       .domain([0, totalAnswers]);
   }
 
-  createChart() {    
+  createChart() {
     this.createGridLines();
     this.createAxes();
     this.highlightCorrectAnswers();
@@ -93,6 +128,9 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     this.addEvents();
   }
 
+  /**
+   * Create axes if needed (EMI shows bottom axis only in the last chart)
+   */
   createAxes() {
     if (this.options.axes.showBottomLabel) {
       this.createXAxis();
@@ -106,39 +144,17 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     xAxis.tickValues(this.getTicksEveryFiveAnswers());
     xAxis.tickFormat(this.d3.format("d"));
     xAxis.tickSize(0);
-    xAxis.tickPadding(this.options.margin.bottom/3);
+    xAxis.tickPadding(this.options.margin.bottom / 3); //TODO: extract
 
     this.svgElement.append('g').attr('class', 'x-axis')
       .attr('transform', `translate(0, ${ this.options.height })`)
       .call(xAxis);
   }
 
-  createYAxis() {
-    const yAxis = this.d3.axisLeft(this.yScale)
-    const tickPadding = 30;
-    yAxis.tickPadding(tickPadding);
-    yAxis.tickSize(0);
-    yAxis.tickFormat((tickValue) => {
-      // const codeShift = +tickValue + 65; // To start of the alphabet
-      // return String.fromCharCode(codeShift);
-      const answer = this.countedAnswers.find((answer) => +answer.order === +tickValue);
-      const text: string = answer.text;
-      const textElement = this.svgElement.append('text').style('font-size', '20px').html(text);
-      const textLength = (textElement.node() as SVGTSpanElement).getComputedTextLength();
-      textElement.remove();
-      if (textLength < this.options.margin.left - tickPadding) {
-        return answer.text;
-      } else {
-      const codeShift = +tickValue + 65; // To start of the alphabet
-      return String.fromCharCode(codeShift);
-      }
-    });
-    const axisGroup = this.svgElement.append('g').attr('class', 'y-axis')
-      .attr('transform', `translate(0, 0)`)
-      .call(yAxis);    
-  }
-
-  getTicksEveryFiveAnswers(): Array<number> {
+  /**
+   * Create [0, 5, 10, ..., total_answers] array for d3.tickValues
+   */
+  getTicksEveryFiveAnswers(): Array < number > {
     const tickValues = [];
     for (let i = 0; i <= this.answers.length; i += 5) {
       tickValues.push(i);
@@ -146,6 +162,38 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     return tickValues;
   }
 
+  createYAxis() {
+    const yAxis = this.d3.axisLeft(this.yScale)
+
+    const tickPadding = 30; //TODO: extract
+    yAxis.tickPadding(tickPadding);
+    yAxis.tickSize(0);
+
+    yAxis.tickFormat((tickValue) => {
+      const answer = this.countedAnswers.find((answer) => +answer.order === +tickValue);
+      const text: string = answer.text;
+      const textElement = this.svgElement.append('text').style('font-size', '20px').html(text);
+      const textLength = (textElement.node() as SVGTSpanElement).getComputedTextLength();
+      textElement.remove();
+      
+      const textFitsTheSpace: boolean = textLength < this.options.margin.left - tickPadding;
+      if (textFitsTheSpace) {
+        return answer.text;
+      } else { // Map to A-Z
+        const codeShift = +tickValue + 65; // To start of the alphabet
+        return String.fromCharCode(codeShift);
+      }
+
+    });
+
+    this.svgElement.append('g').attr('class', 'y-axis')
+      .attr('transform', `translate(0, 0)`)
+      .call(yAxis);
+  }
+
+  /**
+   * Create a vertical line for every horizontal axis tick
+   */
   createGridLines() {
     const verticalGridLines = this.d3.axisTop(this.xScale)
       .tickValues(this.getTicksEveryFiveAnswers())
@@ -157,6 +205,9 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       .call(verticalGridLines);
   }
 
+  /**
+   * Highlight the correct choices and players who answered correctly
+   */
   highlightCorrectAnswers() {
     this.highlightCorrectCircles();
     this.highlightCorrectChoices();
@@ -171,10 +222,10 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
 
       this.svgElement.append('g').attr('class', 'bar-highlighted')
         .append('rect')
-        .attr('x', this.xScale(1) - 2*circleRadius - padding)
-        .attr('y', this.yScale(choice.order))
+        .attr('x', this.xScale(1) - 2 * circleRadius - padding)
+        .attr('y', this.yScale(choice.order.toString()))
         .attr('rx', circleRadius)
-        .attr('width', this.xScale(choice.answers.length-1) + 2*circleRadius + padding*2)
+        .attr('width', this.xScale(choice.answers.length - 1) + 2 * circleRadius + padding * 2)
         .attr('height', this.yScale.bandwidth());
     });
   }
@@ -182,11 +233,12 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   highlightCorrectChoices() {
     const rectHighlightPadding = 15;
 
-    this.svgElement.selectAll('.y-axis > g')  
+    this.svgElement.selectAll('.y-axis > g')
       .filter((choice: number) => {
         const choices: MCQChoice[] = this.countedAnswers;
         const find = choices.find((a: MCQChoice) => +a.order === +choice);
-        return find.isCorrect;})
+        return find.isCorrect;
+      })
       .insert('rect', ':nth-child(2)')
       .each((choice, i, nodes) => {
         const rectNode = nodes[i] as any;
@@ -212,7 +264,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   }
 
   getCircleRadius() {
-    let circleRadius = this.xScale(1)/2 < this.yScale.bandwidth()/2 ? this.xScale(1)/2 : this.yScale.bandwidth()/2;
+    let circleRadius = this.xScale(1) / 2 < this.yScale.bandwidth() / 2 ? this.xScale(1) / 2 : this.yScale.bandwidth() / 2;
     circleRadius *= 0.9;
     return circleRadius;
   }
@@ -227,7 +279,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
         .append('circle')
         .attr('class', (userName) => 'player player-' + userName)
         .attr('cx', (userName, i) => this.xScale(i + 1) - circleRadius)
-        .attr('cy', this.yScale(choice.order) + this.yScale.bandwidth()/2) // Align to center
+        .attr('cy', this.yScale(choice.order.toString()) + this.yScale.bandwidth() / 2) // Align to center
         .attr('r', circleRadius);
     });
   }
@@ -254,20 +306,20 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       .append('text')
       .attr('class', 'sum-value')
       .attr('x', this.options.chart.width + this.options.stats.sum.marginLeft)
-      .attr('y', (choice: any) => this.yScale(choice.order.toString()) + this.yScale.bandwidth()/2)
-      .html((choice:any) => choice.answers.length);
+      .attr('y', (choice: any) => this.yScale(choice.order.toString()) + this.yScale.bandwidth() / 2)
+      .html((choice: any) => choice.answers.length);
   }
 
   createPercentageColumn() {
     const percentageColumn = this.svgElement.append('g').attr('class', 'percentage-column');
-  
+
     const x = this.options.chart.width + this.options.stats.sum.marginLeft + this.options.stats.percentage.marginLeft;
 
     if (this.options.stats.showLabel) {
       percentageColumn.append('text').attr('class', 'percentage-label')
-      .attr('x', x)
-      .attr('y', 0)
-      .html('%');
+        .attr('x', x)
+        .attr('y', 0)
+        .html('%');
     }
 
     percentageColumn.selectAll('.percentage-value')
@@ -276,8 +328,8 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       .append('text')
       .attr('class', 'percentage-value')
       .attr('x', x)
-      .attr('y', (choice: any) => this.yScale(choice.order.toString()) + this.yScale.bandwidth()/2)
-      .html((choice:any) => (choice.answers.length / this.answers.length * 100).toFixed(1).toString());
+      .attr('y', (choice: any) => this.yScale(choice.order.toString()) + this.yScale.bandwidth() / 2)
+      .html((choice: any) => (choice.answers.length / this.answers.length * 100).toFixed(1).toString());
   }
 
   createSeparatingLine() {
@@ -304,7 +356,9 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       this.createTooltip(node, playerName);
     });
 
-    players.on('mouseout', () => {this.hideTooltip();});
+    players.on('mouseout', () => {
+      this.hideTooltip();
+    });
   }
 
   createChoiceTooltip() {
@@ -314,36 +368,44 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       const choiceData: MCQChoice = this.countedAnswers.find(answer => +answer.order === +tickOrder);
       const choiceTitle = choiceData.text;
       const node: BaseType = this.d3.select(selection[i]).select('text').node(); // Center tooltip to the <text> element
-      this.createTooltip(node, choiceTitle, {top: 10, left: 0});
+      this.createTooltip(node, choiceTitle, {
+        top: 10,
+        left: 0
+      });
     });
-    choiceTicks.on('mouseout', () => {this.hideTooltip();});
+    choiceTicks.on('mouseout', () => {
+      this.hideTooltip();
+    });
   }
 
   disablePointerEventsForIncorrectAnswers() {
     this.svgElement.selectAll('.y-axis > .tick > text')
-    .filter((order: number) => {
-      const answer = this.countedAnswers.find((answer) => +answer.order === +order);
-      return answer.isCorrect;
-    })
-    .style('pointer-events', 'none');
+      .filter((order: number) => {
+        const answer = this.countedAnswers.find((answer) => +answer.order === +order);
+        return answer.isCorrect;
+      })
+      .style('pointer-events', 'none');
   }
 
-  createTooltip(node: BaseType, content, offset?) {
+  createTooltip(node: BaseType, content, offset ? ) {
     if (offset == null) {
-      offset = {top: 0, left: 0}
+      offset = {
+        top: 0,
+        left: 0
+      }
     };
 
     const playerBoundingRect: DOMRect = (node as any).getBoundingClientRect();
-    
+
     let top = playerBoundingRect.top + window.scrollY - offset.top;
     let left = playerBoundingRect.left + window.scrollX - offset.left;
 
     this.tooltip = this.d3.select('body')
       .append('div')
       .attr('class', 'player-tooltip')
-      .style('top',  top + 'px')
+      .style('top', top + 'px')
       .style('left', left + 'px');
-    
+
     this.tooltip
       .style('opacity', 0)
       .html(content)
@@ -351,8 +413,8 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       .duration(200)
       .style('opacity', 1);
 
-    const tooltipBoundingRect =  (this.tooltip.node() as any).getBoundingClientRect();
-    const tooltipCenterOffset = tooltipBoundingRect.width/2 - playerBoundingRect.width/2;
+    const tooltipBoundingRect = (this.tooltip.node() as any).getBoundingClientRect();
+    const tooltipCenterOffset = tooltipBoundingRect.width / 2 - playerBoundingRect.width / 2;
     left -= tooltipCenterOffset;
     top -= tooltipBoundingRect.height + 10; // 10 matches arrow size
     this.tooltip.style('left', left + 'px');
@@ -374,14 +436,14 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     this.d3.select(this.chartContainer.nativeElement)
       .on('click', () => {
         this.eventsService.clickOnContainer();
-    });
+      });
   }
 
   addPlayerEvents() {
     this.svgElement.selectAll('.player')
       .on('click', (userName: string) => {
         this.eventsService.clickOnPlayer(userName);
-    });
+      });
   }
 
   highlightPlayer(userName) {
