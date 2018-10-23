@@ -323,10 +323,10 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     const percentageColumn = this.svgElement.append('g').attr('class', 'percentage-column');
 
     const x = this.options.chart.width + this.options.stats.sum.marginLeft + this.options.stats.percentage.marginLeft;
-
+    const labelMargin = 10;
     if (this.options.stats.showLabel) {
       percentageColumn.append('text').attr('class', 'percentage-label')
-        .attr('x', x)
+        .attr('x', x + labelMargin)
         .attr('y', 0)
         .html('%');
     }

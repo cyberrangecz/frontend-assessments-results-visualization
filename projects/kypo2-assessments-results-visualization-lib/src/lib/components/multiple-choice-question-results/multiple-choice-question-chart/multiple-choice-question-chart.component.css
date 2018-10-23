@@ -26,14 +26,26 @@ svg {
     opacity: 0.1;
 }
 
-.sum-label, .percentage-label {
+.sum-label {
     font-size: 2em;
     text-anchor: middle;
 }
 
-.sum-value, .percentage-value {
+.percentage-label {
+    font-size: 2em;
+    text-anchor: end;
+    transform: translate(-0.5em, 0);
+}
+
+.sum-value {
     font-size: 1.5em;
     text-anchor: middle;
+    alignment-baseline: middle;
+}
+
+.percentage-value {
+    font-size: 1.5em;
+    text-anchor: end;
     alignment-baseline: middle;
 }
 
