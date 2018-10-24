@@ -43,10 +43,10 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   @Input() countedAnswers: CountedAnswer[];
 
   private d3: D3;
-  private svgElement: Selection < BaseType, {}, null, undefined > ;
-  private xScale: ScaleLinear < number, number > ;
-  private yScale: ScaleBand < string > ;
-  private tooltip: Selection < BaseType, {}, HTMLElement, any > = null;
+  private svgElement: Selection<BaseType, {}, null, undefined>;
+  private xScale: ScaleLinear<number, number>;
+  private yScale: ScaleBand<string>;
+  private tooltip: Selection<BaseType, {}, HTMLElement, any> = null;
 
   private playerClicked: Subscription;
   private containerClicked: Subscription;
@@ -99,7 +99,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       .attr('width', this.options.width + this.options.margin.left + this.options.margin.right)
       .attr('height', this.options.height + this.options.margin.top + this.options.margin.bottom)
       .append('g')
-      .attr('transform', `translate(${ this.options.margin.left }, ${ this.options.margin.top })`);
+      .attr('transform', `translate(${this.options.margin.left}, ${this.options.margin.top})`);
   }
 
   /**
@@ -111,11 +111,9 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       .domain(this.countedAnswers.map(choice => choice.order.toString()))
       .padding(0.2);
 
-    const totalAnswers: number = this.answers.length;
-
     this.xScale = this.d3.scaleLinear()
       .range([0, this.options.chart.width])
-      .domain([0, totalAnswers]);
+      .domain([0, this.options.ticks]);
   }
 
   createChart() {
@@ -147,16 +145,16 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
     xAxis.tickPadding(this.options.margin.bottom / 3);
 
     this.svgElement.append('g').attr('class', 'x-axis')
-      .attr('transform', `translate(0, ${ this.options.height })`)
+      .attr('transform', `translate(0, ${this.options.height})`)
       .call(xAxis);
   }
 
   /**
    * Create [0, 5, 10, ..., total_answers] array for d3.tickValues
    */
-  getTicksEveryFiveAnswers(): Array < number > {
+  getTicksEveryFiveAnswers(): Array<number> {
     const tickValues = [];
-    for (let i = 0; i <= this.answers.length; i += 5) {
+    for (let i = 0; i <= this.options.ticks; i += 5) {
       tickValues.push(i);
     }
     return tickValues;
@@ -252,7 +250,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
         const boundingRect = (textElement.node() as any).getBoundingClientRect();
         const height = boundingRect.height + rectHighlightPadding;
         const width = boundingRect.width + rectHighlightPadding;
-        const translate = `translate(${ -width + rectHighlightPadding*1.5 }, ${ -height/2 + rectHighlightPadding })`;
+        const translate = `translate(${-width + rectHighlightPadding * 1.5}, ${-height / 2 + rectHighlightPadding})`;
         const rectSelection = this.d3.select(rectNode);
 
         rectSelection.attr('x', x)
@@ -398,7 +396,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
       .style('pointer-events', 'none');
   }
 
-  createTooltip(node: BaseType, content, offset ? ) {
+  createTooltip(node: BaseType, content, offset?) {
     if (offset == null) {
       offset = {
         top: 0,
