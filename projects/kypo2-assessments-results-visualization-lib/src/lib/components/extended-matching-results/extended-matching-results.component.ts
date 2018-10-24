@@ -25,7 +25,7 @@ export class ExtendedMatchingResultsComponent implements OnInit {
   countedAnswers: CountedAnswer[];
 
   defaultNumberOfTicks: number = 15;
-  defaultChartWidth: number = 400;
+  defaultChartWidth: number = 250;
 
   constructor(private d3service: D3Service) { }
 

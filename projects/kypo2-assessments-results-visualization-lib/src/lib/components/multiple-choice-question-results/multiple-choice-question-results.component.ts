@@ -22,7 +22,7 @@ export class MultipleChoiceQuestionResultsComponent implements OnInit {
   countedAnswers: CountedAnswer[];
 
   defaultNumberOfTicks = 15;
-  defaultChartWidth = 400;
+  defaultChartWidth = 250;
 
   constructor(private d3service: D3Service, private ref: ChangeDetectorRef) { }
 
