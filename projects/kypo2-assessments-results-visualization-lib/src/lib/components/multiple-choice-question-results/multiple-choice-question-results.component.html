@@ -1,10 +1,9 @@
 <h1>Q{{ order }}: {{ questionTitle }}</h1>
+
 <div class="chart-container">
-  <kypo2-viz-assessments-mci-chart 
-  [answers]="answers"
-  [questionTitle]="questionTitle"
-  [countedAnswers]="countedAnswers"
-  [options]="{
+
+  <kypo2-viz-assessments-mci-chart [answers]="answers" [questionTitle]="questionTitle" [countedAnswers]="countedAnswers"
+    [options]="{
     height: 150,
     width: chartWidth,
     margin: {
@@ -30,5 +29,5 @@
       showBottomLabel: true
     }
   }">
-</kypo2-viz-assessments-mci-chart>
+  </kypo2-viz-assessments-mci-chart>
 </div>

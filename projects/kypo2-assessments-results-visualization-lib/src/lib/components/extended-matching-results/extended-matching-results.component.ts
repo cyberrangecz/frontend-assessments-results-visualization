@@ -84,7 +84,6 @@ export class ExtendedMatchingResultsComponent implements OnInit {
     const excess = (totalAnswers - this.defaultNumberOfTicks);
     const numberOfExtensions = Math.floor(excess / 5);
     const totalTicks = this.defaultNumberOfTicks + 5 * numberOfExtensions;
-    console.log(totalTicks)
     return totalTicks;
   }
 

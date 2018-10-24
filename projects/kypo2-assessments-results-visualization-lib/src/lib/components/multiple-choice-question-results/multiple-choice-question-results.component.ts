@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef } from '@angular/core';
 import { MCQ } from '../../models/mcq';
 import { MCQAnswer } from '../../models/mcqanswer';
 import { MCQChoice } from '../../models/mcqchoice';
@@ -24,7 +24,7 @@ export class MultipleChoiceQuestionResultsComponent implements OnInit {
   defaultNumberOfTicks = 15;
   defaultChartWidth = 400;
 
-  constructor(private d3service: D3Service) { }
+  constructor(private d3service: D3Service, private ref: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.questionTitle = this.MCQData.text;
