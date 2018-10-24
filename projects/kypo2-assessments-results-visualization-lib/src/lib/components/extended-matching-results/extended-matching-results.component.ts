@@ -3,6 +3,7 @@ import { EMI } from '../../models/emi';
 import { EMIAnswer } from '../../models/emianswer';
 import { EMIChoice } from '../../models/emichoice';
 import { CountedAnswer } from '../multiple-choice-question-results/models/counted-answer.model';
+import { D3Service } from 'd3-ng2-service';
 
 @Component({
   selector: 'kypo2-viz-assessments-results-extended-matching-results',
@@ -23,7 +24,10 @@ export class ExtendedMatchingResultsComponent implements OnInit {
   answersCount;
   countedAnswers: CountedAnswer[];
 
-  constructor() { }
+  defaultNumberOfTicks: number = 15;
+  defaultChartWidth: number = 400;
+
+  constructor(private d3service: D3Service) { }
 
   ngOnInit() {
     this.questionTitle = this.EMIData.text;
@@ -71,6 +75,32 @@ export class ExtendedMatchingResultsComponent implements OnInit {
         (this.countedAnswers[first.order] as any).push(newPair);
       });
     });
+  }
+
+  get ticks() {
+    const totalAnswers = this.answers.length;
+    if (totalAnswers < this.defaultNumberOfTicks) return this.defaultNumberOfTicks;
+
+    const excess = (totalAnswers - this.defaultNumberOfTicks);
+    const numberOfExtensions = Math.floor(excess / 5);
+    const totalTicks = this.defaultNumberOfTicks + 5 * numberOfExtensions;
+    console.log(totalTicks)
+    return totalTicks;
+  }
+
+  get chartWidth() {
+    const totalAnswers = this.answers.length;
+    if (totalAnswers < this.defaultNumberOfTicks) return this.defaultChartWidth;
+
+    const excess = (totalAnswers - this.defaultNumberOfTicks);
+    const numberOfExtensions = Math.floor(excess / 5);
+
+    const d3 = this.d3service.getD3();
+    const scale = d3.scaleLinear()
+      .range([0, this.defaultChartWidth])
+      .domain([0, this.defaultNumberOfTicks]);
+    const width = this.defaultChartWidth + numberOfExtensions * scale(5);
+    return width;
   }
 
 }

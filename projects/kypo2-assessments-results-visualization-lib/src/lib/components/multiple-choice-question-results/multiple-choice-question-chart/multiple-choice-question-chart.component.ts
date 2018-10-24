@@ -342,7 +342,7 @@ export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
   createSeparatingLine() {
     const sumColumnX = +this.svgElement.select('.sum-column > .sum-value').attr('x');
     const percentageColumnX = +this.svgElement.select('.percentage-column > .percentage-value').attr('x');
-    const x = (sumColumnX + percentageColumnX) / 2;
+    const x = (sumColumnX + percentageColumnX) / 2 - this.options.stats.percentage.marginLeft / 7;
     const line = this.svgElement.select('.grid-lines').append('line')
       .attr('y2', this.options.height)
       .style('stroke', 'black')
