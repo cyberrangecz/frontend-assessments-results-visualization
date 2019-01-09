@@ -1,0 +1,33 @@
+<h1>Q{{ order }}: {{ questionTitle }}</h1>
+
+<div class="chart-container">
+
+  <kypo2-viz-assessments-mci-chart [answers]="answers" [questionTitle]="questionTitle" [countedAnswers]="countedAnswers"
+    [options]="{
+    height: 150,
+    width: chartWidth,
+    margin: {
+      top: 40,
+      right: 160,
+      bottom: 40,
+      left: 100
+    },
+    chart: {
+      width: chartWidth*0.9
+    },
+    ticks: ticks,
+    stats: {
+      sum: {
+        marginLeft: 40
+      },
+      percentage: {
+        marginLeft: 120
+      },
+      showLabel: true
+    },
+    axes: {
+      showBottomLabel: true
+    }
+  }">
+  </kypo2-viz-assessments-mci-chart>
+</div>

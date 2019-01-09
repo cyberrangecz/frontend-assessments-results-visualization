@@ -1,0 +1,5 @@
+.chart-container {
+    display: flex;
+    align-items: center;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

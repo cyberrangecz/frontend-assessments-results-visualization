@@ -1,0 +1,17 @@
+{
+    "extends": "../../tslint.json",
+    "rules": {
+        "directive-selector": [
+            true,
+            "attribute",
+            "kypo2-viz-assessments-results",
+            "camelCase"
+        ],
+        "component-selector": [
+            true,
+            "element",
+            "kypo2-viz-assessments-results",
+            "kebab-case"
+        ]
+    }
+}

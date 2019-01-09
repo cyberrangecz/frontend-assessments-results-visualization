@@ -1,0 +1,12 @@
+<!-- For every assessment - show visualizations -->
+
+<div style="margin: 0 auto; width: 80%;">
+    <ng-container *ngFor="let assessment of data.assessments; let i = index">
+        <h1>Assessment #{{ i + 1 }}</h1>
+            <ng-container *ngFor="let question of assessment.questions" [ngSwitch]="question.type.toUpperCase()">
+                <kypo2-viz-assessments-results-free-form-question-results *ngSwitchCase="'FFQ'" [FFQData]="question"></kypo2-viz-assessments-results-free-form-question-results>
+                <kypo2-viz-assessments-results-multiple-choice-question-results *ngSwitchCase="'MCQ'" [MCQData]="question"></kypo2-viz-assessments-results-multiple-choice-question-results>
+                <kypo2-viz-assessments-results-extended-matching-results *ngSwitchCase="'EMI'" [EMIData]="question"></kypo2-viz-assessments-results-extended-matching-results>
+            </ng-container>
+    </ng-container>
+</div>

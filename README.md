@@ -1,3 +1,11 @@
-# kypo2-trainings-assessment-visualizations
+# Visualizations of the results from assessments
 
-Vizualizace k výstupům z dotazníkových levelů
+# TODO
+- [ ] Data
+- [ ] FFQ results
+- [ ] MCQ results
+    - [ ] Extract constants (positioning etc.)
+    - [ ] Axis ticks (tick every 5)
+    - [ ] Padding, margin
+- [ ] EMI results
+- [ ] User events interaction between visualizations through shared service

@@ -1,0 +1,41 @@
+<h1>Q{{ order }}: {{ questionTitle }}</h1>
+
+<div 
+  *ngFor="let counted of countedAnswers; let i = index"
+  class="chart-container"
+  >
+  <h2 style="float: left; vertical-align: middle" placement="top" [ngbTooltip]="firstChoices[i].text">{{ i }}</h2>
+  <kypo2-viz-assessments-mci-chart 
+    [answers]="answers"
+    [questionTitle]="'foo'"
+    [countedAnswers]="counted"
+    [options]="{
+      height: 150,
+      width: chartWidth,
+      margin: {
+        top: (i == 0) ? 40 : 10,
+        right: 160,
+        bottom: (i == countedAnswers.length - 1) ? 40 : 10,
+        left: 220
+      },
+      chart: {
+        width: chartWidth*0.9
+      },
+      ticks: ticks,
+      stats: {
+        sum: {
+          marginLeft: 40
+        },
+        percentage: {
+          marginLeft: 120
+        },
+        showLabel: (i == 0)
+      },
+      axes: {
+        showBottomLabel: (i == countedAnswers.length - 1)
+      }
+    }">
+  </kypo2-viz-assessments-mci-chart>
+</div>
+ 
+
