@@ -1,6 +1,19 @@
 # Visualizations of the results from assessments
 
-# TODO
+Data visualization component for the Assessment level results. It shows combined 
+results results for individual questions while enabilng to pick answers of single 
+participant. 
+Correct answer is in different color.
+
+Interaction features:
+- linking and brushing (participant selection highlights his/her answers)
+- df
+
+## Author
+- Hai Duong Tran
+
+
+## TODO
 - [ ] Data
 - [ ] FFQ results
 - [ ] MCQ results
