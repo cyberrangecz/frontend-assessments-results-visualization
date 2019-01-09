@@ -21,14 +21,3 @@ Interaction features:
 
 # Screenshots
 ![Example](https://gitlab.ics.muni.cz/kypo2/frontend-new/kypo2-trainings-assessment-visualizations/wikis/uploads/d74fcb214e85528854c1dfa7b9248bef/Screenshot_2019-01-09_at_14.02.25.png)
-
-
-## TODO
-- [ ] Data
-- [ ] FFQ results
-- [ ] MCQ results
-    - [ ] Extract constants (positioning etc.)
-    - [ ] Axis ticks (tick every 5)
-    - [ ] Padding, margin
-- [ ] EMI results
-- [ ] User events interaction between visualizations through shared service
