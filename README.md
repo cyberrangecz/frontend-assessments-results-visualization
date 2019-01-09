@@ -5,9 +5,10 @@ results results for individual questions while enabilng to pick answers of singl
 participant. 
 Correct answer is in different color.
 
-Interaction features:
-- linking and brushing (participant selection highlights his/her answers)
-- df
+Features:
+- linking&brushing interaction technique for selecting related results of a single participant
+- correct answers highlighted with yellow color
+- tooltips with the name of the participant for each bullet
 
 ## Author
 - Hai Duong Tran
