@@ -6,7 +6,7 @@ participant.
 Correct answer is in different color.
 
 Features:
-- linking&brushing interaction technique for selecting related results of a single participant
+- click to select related results of a single participant (all related answers are in red)
 - correct answers highlighted with yellow color
 - tooltips with the name of the participant for each bullet
 
