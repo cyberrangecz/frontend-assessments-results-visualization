@@ -12,6 +12,16 @@ Interaction features:
 ## Author
 - Hai Duong Tran
 
+## Installation instructions
+
+1. Clone the repository
+2. 'npm install'
+3. 2. 'ng serve'
+
+
+# Screenshots
+
+
 
 ## TODO
 - [ ] Data
