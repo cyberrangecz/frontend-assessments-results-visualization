@@ -36,7 +36,7 @@ import {
 })
 export class MultipleChoiceQuestionChartComponent implements OnInit, OnDestroy {
 
-  @ViewChild('chart') private chartContainer: ElementRef;
+  @ViewChild('chart', { static: true }) private chartContainer: ElementRef;
   @Input() answers: any;
   @Input() options: any;
   @Input() questionTitle: string;
