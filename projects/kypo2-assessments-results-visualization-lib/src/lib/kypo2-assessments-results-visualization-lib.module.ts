@@ -7,7 +7,6 @@ import { VisualizationsComponent } from './components/visualizations/visualizati
 import { CommonModule } from '@angular/common';
 import { MultipleChoiceQuestionChartComponent } from './components/multiple-choice-question-results/multiple-choice-question-chart/multiple-choice-question-chart.component';
 import { D3Service } from 'd3-ng2-service';
-import { EventsService } from './services/events.service';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -16,22 +15,22 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
     NgbTooltipModule
   ],
   declarations: [
-    Kypo2AssessmentsResultsVisualizationLibComponent, 
-    FreeFormQuestionResultsComponent, 
-    MultipleChoiceQuestionResultsComponent, 
-    ExtendedMatchingResultsComponent, 
-    VisualizationsComponent, MultipleChoiceQuestionChartComponent
+    Kypo2AssessmentsResultsVisualizationLibComponent,
+    FreeFormQuestionResultsComponent,
+    MultipleChoiceQuestionResultsComponent,
+    ExtendedMatchingResultsComponent,
+    VisualizationsComponent,
+    MultipleChoiceQuestionChartComponent
   ],
   exports: [
-    Kypo2AssessmentsResultsVisualizationLibComponent, 
-    FreeFormQuestionResultsComponent, 
-    MultipleChoiceQuestionResultsComponent, 
+    Kypo2AssessmentsResultsVisualizationLibComponent,
+    FreeFormQuestionResultsComponent,
+    MultipleChoiceQuestionResultsComponent,
     ExtendedMatchingResultsComponent,
     VisualizationsComponent
   ],
   providers: [
-    D3Service,
-    EventsService
+    D3Service
   ]
 })
 export class Kypo2AssessmentsResultsVisualizationLibModule { }
