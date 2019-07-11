@@ -50,6 +50,7 @@ export class AssessmentFacade {
         associatedAssessment.fillAnswers(assessmentEvent);
       }
     });
+    console.log(assessments);
     return assessments;
   }
 }

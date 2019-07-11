@@ -214,7 +214,7 @@ export class MCQChartComponent implements OnInit, OnDestroy {
     const rectHighlightPadding = 15;
 
     this.svgElement.selectAll('.y-axis > g')
-      .filter((choiceIndex: number) =>  this.question.isCorrectAnswer(choiceIndex))
+      .filter((choiceIndex: string) =>  this.question.isCorrectAnswer(Number(choiceIndex)))
       .insert('rect', ':nth-child(2)')
       .each((choice, i, nodes) => {
         const rectNode = nodes[i] as any;

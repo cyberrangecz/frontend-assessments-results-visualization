@@ -41,7 +41,7 @@ export class MCQ extends Question {
   }
 
   isCorrectAnswer(choiceIndex: number) {
-    return this.correctChoices.find(correctIndex => choiceIndex == correctIndex) !== undefined;
+    return this.correctChoices.find(correctIndex => choiceIndex === correctIndex) !== undefined;
   }
 
   filterAnswersByChoice(choiceIndex: number): MCQAnswer[] {

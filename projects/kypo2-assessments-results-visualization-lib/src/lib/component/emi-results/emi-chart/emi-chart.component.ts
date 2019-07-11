@@ -216,7 +216,7 @@ export class EMIChartComponent implements OnInit, OnDestroy {
     const rectHighlightPadding = 15;
 
     this.svgElement.selectAll('.y-axis > g')
-      .filter((colIndex: number) =>  this.question.isCorrectAnswer(this.rowIndex, colIndex))
+      .filter((colIndex: string) =>  this.question.isCorrectAnswer(this.rowIndex, Number(colIndex)))
       .insert('rect', ':nth-child(2)')
       .each((choice, i, nodes) => {
         const rectNode = nodes[i] as any;
