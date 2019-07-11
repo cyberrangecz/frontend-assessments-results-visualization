@@ -2,15 +2,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { Kypo2AssessmentsResultsVisualizationLibModule } from 'projects/kypo2-assessments-results-visualization-lib/src/public_api';
+import { Kypo2AssessmentsResultsVisualizationModule } from 'projects/kypo2-assessments-results-visualization-lib/src/public_api';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    Kypo2AssessmentsResultsVisualizationLibModule
+    HttpClientModule,
+    Kypo2AssessmentsResultsVisualizationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

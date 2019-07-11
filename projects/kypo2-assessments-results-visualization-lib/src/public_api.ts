@@ -1,12 +1,12 @@
 /*
- * Public API Surface of kypo2-assessments-results-visualization-lib
+ * Public API Surface of kypo2-assessments-results-assessment-visualization-lib
  */
 
-export * from './lib/kypo2-assessments-results-visualization-lib.service';
-export * from './lib/kypo2-assessments-results-visualization-lib.component';
-export * from './lib/kypo2-assessments-results-visualization-lib.module';
+export * from './lib/services/assessment-facade.service';
+export * from './lib/kypo2-assessments-results.component';
+export * from './lib/kypo2-assessments-results-visualization.module';
 
-export * from './lib/components/free-form-question-results/free-form-question-results.component';
-export * from './lib/components/multiple-choice-question-results/multiple-choice-question-results.component';
-export * from './lib/components/extended-matching-results/extended-matching-results.component';
-export * from './lib/components/visualizations/visualizations.component';
+export * from './lib/component/ffq-results/ffq-results.component';
+export * from './lib/component/mcq-results/mcq-results.component';
+export * from './lib/component/emi-results/emi-results.component';
+export * from './lib/component/assessment-visualization/assessment-visualization.component';
