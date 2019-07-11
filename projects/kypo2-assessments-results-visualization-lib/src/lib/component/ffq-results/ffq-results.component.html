@@ -1,0 +1,17 @@
+<h1>Q{{ question.order }}. {{ question.title }}</h1>
+<div (click)="onContainerClicked()">
+  <table>
+    <thead>
+      <tr><th>Name</th><th>Answer</th></tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let answer of question.answers"
+        (click)="onRowClicked(answer, $event)"
+        [ngClass]="{'row-active' : highlightedPlayer?.equals(answer.trainee)}"
+        >
+        <td>{{ answer.trainee.name }}</td> <td style="padding-left: 2em">{{ answer.text }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

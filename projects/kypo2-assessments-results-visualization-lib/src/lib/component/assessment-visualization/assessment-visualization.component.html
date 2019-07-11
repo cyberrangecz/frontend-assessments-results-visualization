@@ -1,0 +1,10 @@
+<div>
+    <ng-container *ngFor="let assessment of assessments; let i = index">
+        <h1>{{ assessment.title }}</h1>
+            <ng-container *ngFor="let question of assessment.questions" [ngSwitch]="question.type">
+                <kypo2-viz-assessments-results-ffq *ngSwitchCase="'FFQ'" [question]="question"></kypo2-viz-assessments-results-ffq>
+                <kypo2-viz-assessments-results-mcq *ngSwitchCase="'MCQ'" [question]="question"></kypo2-viz-assessments-results-mcq>
+                <kypo2-viz-assessments-results-emi *ngSwitchCase="'EMI'" [question]="question"></kypo2-viz-assessments-results-emi>
+            </ng-container>
+    </ng-container>
+</div>
