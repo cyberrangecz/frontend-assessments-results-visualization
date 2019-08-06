@@ -9,19 +9,22 @@ import {AssessmentEvent} from '../model/assessment-event';
 import {TrainingAssessmentEventDTO} from '../model/dto/training-assessment-event-dto';
 import {AssessmentLevelDTO} from '../model/dto/assessment-level-dto';
 import {LevelDTO} from '../model/dto/level-dto';
+import {ConfigService} from './config.service';
 
 @Injectable()
 export class AssessmentFacade {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private configService: ConfigService) {
   }
 
   getAssessments(trainingDefinitionId: number, trainingInstanceId: number, trainingRunId: number = null): Observable<Assessment[]> {
-    const assessmentDefinition$: Observable<Assessment[]> = this.http.get<TrainingDefinitionDTO>('assets/mock-td.json')
+    const assessmentDefinition$ = this.http.get<TrainingDefinitionDTO>(this.createDefinitionInfoUrl(trainingInstanceId))
       .pipe(map(tdDTO => this.trainingDefinitionToAssessments(tdDTO)));
+
     const events$ = trainingRunId !== null
-      ? this.http.get<TrainingEventDTO[]>('assets/mock-events.json')
-      : this.http.get<TrainingEventDTO[]>('assets/mock-events.json');
+      ? this.http.get<TrainingEventDTO[]>(this.createEventsUrl(trainingDefinitionId, trainingInstanceId, trainingRunId))
+      : this.http.get<TrainingEventDTO[]>(this.createEventsUrl(trainingDefinitionId, trainingInstanceId));
 
     const assessmentEvents$: Observable<AssessmentEvent[]> = events$.pipe(map(eventDTO => this.eventsDTOToAssessmentEvents(eventDTO)));
     return forkJoin(
@@ -50,7 +53,18 @@ export class AssessmentFacade {
         associatedAssessment.fillAnswers(assessmentEvent);
       }
     });
-    console.log(assessments);
     return assessments;
+  }
+
+  private createEventsUrl(trainingDefinitionId: number, trainingInstanceId: number, trainingRunId: number = null): string {
+    const baseUrl = this.configService.config.restBaseUrl;
+    return trainingRunId !== null
+      ? `${baseUrl}training-events/training-definitions/${trainingDefinitionId}/training-instances/${trainingInstanceId}/training-runs/${trainingRunId}`
+      : `${baseUrl}training-events/training-definitions/${trainingDefinitionId}/training-instances/${trainingInstanceId}`;
+  }
+
+  private createDefinitionInfoUrl(trainingInstanceId: number): string {
+    const baseUrl = this.configService.config.restBaseUrl;
+    return baseUrl + 'visualizations/training-instances/' + trainingInstanceId;
   }
 }

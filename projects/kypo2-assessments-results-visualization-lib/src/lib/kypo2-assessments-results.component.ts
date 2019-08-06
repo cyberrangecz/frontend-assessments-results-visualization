@@ -6,7 +6,7 @@ import {Assessment} from './model/assessment';
 @Component({
   selector: 'kypo2-viz-assessments-results',
   template: `
-    <kypo2-viz-assessments-results-visualization [assessments]="assessments$ | async" ></kypo2-viz-assessments-results-visualization>
+    <kypo2-viz-assessments-results-visualization [assessments]="assessments$ | async"></kypo2-viz-assessments-results-visualization>
   `,
   styles: []
 })
