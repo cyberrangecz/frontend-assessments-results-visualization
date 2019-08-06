@@ -3,13 +3,32 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  restBaseUrl: 'https://kypo-devel.ics.muni.cz:8083/kypo2-rest-training/api/v1/',
+  kypo2AuthConfig: {
+    maxRetryAttempts: 3,
+    guardMainPageRedirect: 'home',
+    guardLoginPageRedirect: 'login',
+    tokenInterceptorAllowedUrls: [
+      'https://kypo-devel.ics.muni.cz'
+    ],
+    userInfoRestUri: 'https://kypo-devel.ics.muni.cz:8084/kypo2-rest-user-and-group/api/v1/',
+    providers: [
+      {
+        label: 'Login with MUNI',
+        textColor: 'white',
+        backgroundColor: '#002776',
+        tokenRefreshTime: 30000,
+        oidcConfig: {
+          issuer: 'https://oidc.muni.cz/oidc/',
+          clientId: 'b53f2660-8fa0-4d32-94e4-23a59d7e7077',
+          redirectUri: window.location.origin,
+          scope: 'openid email profile',
+          logoutUrl: 'https://oidc.muni.cz/oidc/endsession',
+          postLogoutRedirectUri: window.location.origin,
+          clearHashAfterLogin: true
+        },
+      },
+    ]
+  },
 };
-
-/*
- * In development mode, for easier debugging, you can ignore zone related error
- * stack frames such as `zone.run`/`zoneDelegate.invokeTask` by importing the
- * below file. Don't forget to comment it out in production mode
- * because it will have a performance impact when errors are thrown
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
