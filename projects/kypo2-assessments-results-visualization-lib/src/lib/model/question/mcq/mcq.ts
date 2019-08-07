@@ -27,17 +27,14 @@ export class MCQ extends Question {
       });
     }
   }
- // TODO: refactor with getter and inner map?
-  calculateMatchingAnswersPercentage(optionToCalculate: string): number {
-    const optionIndex = this.options.findIndex(option => option === optionToCalculate);
+
+  calculateMatchingAnswersPercentage(optionIndex: number): number {
     const matchingAnswers =  this.filterAnswersByChoice(optionIndex);
     return (matchingAnswers.length / this.answers.length) * 100;
   }
 
-  calculateSameAnswersCount(optionToCalculate: string) {
-    const optionIndex = this.options.findIndex(option => option === optionToCalculate);
-    const matchingAnswers = this.filterAnswersByChoice(optionIndex);
-    return matchingAnswers.length;
+  calculateSameAnswersCount(optionIndex: number): number {
+    return this.filterAnswersByChoice(optionIndex).length;
   }
 
   isCorrectAnswer(choiceIndex: number) {

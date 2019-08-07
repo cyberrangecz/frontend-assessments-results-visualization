@@ -1,17 +1,26 @@
-<h1>Q{{ question.order }}. {{ question.title }}</h1>
-<div (click)="onContainerClicked()">
-  <table>
-    <thead>
-      <tr><th>Name</th><th>Answer</th></tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="let answer of question.answers"
-        (click)="onRowClicked(answer, $event)"
-        [ngClass]="{'row-active' : highlightedPlayer?.equals(answer.trainee)}"
-        >
-        <td>{{ answer.trainee.name }}</td> <td style="padding-left: 2em">{{ answer.text }}</td>
-      </tr>
-    </tbody>
+<div (click)="clear()">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by answer">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let answer"> {{answer.trainee?.name}} </td>
+    </ng-container>
+
+    <!-- Answer Column -->
+    <ng-container matColumnDef="answer">
+      <th mat-header-cell *matHeaderCellDef> Answer </th>
+      <td mat-cell *matCellDef="let answer"
+          [ngClass]="{'correct': isTest && answer.isCorrect,'incorrect': isTest && !answer.isCorrect}">
+        {{answer.text}}
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row
+        *matRowDef="let row; columns: displayedColumns;"
+        [ngClass]="{'row-active' : row.selected}"
+        (click)="highlight(row, $event)"></tr>
   </table>
 </div>

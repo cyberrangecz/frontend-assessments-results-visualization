@@ -1,0 +1,23 @@
+mat-card {
+  margin: 10px;
+}
+
+kypo2-viz-assessments-results-ffq, kypo2-viz-assessments-results-mcq, kypo2-viz-assessments-results-emi {
+  margin: 10px;
+}
+
+mat-card-title {
+  color: #002776
+}
+
+h1 {
+  padding: 10px;
+  background: #3f51b5;
+  color: white;
+  border-radius: 4px;
+}
+
+.viz-content {
+  background: #fafafa;
+}
+

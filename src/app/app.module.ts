@@ -14,6 +14,7 @@ import {
 } from 'kypo2-auth';
 import { HomeComponent } from './home/home.component';
 import {environment} from '../environments/environment';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {
@@ -42,6 +43,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     Kypo2AssessmentsResultsVisualizationModule.forRoot({ restBaseUrl: environment.restBaseUrl}),
     Kypo2AuthModule.forRoot(environment.kypo2AuthConfig),

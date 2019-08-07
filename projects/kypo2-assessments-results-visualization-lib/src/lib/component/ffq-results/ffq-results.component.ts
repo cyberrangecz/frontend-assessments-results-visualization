@@ -1,64 +1,32 @@
-import { Component, OnInit, Input, OnDestroy} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { FFQ } from '../../model/question/ffq/ffq';
-import { FFQAnswer } from '../../model/question/ffq/ffq-answer';
-import { EventsService } from '../../services/events.service';
-import { Subscription } from 'rxjs';
-import { D3, D3Service } from 'd3-ng2-service';
-import {Trainee} from '../../model/trainee';
+import { HighlightService } from '../../services/highlight.service';
+import {MatTableDataSource} from '@angular/material';
+import {Highlightable} from '../shared/highlightable';
 
 @Component({
   selector: 'kypo2-viz-assessments-results-ffq',
   templateUrl: './ffq-results.component.html',
   styleUrls: ['./ffq-results.component.css']
 })
-export class FFQResultsComponent implements OnInit, OnDestroy {
+export class FFQResultsComponent extends Highlightable implements OnInit {
 
   @Input() question: FFQ;
 
-  highlightedPlayer: Trainee;
+  displayedColumns = ['name', 'answer'];
+  dataSource;
+  isTest: boolean;
 
-  private playerClicked: Subscription;
-  private containerClicked: Subscription;
-
-  constructor(private eventsService: EventsService) {
-    this.subscribeToEvents();
-  }
-
-  subscribeToEvents() {
-    this.playerClicked = this.eventsService.playerClicked$.subscribe((player: Trainee) => {
-      this.highlightPlayer(player);
-    });
-
-    this.containerClicked = this.eventsService.containerClicked$.subscribe(
-      () => {
-        this.unhighlightPlayer();
-      }
-    );
-  }
-
-  ngOnDestroy() {
-    this.playerClicked.unsubscribe();
-    this.containerClicked.unsubscribe();
+  constructor(highlightService: HighlightService) {
+    super(highlightService);
   }
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource(this.question.answers);
+    this.isTest = this.question.correctAnswers.length > 0;
   }
 
-  highlightPlayer(player: Trainee) {
-    this.highlightedPlayer = player;
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-
-  unhighlightPlayer() {
-    this.highlightedPlayer = null;
-  }
-
-  onRowClicked(answer: FFQAnswer, event: MouseEvent) {
-    event.stopPropagation();
-    this.eventsService.clickOnPlayer(answer.trainee);
-  }
-
-  onContainerClicked() {
-    this.eventsService.clickOnContainer();
-  }
-
 }
