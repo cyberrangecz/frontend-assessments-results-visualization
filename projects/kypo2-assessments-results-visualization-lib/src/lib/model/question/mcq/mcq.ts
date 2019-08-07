@@ -29,6 +29,9 @@ export class MCQ extends Question {
   }
 
   calculateMatchingAnswersPercentage(optionIndex: number): number {
+    if (this.answers.length <= 0) {
+      return 0;
+    }
     const matchingAnswers =  this.filterAnswersByChoice(optionIndex);
     return (matchingAnswers.length / this.answers.length) * 100;
   }
