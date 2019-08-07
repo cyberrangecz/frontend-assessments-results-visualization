@@ -41,6 +41,9 @@ export class EMI extends Question {
   }
 
   calculateMatchingAnswersPercentage(row: number, col: number): number {
+    if (this.answers.length <= 0) {
+      return 0;
+    }
     return (this.filterAnswersByChoice(row, col).length / this.answers.length) * 100;
   }
 }
