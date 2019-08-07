@@ -4,6 +4,6 @@
   "peerDependencies": {
     "@angular/common": "^8.0.0",
     "@angular/core": "^8.0.0",
-    "d3-ng2-service": "^2.2.0"
+    "@angular/material": "^8.0.0"
   }
 }

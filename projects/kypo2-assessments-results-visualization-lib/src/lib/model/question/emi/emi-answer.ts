@@ -1,7 +1,6 @@
 import {EMIChoice} from './emi-choice';
 import {Answer} from '../answer';
 import {Trainee} from '../../trainee';
-import {equal} from 'assert';
 
 export class EMIAnswer extends Answer {
     choices: EMIChoice[] = [];

@@ -1,36 +1,11 @@
-<h1>Q{{ question.order }}: {{ question.title }}</h1>
-<div
-  *ngFor="let row of question.rows; let i = index"
-  class="chart-container">
-  <h2 style="float: left; vertical-align: middle" placement="top" [ngbTooltip]="row">{{ i }}</h2>
-  <kypo2-viz-assessments-results-emi-chart
-    [question]="question"
-    [rowIndex]="i"
-    [options]="{
-    height: 150,
-    width: chartWidth,
-    margin: {
-      top: 40,
-      right: 160,
-      bottom: 40,
-      left: 100
-    },
-    chart: {
-      width: chartWidth*0.9
-    },
-    ticks: ticks,
-    stats: {
-      sum: {
-        marginLeft: 40
-      },
-      percentage: {
-        marginLeft: 120
-      },
-      showLabel: true
-    },
-    axes: {
-      showBottomLabel: true
-    }
-  }">
-  </kypo2-viz-assessments-results-emi-chart>
+<div class="container" (click)="clear()">
+  <div class="emi" *ngFor="let row of question.rows; let i = index">
+    <h3>Row {{ i + 1}}: {{ row }}</h3>
+    <kypo2-viz-assessments-results-emi-table
+      [tableData]="tableAdapters[i]"
+      [isTest]="question.correctChoices.length > 0"
+      (highlighted)="onHighlight($event)">
+    </kypo2-viz-assessments-results-emi-table>
+  </div>
+
 </div>

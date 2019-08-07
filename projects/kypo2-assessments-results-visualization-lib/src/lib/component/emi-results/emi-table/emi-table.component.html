@@ -1,6 +1,4 @@
-<div (click)="clear()">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
+ <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <!-- Option Column -->
     <ng-container matColumnDef="option">
       <th mat-header-cell *matHeaderCellDef>Option</th>
@@ -22,7 +20,7 @@
                 *ngFor="let answer of data.answers"
                 [ngClass]="{'selected': answer.selected}"
                 [matTooltip]="answer.trainee.name"
-                (click)="highlight(answer, $event)">
+                (click)="onHighlight(answer, $event)">
           </span>
         </div>
       </td>
@@ -42,4 +40,3 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-</div>
