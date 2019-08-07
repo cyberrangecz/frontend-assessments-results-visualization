@@ -28,14 +28,14 @@
 
     <!-- Sum Column -->
     <ng-container matColumnDef="sum">
-      <th mat-header-cell *matHeaderCellDef>Sum</th>
-      <td mat-cell *matCellDef="let data">{{ data.answeredCount }}</td>
+      <th mat-header-cell class="sum" *matHeaderCellDef>Sum</th>
+      <td mat-cell class="sum" *matCellDef="let data">{{ data.answeredCount }}</td>
     </ng-container>
 
     <!-- Sum Column -->
     <ng-container matColumnDef="percentage">
-      <th mat-header-cell *matHeaderCellDef>Portion</th>
-      <td mat-cell *matCellDef="let data">{{ data.answeredPercentage }}%</td>
+      <th mat-header-cell class="percentage" *matHeaderCellDef>Percentage</th>
+      <td mat-cell class="percentage" *matCellDef="let data">{{ data.answeredPercentage | number: '1.0-1' }}%</td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
