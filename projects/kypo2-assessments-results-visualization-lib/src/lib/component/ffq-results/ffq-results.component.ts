@@ -5,7 +5,7 @@ import {MatTableDataSource} from '@angular/material';
 import {Highlightable} from '../shared/highlightable';
 
 @Component({
-  selector: 'kypo2-viz-assessments-results-ffq',
+  selector: 'kypo2-ffq-results',
   templateUrl: './ffq-results.component.html',
   styleUrls: ['./ffq-results.component.css']
 })

@@ -6,7 +6,7 @@ import {HighlightService} from '../../services/highlight.service';
 import {Highlightable} from '../shared/highlightable';
 
 @Component({
-  selector: 'kypo2-viz-assessments-results-mcq',
+  selector: 'kypo2-mcq-results',
   templateUrl: './mcq-results.component.html',
   styleUrls: ['./../shared/emi-mcq-table.component.css']
 })

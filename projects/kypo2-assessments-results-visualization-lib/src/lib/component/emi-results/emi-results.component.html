@@ -1,11 +1,11 @@
 <div class="container" (click)="clear()">
   <div class="emi" *ngFor="let row of question.rows; let i = index">
     <h3>Row {{ i + 1}}: {{ row }}</h3>
-    <kypo2-viz-assessments-results-emi-table
+    <kypo2-emi-results-table
       [tableData]="tableAdapters[i]"
       [isTest]="question.correctChoices.length > 0"
       (highlighted)="onHighlight($event)">
-    </kypo2-viz-assessments-results-emi-table>
+    </kypo2-emi-results-table>
   </div>
 
 </div>

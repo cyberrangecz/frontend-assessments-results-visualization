@@ -126,7 +126,7 @@
       "root": "projects/kypo2-assessments-results-visualization-lib",
       "sourceRoot": "projects/kypo2-assessments-results-visualization-lib/src",
       "projectType": "library",
-      "prefix": "kypo2-viz-assessments-results",
+      "prefix": "kypo2",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",

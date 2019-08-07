@@ -4,13 +4,13 @@ import {Observable} from 'rxjs';
 import {Assessment} from './model/assessment';
 
 @Component({
-  selector: 'kypo2-viz-assessments-results',
+  selector: 'kypo2-assessment-results-viz',
   template: `
-    <kypo2-viz-assessments-results-visualization [assessments]="assessments$ | async"></kypo2-viz-assessments-results-visualization>
+      <kypo2-assessment-results [assessments]="assessments$ | async"></kypo2-assessment-results>
   `,
   styles: []
 })
-export class Kypo2AssessmentsResultsComponent implements OnInit, OnChanges {
+export class Kypo2AssessmentResultsVisualizationComponent implements OnInit, OnChanges {
 
   @Input() trainingDefinitionId: number;
   @Input() trainingInstanceId: number;

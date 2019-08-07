@@ -4,7 +4,7 @@ import {Answer} from '../../../model/question/answer';
 import {MatTableDataSource} from '@angular/material';
 
 @Component({
-  selector: 'kypo2-viz-assessments-results-emi-table',
+  selector: 'kypo2-emi-results-table',
   templateUrl: './emi-table.component.html',
   styleUrls: ['./../../shared/emi-mcq-table.component.css']
 })

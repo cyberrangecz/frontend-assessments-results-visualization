@@ -31,6 +31,6 @@ import {
     MatTooltipModule
   ]
 })
-export class AssessmentsResultsVisualizationMaterialModule {
+export class Kypo2AssessmentsResultsVisualizationMaterialModule {
 
 }

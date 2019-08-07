@@ -6,7 +6,7 @@ import {HighlightService} from '../../services/highlight.service';
 import {Answer} from '../../model/question/answer';
 
 @Component({
-  selector: 'kypo2-viz-assessments-results-emi',
+  selector: 'kypo2-emi-results',
   templateUrl: './emi-results.component.html',
   styleUrls: ['./emi-results.component.css']
 })

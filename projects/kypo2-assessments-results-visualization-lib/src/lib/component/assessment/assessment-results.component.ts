@@ -3,12 +3,12 @@ import {HighlightService} from '../../services/highlight.service';
 import {Assessment} from '../../model/assessment';
 
 @Component({
-  selector: 'kypo2-viz-assessments-results-visualization',
-  templateUrl: './assessment-visualization.component.html',
-  styleUrls: ['./assessment-visualization.component.css'],
+  selector: 'kypo2-assessment-results',
+  templateUrl: './assessment-results.component.html',
+  styleUrls: ['./assessment-results.component.css'],
   providers: [HighlightService]
 })
-export class AssessmentVisualizationComponent implements OnInit {
+export class AssessmentResultsComponent implements OnInit {
 
   @Input() assessments: Assessment[];
 

@@ -2,7 +2,7 @@ mat-card {
   margin: 10px;
 }
 
-kypo2-viz-assessments-results-ffq, kypo2-viz-assessments-results-mcq, kypo2-viz-assessments-results-emi {
+kypo2-ffq-results, kypo2-mcq-results, kypo2-emi-results {
   margin: 10px;
 }
 
