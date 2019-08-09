@@ -14,7 +14,7 @@ export class MCQResultsComponent extends Highlightable implements OnInit {
 
   @Input() question: MCQ;
 
-  displayedColumns = ['option', 'answers', 'sum', 'percentage'];
+  displayedColumns = ['option', 'sum', 'percentage', 'answers'];
   dataSource;
   isTest: boolean;
 

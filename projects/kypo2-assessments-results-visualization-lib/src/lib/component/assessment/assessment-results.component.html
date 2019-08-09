@@ -5,6 +5,7 @@
       <ng-container *ngFor="let question of assessment.questions" [ngSwitch]="question.type">
         <mat-card>
           <mat-card-title>Question {{question.order + 1}}:  {{ question.title }}</mat-card-title>
+          <mat-card-subtitle> {{ question.type }}</mat-card-subtitle>
           <mat-card-content>
             <kypo2-ffq-results *ngSwitchCase="'FFQ'" [question]="question"></kypo2-ffq-results>
             <kypo2-mcq-results *ngSwitchCase="'MCQ'" [question]="question"></kypo2-mcq-results>

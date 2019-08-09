@@ -14,7 +14,7 @@ export class EmiTableComponent implements OnInit {
   @Input() isTest: boolean;
   @Output() highlighted = new EventEmitter<{answer: Answer, mouseEvent: MouseEvent}>();
 
-  displayedColumns = ['option', 'answers', 'sum', 'percentage'];
+  displayedColumns = ['option', 'sum', 'percentage', 'answers'];
   dataSource;
 
   ngOnInit() {
