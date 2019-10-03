@@ -2,6 +2,8 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core'
 import {AssessmentFacade} from './services/assessment-facade.service';
 import {Observable} from 'rxjs';
 import {Assessment} from './model/assessment';
+import {VizualizationInput} from './model/vizualization-input';
+import {Kypo2TraineeModeInfo} from './model/kypo2-trainee-mode-info';
 
 @Component({
   selector: 'kypo2-assessment-results-viz',
@@ -14,7 +16,7 @@ export class Kypo2AssessmentResultsVisualizationComponent implements OnInit, OnC
 
   @Input() trainingDefinitionId: number;
   @Input() trainingInstanceId: number;
-  @Input() trainingRunId: number;
+  @Input() traineeModeInfo: Kypo2TraineeModeInfo;
 
   assessments$: Observable<Assessment[]>;
   constructor(private assessmentFacade: AssessmentFacade) { }
@@ -23,16 +25,9 @@ export class Kypo2AssessmentResultsVisualizationComponent implements OnInit, OnC
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.hasAllIds()) {
-      if (this.trainingRunId !== undefined) {
-        this.assessments$ = this.assessmentFacade.getAssessments(this.trainingDefinitionId, this.trainingInstanceId, this.trainingRunId);
-      } else {
-        this.assessments$ = this.assessmentFacade.getAssessments(this.trainingDefinitionId, this.trainingInstanceId);
-      }
+    const inputData = new VizualizationInput(this.trainingDefinitionId, this.trainingInstanceId, this.traineeModeInfo);
+    if (inputData.hasNecessaryIds()) {
+      this.assessments$ = this.assessmentFacade.getAssessments(inputData);
     }
-  }
-
-  private hasAllIds(): boolean {
-    return this.trainingDefinitionId !== undefined && this.trainingDefinitionId !== null && this.trainingInstanceId !== undefined && this.trainingInstanceId !== null;
   }
 }

@@ -1,8 +1,8 @@
 import {HighlightService} from '../../services/highlight.service';
 import {OnDestroy} from '@angular/core';
-import {Trainee} from '../../model/trainee';
 import {Question} from '../../model/question/question';
 import {Answer} from '../../model/question/answer';
+import {User} from 'kypo2-auth';
 
 export abstract class Highlightable implements OnDestroy {
 
@@ -38,7 +38,7 @@ export abstract class Highlightable implements OnDestroy {
       });
   }
 
-  private highlightPlayer(player: Trainee) {
+  private highlightPlayer(player: User) {
     this.question.answers.forEach(answer => answer.select(player));
   }
 

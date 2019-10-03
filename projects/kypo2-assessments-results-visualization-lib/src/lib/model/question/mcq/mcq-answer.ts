@@ -1,10 +1,10 @@
 import {Answer} from '../answer';
-import {Trainee} from '../../trainee';
+import {User} from 'kypo2-auth';
 
 export class MCQAnswer extends Answer {
   userChoices: number[] = [];
 
-  constructor(answerJSON, trainee: Trainee) {
+  constructor(answerJSON, trainee: User) {
     super(trainee);
     this.userChoices = answerJSON.choices.sort((a, b) => a - b);
   }
