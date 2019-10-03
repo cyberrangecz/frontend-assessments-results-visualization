@@ -4,11 +4,11 @@ import {AssessmentLevelDTO} from './dto/assessment-level-dto';
 import {MCQ} from './question/mcq/mcq';
 import {EMI} from './question/emi/emi';
 import {FFQ} from './question/ffq/ffq';
-import {Trainee} from './trainee';
 import {Answer} from './question/answer';
 import {FFQAnswer} from './question/ffq/ffq-answer';
 import {MCQAnswer} from './question/mcq/mcq-answer';
 import {EMIAnswer} from './question/emi/emi-answer';
+import {User} from 'kypo2-auth';
 
 export class Assessment {
   id: number;
@@ -48,7 +48,7 @@ export class Assessment {
     });
   }
 
-  private answerJSONToAnswer(answerJSON, question: Question, trainee: Trainee): Answer {
+  private answerJSONToAnswer(answerJSON, question: Question, trainee: User): Answer {
     if (question instanceof FFQ) {
       return new FFQAnswer(answerJSON, trainee);
     }

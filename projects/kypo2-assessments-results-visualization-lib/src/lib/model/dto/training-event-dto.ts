@@ -1,9 +1,6 @@
 export class TrainingEventDTO {
   type: string;
-  full_name_without_titles: string;
-  full_name: string;
-  player_login: string;
-  timestamp: string;
+  user_ref_id: number;
   level: number;
 
   static isAssessmentAnsweredEvent(event: TrainingEventDTO ): boolean {

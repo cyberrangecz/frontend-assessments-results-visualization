@@ -1,11 +1,11 @@
-import {Trainee} from '../trainee';
+import {User} from 'kypo2-auth';
 
 export abstract class Answer {
-  trainee: Trainee;
+  trainee: User;
   isCorrect: boolean;
   selected: boolean;
 
-  protected constructor(trainee: Trainee) {
+  protected constructor(trainee: User) {
     this.trainee = trainee;
   }
 

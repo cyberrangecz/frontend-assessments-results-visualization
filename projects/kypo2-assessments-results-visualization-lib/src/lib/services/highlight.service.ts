@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject} from 'rxjs';
-import {Trainee} from '../model/trainee';
+import {User} from 'kypo2-auth';
 
 @Injectable()
 export class HighlightService {
 
-  private highlightedPlayerSubject = new BehaviorSubject<Trainee>(undefined);
+  private highlightedPlayerSubject = new BehaviorSubject<User>(undefined);
   highlightedPlayer$ = this.highlightedPlayerSubject.asObservable();
 
-  highlight(player: Trainee) {
+  highlight(player: User) {
     if (this.isAlreadyHighlighted(player)) {
       this.highlightedPlayerSubject.next(null);
     } else {
@@ -20,7 +20,7 @@ export class HighlightService {
     this.highlightedPlayerSubject.next(null);
   }
 
-  private isAlreadyHighlighted(player: Trainee): boolean {
+  private isAlreadyHighlighted(player: User): boolean {
     return player.equals(this.highlightedPlayerSubject.getValue());
   }
 }

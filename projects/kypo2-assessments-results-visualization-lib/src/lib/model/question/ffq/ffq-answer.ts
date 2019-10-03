@@ -1,10 +1,10 @@
 import {Answer} from '../answer';
-import {Trainee} from '../../trainee';
+import {User} from 'kypo2-auth';
 
 export class FFQAnswer extends Answer {
   text: string;
 
-  constructor(answerJSON, trainee: Trainee) {
+  constructor(answerJSON, trainee: User) {
     super(trainee);
     this.text = answerJSON.text;
   }
