@@ -4,13 +4,16 @@ import { FFQResultsComponent } from './component/ffq-results/ffq-results.compone
 import { EMIResultsComponent } from './component/emi-results/emi-results.component';
 import { AssessmentResultsComponent } from './component/assessment/assessment-results.component';
 import { CommonModule } from '@angular/common';
-import {AssessmentFacade} from './services/assessment-facade.service';
+import {AssessmentApi} from './services/assessment-api.service';
 import {EmiTableComponent} from './component/emi-results/emi-table/emi-table.component';
 import {Kypo2AssessmentConfig} from './model/config/kypo2-asssessment-config';
 import {ConfigService} from './services/config.service';
 import {Kypo2AssessmentsResultsVisualizationMaterialModule} from './kypo2-assessments-results-visualization-material.module';
 import {MCQResultsComponent} from './component/mcq-results/mcq-results.component';
 
+/**
+ * Main module of the visualization. To use in your app, import with forRoot() method and pass config object
+ */
 @NgModule({
   imports: [
     CommonModule,
@@ -28,7 +31,7 @@ import {MCQResultsComponent} from './component/mcq-results/mcq-results.component
     Kypo2AssessmentResultsVisualizationComponent,
   ],
   providers: [
-    AssessmentFacade,
+    AssessmentApi,
     ConfigService
   ]
 })
@@ -41,6 +44,10 @@ export class Kypo2AssessmentsResultsVisualizationModule {
     }
   }
 
+  /**
+   * Use this method to import in your app. Pass config object
+   * @param kypo2AssessmentConfig configuration object of the visualization
+   */
   static forRoot(kypo2AssessmentConfig: Kypo2AssessmentConfig): ModuleWithProviders {
     return {
       ngModule: Kypo2AssessmentsResultsVisualizationModule,

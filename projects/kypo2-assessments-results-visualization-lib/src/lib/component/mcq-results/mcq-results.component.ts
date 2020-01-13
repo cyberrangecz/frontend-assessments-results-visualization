@@ -5,6 +5,9 @@ import {MCQTableAdapter} from '../../model/table-adapter/mcq-table-adapter';
 import {HighlightService} from '../../services/highlight.service';
 import {Highlightable} from '../shared/highlightable';
 
+/**
+ * Component displaying result of a multiple choice question
+ */
 @Component({
   selector: 'kypo2-mcq-results',
   templateUrl: './mcq-results.component.html',
@@ -14,6 +17,9 @@ export class MCQResultsComponent extends Highlightable implements OnInit {
 
   @Input() question: MCQ;
 
+  /**
+   * Columns of the table
+   */
   displayedColumns = ['option', 'sum', 'percentage', 'answers'];
   dataSource;
   isTest: boolean;

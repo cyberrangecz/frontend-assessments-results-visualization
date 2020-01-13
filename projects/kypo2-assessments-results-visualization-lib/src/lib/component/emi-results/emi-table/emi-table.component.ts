@@ -3,6 +3,9 @@ import {EMITableAdapter} from '../../../model/table-adapter/emi-table-adapter';
 import {Answer} from '../../../model/question/answer';
 import {MatTableDataSource} from '@angular/material';
 
+/**
+ * Component displaying table of extended matching items result
+ */
 @Component({
   selector: 'kypo2-emi-results-table',
   templateUrl: './emi-table.component.html',
@@ -21,6 +24,10 @@ export class EmiTableComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.tableData.rows);
   }
 
+  /**
+   * Calls service to highlight the answer
+   * @param $event mouse event
+   */
   onHighlight(answer: Answer, $event: MouseEvent) {
     this.highlighted.emit({answer: answer, mouseEvent: $event});
   }
