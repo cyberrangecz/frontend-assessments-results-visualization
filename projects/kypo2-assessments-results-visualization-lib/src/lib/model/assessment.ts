@@ -10,6 +10,9 @@ import {MCQAnswer} from './question/mcq/mcq-answer';
 import {EMIAnswer} from './question/emi/emi-answer';
 import {User} from 'kypo2-auth';
 
+/**
+ * Assessment level in a training run. Contains basic info about the assessment and questions with recorded answers
+ */
 export class Assessment {
   id: number;
   title: string;
@@ -31,6 +34,10 @@ export class Assessment {
       .sort((a, b) => a.order - b.order);
   }
 
+  /**
+   * Adds trainees' answers to questions from recorded assessment events
+   * @param assessmentEvent recorded assessment event
+   */
   fillAnswers(assessmentEvent: AssessmentEvent) {
     const answersJSON = JSON.parse(assessmentEvent.answers);
     this.questions.forEach(question => {

@@ -1,6 +1,9 @@
 import {TrainingAssessmentEventDTO} from './dto/training-assessment-event-dto';
 import {User} from 'kypo2-auth';
 
+/**
+ * Assessment event recorded in a training run by trainee
+ */
 export class AssessmentEvent {
   levelId: number;
   answers: string;

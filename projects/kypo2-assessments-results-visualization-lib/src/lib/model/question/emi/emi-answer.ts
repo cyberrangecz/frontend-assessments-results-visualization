@@ -2,6 +2,9 @@ import {EMIChoice} from './emi-choice';
 import {Answer} from '../answer';
 import {User} from 'kypo2-auth';
 
+/**
+ * Class representing an answer to a extended matching items question where choices are coordinates selected as correct by trainee
+ */
 export class EMIAnswer extends Answer {
     choices: EMIChoice[] = [];
 
@@ -13,8 +16,8 @@ export class EMIAnswer extends Answer {
   }
 
   /**
-   * Compares choices of this answer with some other choices. Expects that choices are sorted by x
-   * @param choices
+   * Compares choices of this answer with other choices. Expects that choices are sorted by x
+   * @param choices choices to compare
    */
   hasSameChoices(choices: EMIChoice[]): boolean {
     if (this.choices === null || this.choices === undefined || choices === null || choices === undefined) {
@@ -31,10 +34,17 @@ export class EMIAnswer extends Answer {
     return true;
   }
 
+  /**
+   * Returns true if at least one choice was selected, false otherwise
+   */
   wasAnswered(): boolean {
     return this.choices && this.choices.length > 0;
   }
 
+  /**
+   * Returns true if answer has provided choice, false otherwise
+   * @param emiChoice choice to compare
+   */
   hasChoice(emiChoice: EMIChoice): boolean {
     return this.choices.some(choice => choice.equals(emiChoice));
   }

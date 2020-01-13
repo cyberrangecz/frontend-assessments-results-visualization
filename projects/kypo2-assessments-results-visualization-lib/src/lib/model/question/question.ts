@@ -1,5 +1,8 @@
 import {Answer} from './answer';
 
+/**
+ * Abstract class representing a question in assessment
+ */
 export abstract class Question {
   title: string;
   order: number;
@@ -15,5 +18,8 @@ export abstract class Question {
     this.order = questionJSON.order;
   }
 
+  /**
+   * Evaluates if answer was answered correctly or not and stores the result in answer object
+   */
   abstract evaluateAnswers();
 }

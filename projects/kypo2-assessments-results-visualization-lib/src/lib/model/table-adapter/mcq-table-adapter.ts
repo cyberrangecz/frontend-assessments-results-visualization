@@ -1,6 +1,9 @@
 import {MCQTableRow} from './mcq-table-row';
 import {MCQ} from '../question/mcq/mcq';
 
+/**
+ * Adapter class for multiple choice question table
+ */
 export class MCQTableAdapter {
   rows: MCQTableRow[];
 
@@ -11,7 +14,7 @@ export class MCQTableAdapter {
       row.isCorrect = question.isCorrectAnswer(index);
       row.answers = question.filterAnswersByChoice(index);
       row.answeredCount = question.calculateSameAnswersCount(index);
-      row.answeredPercentage = question.calculateMatchingAnswersPercentage(index);
+      row.answeredPercentage = question.calculateMatchingAnswersShare(index);
       return row;
     });
   }

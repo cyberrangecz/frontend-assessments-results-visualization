@@ -35,7 +35,9 @@ const routes: Routes = [
 
 ];
 
-
+/**
+ * Main app module of example app
+ */
 @NgModule({
   declarations: [
     AppComponent,

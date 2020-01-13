@@ -2,6 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import {HighlightService} from '../../services/highlight.service';
 import {Assessment} from '../../model/assessment';
 
+/**
+ * Component displaying result of one assessment. Contains components of assessment questions
+ */
 @Component({
   selector: 'kypo2-assessment-results',
   templateUrl: './assessment-results.component.html',

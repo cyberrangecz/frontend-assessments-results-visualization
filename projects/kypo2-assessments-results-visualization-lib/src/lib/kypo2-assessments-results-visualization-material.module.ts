@@ -9,6 +9,9 @@ import {
   MatTableModule, MatTooltipModule
 } from '@angular/material';
 
+/**
+ * Material imports and for assessment visualization
+ */
 @NgModule({
   imports: [
     MatButtonModule,
