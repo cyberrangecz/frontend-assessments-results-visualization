@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import {EMITableAdapter} from '../../../model/table-adapter/emi-table-adapter';
 import {Answer} from '../../../model/question/answer';
-import {MatTableDataSource} from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 
 /**
  * Component displaying table of extended matching items result
