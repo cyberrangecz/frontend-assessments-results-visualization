@@ -48,7 +48,7 @@ export class Kypo2AssessmentsResultsVisualizationModule {
    * Use this method to import in your app. Pass config object
    * @param kypo2AssessmentConfig configuration object of the visualization
    */
-  static forRoot(kypo2AssessmentConfig: Kypo2AssessmentConfig): ModuleWithProviders {
+  static forRoot(kypo2AssessmentConfig: Kypo2AssessmentConfig): ModuleWithProviders<Kypo2AssessmentsResultsVisualizationModule> {
     return {
       ngModule: Kypo2AssessmentsResultsVisualizationModule,
       providers: [

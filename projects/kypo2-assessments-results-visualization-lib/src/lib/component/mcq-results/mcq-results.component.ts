@@ -1,6 +1,6 @@
 import { Component, Input, OnInit} from '@angular/core';
 import {MCQ} from '../../model/question/mcq/mcq';
-import {MatTableDataSource} from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 import {MCQTableAdapter} from '../../model/table-adapter/mcq-table-adapter';
 import {HighlightService} from '../../services/highlight.service';
 import {Highlightable} from '../shared/highlightable';

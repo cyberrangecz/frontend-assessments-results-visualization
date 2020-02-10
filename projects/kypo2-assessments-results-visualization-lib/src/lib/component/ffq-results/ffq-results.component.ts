@@ -1,7 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { FFQ } from '../../model/question/ffq/ffq';
 import { HighlightService } from '../../services/highlight.service';
-import {MatTableDataSource} from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 import {Highlightable} from '../shared/highlightable';
 
 /**
