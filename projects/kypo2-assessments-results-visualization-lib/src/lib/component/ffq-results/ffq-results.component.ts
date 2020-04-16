@@ -1,8 +1,8 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { FFQ } from '../../model/question/ffq/ffq';
 import { HighlightService } from '../../services/highlight.service';
-import { MatTableDataSource } from '@angular/material/table';
-import {Highlightable} from '../shared/highlightable';
+import { Highlightable } from '../shared/highlightable';
 
 /**
  * Component displaying result of a free form question
@@ -10,10 +10,9 @@ import {Highlightable} from '../shared/highlightable';
 @Component({
   selector: 'kypo2-ffq-results',
   templateUrl: './ffq-results.component.html',
-  styleUrls: ['./ffq-results.component.css']
+  styleUrls: ['./ffq-results.component.css'],
 })
 export class FFQResultsComponent extends Highlightable implements OnInit {
-
   @Input() question: FFQ;
 
   /**

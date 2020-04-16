@@ -1,4 +1,4 @@
-import {Kypo2TraineeModeInfo} from './kypo2-trainee-mode-info';
+import { Kypo2TraineeModeInfo } from './kypo2-trainee-mode-info';
 
 /**
  * Settings of the visualization. Resolved from inputs of the main component
@@ -16,7 +16,9 @@ export class VisualizationSettings {
       this.trainingRunId = traineeModeInfo.trainingRunId;
       this.activeTraineeId = traineeModeInfo.activeTraineeId;
       if (this.isInconsistent()) {
-        console.error('INCONSISTENT INPUT: both trainingRunId and activeTraineeId must have value if TraineeMode is active');
+        console.error(
+          'INCONSISTENT INPUT: both trainingRunId and activeTraineeId must have value if TraineeMode is active'
+        );
       }
     }
   }
@@ -25,19 +27,30 @@ export class VisualizationSettings {
    * If all ids necessary to retrieve the visualization data from backend microservice were provided
    */
   hasNecessaryIds(): boolean {
-    return this.trainingDefinitionId !== undefined && this.trainingDefinitionId !== null && this.trainingInstanceId !== undefined && this.trainingInstanceId !== null;
+    return (
+      this.trainingDefinitionId !== undefined &&
+      this.trainingDefinitionId !== null &&
+      this.trainingInstanceId !== undefined &&
+      this.trainingInstanceId !== null
+    );
   }
 
   /**
-   * If the visualization should be displayed from trainees point of view instead of organizers and therefore anonymize names of other trainees
+   * If the visualization should be displayed from trainees point of view instead of organizers and
+   * therefore anonymize names of other trainees
    */
   shouldAnonymiseTrainees(): boolean {
-    return this.trainingRunId !== undefined && this.trainingRunId !== null && this.activeTraineeId !== undefined && this.activeTraineeId !== null;
+    return (
+      this.trainingRunId !== undefined &&
+      this.trainingRunId !== null &&
+      this.activeTraineeId !== undefined &&
+      this.activeTraineeId !== null
+    );
   }
 
   private isInconsistent(): boolean {
     const hasRunId = this.trainingRunId !== undefined && this.trainingRunId !== null;
     const hasTraineeId = this.activeTraineeId !== undefined && this.activeTraineeId !== null;
-    return  hasRunId !== hasTraineeId;
+    return hasRunId !== hasTraineeId;
   }
 }

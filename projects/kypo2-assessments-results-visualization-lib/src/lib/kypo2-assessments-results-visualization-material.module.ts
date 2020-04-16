@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -20,7 +20,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   exports: [
     MatButtonModule,
@@ -30,9 +30,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTooltipModule
-  ]
+    MatTooltipModule,
+  ],
 })
-export class Kypo2AssessmentsResultsVisualizationMaterialModule {
-
-}
+export class Kypo2AssessmentsResultsVisualizationMaterialModule {}

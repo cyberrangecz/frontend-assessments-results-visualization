@@ -1,14 +1,13 @@
-import {HighlightService} from '../../services/highlight.service';
-import {OnDestroy} from '@angular/core';
-import {Question} from '../../model/question/question';
-import {Answer} from '../../model/question/answer';
-import {User} from 'kypo2-auth';
+import { OnDestroy } from '@angular/core';
+import { User } from 'kypo2-auth';
+import { Answer } from '../../model/question/answer';
+import { Question } from '../../model/question/question';
+import { HighlightService } from '../../services/highlight.service';
 
 /**
  * Class representing behaviour of highlightable components
  */
 export abstract class Highlightable implements OnDestroy {
-
   isAlive = true;
   abstract question: Question;
 
@@ -38,22 +37,21 @@ export abstract class Highlightable implements OnDestroy {
   }
 
   private subscribeEvents() {
-    this.highlightService.highlightedPlayer$
-      .subscribe(player => {
-        if (player) {
-          this.unhighlightPlayer();
-          this.highlightPlayer(player);
-        } else if (player === null) {
-          this.unhighlightPlayer();
-        }
-      });
+    this.highlightService.highlightedPlayer$.subscribe((player) => {
+      if (player) {
+        this.unhighlightPlayer();
+        this.highlightPlayer(player);
+      } else if (player === null) {
+        this.unhighlightPlayer();
+      }
+    });
   }
 
   private highlightPlayer(player: User) {
-    this.question.answers.forEach(answer => answer.tryHighlight(player));
+    this.question.answers.forEach((answer) => answer.tryHighlight(player));
   }
 
   private unhighlightPlayer() {
-    this.question.answers.forEach(answer => answer.clearHighlight());
+    this.question.answers.forEach((answer) => answer.clearHighlight());
   }
 }

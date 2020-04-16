@@ -1,4 +1,4 @@
-import {MCQAnswer} from '../question/mcq/mcq-answer';
+import { MCQAnswer } from '../question/mcq/mcq-answer';
 
 /**
  * Table row in multiple choice question table

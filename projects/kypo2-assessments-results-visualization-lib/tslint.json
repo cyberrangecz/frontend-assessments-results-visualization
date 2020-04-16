@@ -4,13 +4,13 @@
         "directive-selector": [
             true,
             "attribute",
-            "kypo2-viz-assessments-results",
+            "kypo2",
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
-            "kypo2-viz-assessments-results",
+            "kypo2",
             "kebab-case"
         ]
     }

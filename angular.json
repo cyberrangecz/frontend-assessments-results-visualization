@@ -143,9 +143,9 @@
           },
           "configurations": {
             "production": {
-              "project": "projects/kypo2-assessments-results-visualization-lib/ng-package.prod.json"
-            ,              "tsConfig": "projects/kypo2-assessments-results-visualization-lib/tsconfig.lib.prod.json"
-}
+              "project": "projects/kypo2-assessments-results-visualization-lib/ng-package.prod.json",
+              "tsConfig": "projects/kypo2-assessments-results-visualization-lib/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {

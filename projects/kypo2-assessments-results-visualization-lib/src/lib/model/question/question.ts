@@ -1,4 +1,4 @@
-import {Answer} from './answer';
+import { Answer } from './answer';
 
 /**
  * Abstract class representing a question in assessment

@@ -1,4 +1,4 @@
-import {LevelDTO} from './level-dto';
+import { LevelDTO } from './level-dto';
 
 export class TrainingDefinitionDTO {
   training_definition_id: number;

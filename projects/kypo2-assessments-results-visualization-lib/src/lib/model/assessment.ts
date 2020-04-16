@@ -1,14 +1,14 @@
-import {Question} from './question/question';
-import {AssessmentEvent} from './assessment-event';
-import {AssessmentLevelDTO} from './dto/assessment-level-dto';
-import {MCQ} from './question/mcq/mcq';
-import {EMI} from './question/emi/emi';
-import {FFQ} from './question/ffq/ffq';
-import {Answer} from './question/answer';
-import {FFQAnswer} from './question/ffq/ffq-answer';
-import {MCQAnswer} from './question/mcq/mcq-answer';
-import {EMIAnswer} from './question/emi/emi-answer';
-import {User} from 'kypo2-auth';
+import { User } from 'kypo2-auth';
+import { AssessmentEvent } from './assessment-event';
+import { AssessmentLevelDTO } from './dto/assessment-level-dto';
+import { Answer } from './question/answer';
+import { EMI } from './question/emi/emi';
+import { EMIAnswer } from './question/emi/emi-answer';
+import { FFQ } from './question/ffq/ffq';
+import { FFQAnswer } from './question/ffq/ffq-answer';
+import { MCQ } from './question/mcq/mcq';
+import { MCQAnswer } from './question/mcq/mcq-answer';
+import { Question } from './question/question';
 
 /**
  * Assessment level in a training run. Contains basic info about the assessment and questions with recorded answers
@@ -22,7 +22,6 @@ export class Assessment {
   questions: Question[];
   isTest: boolean;
 
-
   constructor(levelDTO: AssessmentLevelDTO) {
     this.id = levelDTO.id;
     this.estimatedDuration = levelDTO.estimated_duration;
@@ -30,8 +29,9 @@ export class Assessment {
     this.maxScore = levelDTO.max_score;
     this.order = levelDTO.order;
     this.title = levelDTO.title;
-    this.questions = this.questionsJSONToQuestions(JSON.parse(levelDTO.questions), this.isTest)
-      .sort((a, b) => a.order - b.order);
+    this.questions = this.questionsJSONToQuestions(JSON.parse(levelDTO.questions), this.isTest).sort(
+      (a, b) => a.order - b.order
+    );
   }
 
   /**
@@ -40,10 +40,10 @@ export class Assessment {
    */
   fillAnswers(assessmentEvent: AssessmentEvent) {
     const answersJSON = JSON.parse(assessmentEvent.answers);
-    this.questions.forEach(question => {
+    this.questions.forEach((question) => {
       answersJSON
-        .filter(answerJSON => answerJSON.question_order === question.order)
-        .forEach(matchedAnswerJSON => {
+        .filter((answerJSON) => answerJSON.question_order === question.order)
+        .forEach((matchedAnswerJSON) => {
           const answer = this.answerJSONToAnswer(matchedAnswerJSON, question, assessmentEvent.trainee);
           if (answer.wasAnswered()) {
             question.answers.push(answer);
@@ -70,17 +70,19 @@ export class Assessment {
   }
 
   private questionsJSONToQuestions(questionsJSON, isTest: boolean): Question[] {
-    return questionsJSON.map(questionJSON => this.questionJSONToQuestion(questionJSON, isTest));
+    return questionsJSON.map((questionJSON) => this.questionJSONToQuestion(questionJSON, isTest));
   }
 
   private questionJSONToQuestion(questionJSON, isTest: boolean): Question {
     switch (questionJSON.question_type) {
-      case 'FFQ': return new FFQ(questionJSON, isTest);
-      case 'EMI': return new EMI(questionJSON, isTest);
-      case 'MCQ': return new MCQ(questionJSON, isTest);
-      default: console.error('Could not map question from JSON to any of known types');
+      case 'FFQ':
+        return new FFQ(questionJSON, isTest);
+      case 'EMI':
+        return new EMI(questionJSON, isTest);
+      case 'MCQ':
+        return new MCQ(questionJSON, isTest);
+      default:
+        console.error('Could not map question from JSON to any of known types');
     }
   }
-
-
 }

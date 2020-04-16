@@ -1,5 +1,5 @@
-import {TrainingAssessmentEventDTO} from './dto/training-assessment-event-dto';
-import {User} from 'kypo2-auth';
+import { User } from 'kypo2-auth';
+import { TrainingAssessmentEventDTO } from './dto/training-assessment-event-dto';
 
 /**
  * Assessment event recorded in a training run by trainee

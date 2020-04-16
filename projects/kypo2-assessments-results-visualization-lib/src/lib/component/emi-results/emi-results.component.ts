@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {EMI} from '../../model/question/emi/emi';
-import {EMITableAdapter} from '../../model/table-adapter/emi-table-adapter';
-import {Highlightable} from '../shared/highlightable';
-import {HighlightService} from '../../services/highlight.service';
-import {Answer} from '../../model/question/answer';
+import { Component, Input, OnInit } from '@angular/core';
+import { Answer } from '../../model/question/answer';
+import { EMI } from '../../model/question/emi/emi';
+import { EMITableAdapter } from '../../model/table-adapter/emi-table-adapter';
+import { HighlightService } from '../../services/highlight.service';
+import { Highlightable } from '../shared/highlightable';
 
 /**
  * Component displaying result of a extended matching items
@@ -11,10 +11,9 @@ import {Answer} from '../../model/question/answer';
 @Component({
   selector: 'kypo2-emi-results',
   templateUrl: './emi-results.component.html',
-  styleUrls: ['./emi-results.component.css']
+  styleUrls: ['./emi-results.component.css'],
 })
 export class EMIResultsComponent extends Highlightable implements OnInit {
-
   @Input() question: EMI;
   tableAdapters: EMITableAdapter[] = [];
 

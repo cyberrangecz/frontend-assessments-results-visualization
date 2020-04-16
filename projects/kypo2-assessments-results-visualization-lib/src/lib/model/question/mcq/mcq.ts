@@ -1,5 +1,5 @@
-import {Question} from '../question';
-import {MCQAnswer} from './mcq-answer';
+import { Question } from '../question';
+import { MCQAnswer } from './mcq-answer';
 
 /**
  * Class representing a multiple choice question
@@ -19,13 +19,11 @@ export class MCQ extends Question {
   constructor(questionJSON, isTest: boolean) {
     super(questionJSON);
     this.type = 'MCQ';
-    this.options = questionJSON.choices
-      .sort((a, b) => a.order - b.order)
-      .map(choice => choice.text);
+    this.options = questionJSON.choices.sort((a, b) => a.order - b.order).map((choice) => choice.text);
     if (isTest) {
       this.correctChoices = questionJSON.choices
-        .filter(choice => choice.is_correct)
-        .map(correctChoice => correctChoice.order)
+        .filter((choice) => choice.is_correct)
+        .map((correctChoice) => correctChoice.order)
         .sort((a, b) => a - b);
     }
   }
@@ -35,7 +33,7 @@ export class MCQ extends Question {
    */
   evaluateAnswers() {
     if (this.correctChoices.length > 0) {
-      this.answers.forEach(answer => {
+      this.answers.forEach((answer) => {
         answer.isCorrect = answer.hasSameChoices(this.correctChoices);
       });
     }
@@ -49,7 +47,7 @@ export class MCQ extends Question {
     if (this.answers.length <= 0) {
       return 0;
     }
-    const matchingAnswers =  this.filterAnswersByChoice(optionIndex);
+    const matchingAnswers = this.filterAnswersByChoice(optionIndex);
     return (matchingAnswers.length / this.answers.length) * 100;
   }
 
@@ -66,7 +64,7 @@ export class MCQ extends Question {
    * @param choiceIndex index of a choice to compare
    */
   isCorrectAnswer(choiceIndex: number) {
-    return this.correctChoices.find(correctIndex => choiceIndex === correctIndex) !== undefined;
+    return this.correctChoices.find((correctIndex) => choiceIndex === correctIndex) !== undefined;
   }
 
   /**
@@ -74,6 +72,6 @@ export class MCQ extends Question {
    * @param choiceIndex index of a choice to compare
    */
   filterAnswersByChoice(choiceIndex: number): MCQAnswer[] {
-    return this.answers.filter(answer => answer.hasMatchingChoice(choiceIndex));
+    return this.answers.filter((answer) => answer.hasMatchingChoice(choiceIndex));
   }
 }

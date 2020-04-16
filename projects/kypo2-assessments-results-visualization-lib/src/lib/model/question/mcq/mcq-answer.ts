@@ -1,5 +1,5 @@
-import {Answer} from '../answer';
-import {User} from 'kypo2-auth';
+import { User } from 'kypo2-auth';
+import { Answer } from '../answer';
 
 /**
  * Class representing an answer to a multiple choice question where traineeChoices are indexes of options selected as correct by trainee
@@ -17,7 +17,12 @@ export class MCQAnswer extends Answer {
    * @param choices choices to compare with the answer
    */
   hasSameChoices(choices: number[]): boolean {
-    if (this.traineeChoices === null || this.traineeChoices === undefined || choices === null || choices === undefined) {
+    if (
+      this.traineeChoices === null ||
+      this.traineeChoices === undefined ||
+      choices === null ||
+      choices === undefined
+    ) {
       return false;
     }
     if (this.traineeChoices.length !== choices.length) {
@@ -43,7 +48,6 @@ export class MCQAnswer extends Answer {
    * @param choiceIndex index of a choice to match
    */
   hasMatchingChoice(choiceIndex: number): boolean {
-    return this.traineeChoices.filter(userChoice => userChoice === choiceIndex).length > 0;
+    return this.traineeChoices.filter((userChoice) => userChoice === choiceIndex).length > 0;
   }
-
 }
