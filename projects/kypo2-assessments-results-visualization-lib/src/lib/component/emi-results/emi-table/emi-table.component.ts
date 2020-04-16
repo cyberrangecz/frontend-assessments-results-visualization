@@ -1,7 +1,7 @@
-import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
-import {EMITableAdapter} from '../../../model/table-adapter/emi-table-adapter';
-import {Answer} from '../../../model/question/answer';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Answer } from '../../../model/question/answer';
+import { EMITableAdapter } from '../../../model/table-adapter/emi-table-adapter';
 
 /**
  * Component displaying table of extended matching items result
@@ -9,13 +9,12 @@ import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'kypo2-emi-results-table',
   templateUrl: './emi-table.component.html',
-  styleUrls: ['./../../shared/emi-mcq-table.component.css']
+  styleUrls: ['./../../shared/emi-mcq-table.component.css'],
 })
 export class EmiTableComponent implements OnInit {
-
   @Input() tableData: EMITableAdapter;
   @Input() isTest: boolean;
-  @Output() highlighted = new EventEmitter<{answer: Answer, mouseEvent: MouseEvent}>();
+  @Output() highlighted = new EventEmitter<{ answer: Answer; mouseEvent: MouseEvent }>();
 
   displayedColumns = ['option', 'sum', 'percentage', 'answers'];
   dataSource;
@@ -29,6 +28,6 @@ export class EmiTableComponent implements OnInit {
    * @param $event mouse event
    */
   onHighlight(answer: Answer, $event: MouseEvent) {
-    this.highlighted.emit({answer: answer, mouseEvent: $event});
+    this.highlighted.emit({ answer, mouseEvent: $event });
   }
 }

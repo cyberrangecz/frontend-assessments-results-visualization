@@ -1,4 +1,4 @@
-import {EMIAnswer} from '../question/emi/emi-answer';
+import { EMIAnswer } from '../question/emi/emi-answer';
 
 /**
  * Row in a extend matching items table

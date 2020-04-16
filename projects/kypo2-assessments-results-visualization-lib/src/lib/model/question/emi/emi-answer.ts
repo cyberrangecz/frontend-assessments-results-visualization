@@ -1,17 +1,17 @@
-import {EMIChoice} from './emi-choice';
-import {Answer} from '../answer';
-import {User} from 'kypo2-auth';
+import { User } from 'kypo2-auth';
+import { Answer } from '../answer';
+import { EMIChoice } from './emi-choice';
 
 /**
  * Class representing an answer to a extended matching items question where choices are coordinates selected as correct by trainee
  */
 export class EMIAnswer extends Answer {
-    choices: EMIChoice[] = [];
+  choices: EMIChoice[] = [];
 
   constructor(answerJSON, trainee: User) {
     super(trainee);
     this.choices = answerJSON.pairs
-      .map(pair => new EMIChoice(pair.x, pair.y))
+      .map((pair) => new EMIChoice(pair.x, pair.y))
       .sort((choiceA, choiceB) => choiceA.x - choiceB.x);
   }
 
@@ -46,6 +46,6 @@ export class EMIAnswer extends Answer {
    * @param emiChoice choice to compare
    */
   hasChoice(emiChoice: EMIChoice): boolean {
-    return this.choices.some(choice => choice.equals(emiChoice));
+    return this.choices.some((choice) => choice.equals(emiChoice));
   }
 }

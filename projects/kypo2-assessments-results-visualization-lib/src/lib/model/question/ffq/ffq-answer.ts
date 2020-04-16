@@ -1,5 +1,5 @@
-import {Answer} from '../answer';
-import {User} from 'kypo2-auth';
+import { User } from 'kypo2-auth';
+import { Answer } from '../answer';
 
 /**
  * Class representing an answer to a free form question
@@ -27,4 +27,3 @@ export class FFQAnswer extends Answer {
     return this.text && this.text.trim().length > 0;
   }
 }
-

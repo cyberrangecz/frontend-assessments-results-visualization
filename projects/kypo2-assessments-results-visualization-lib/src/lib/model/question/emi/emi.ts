@@ -1,6 +1,6 @@
-import {EMIChoice} from './emi-choice';
-import {EMIAnswer} from './emi-answer';
-import {Question} from '../question';
+import { Question } from '../question';
+import { EMIAnswer } from './emi-answer';
+import { EMIChoice } from './emi-choice';
 
 /**
  * Class representing a extended matching items question
@@ -13,10 +13,10 @@ import {Question} from '../question';
  * The question can also be a questionnaire, not a test. Then correct choices are [] and correctness of answers is not evaluated
  */
 export class EMI extends Question {
-    rows: string[] = [];
-    cols: string[] = [];
-    answers: EMIAnswer[] = [];
-    correctChoices: EMIChoice[] = [];
+  rows: string[] = [];
+  cols: string[] = [];
+  answers: EMIAnswer[] = [];
+  correctChoices: EMIChoice[] = [];
 
   constructor(questionJSON, isTest: boolean) {
     super(questionJSON);
@@ -25,7 +25,7 @@ export class EMI extends Question {
     this.rows = questionJSON.rows;
     if (isTest) {
       this.correctChoices = questionJSON.correct_answers
-        .map(correctAnswerJSON => new EMIChoice(correctAnswerJSON.x, correctAnswerJSON.y))
+        .map((correctAnswerJSON) => new EMIChoice(correctAnswerJSON.x, correctAnswerJSON.y))
         .sort((choiceA, choiceB) => choiceA.x - choiceB.x);
     }
   }
@@ -35,9 +35,7 @@ export class EMI extends Question {
    */
   evaluateAnswers() {
     if (this.correctChoices.length > 0) {
-      this.answers.forEach( answer =>
-        answer.isCorrect = answer.hasSameChoices(this.correctChoices)
-      );
+      this.answers.forEach((answer) => (answer.isCorrect = answer.hasSameChoices(this.correctChoices)));
     }
   }
 
@@ -47,7 +45,7 @@ export class EMI extends Question {
    * @param col index of a column (y)
    */
   isCorrectAnswer(row: number, col: number): boolean {
-    return this.correctChoices.some(choice => choice.equals(new EMIChoice(row, col)));
+    return this.correctChoices.some((choice) => choice.equals(new EMIChoice(row, col)));
   }
 
   /**
@@ -56,7 +54,7 @@ export class EMI extends Question {
    * @param col index of a column (y)
    */
   filterAnswersByChoice(row: number, col: number): EMIAnswer[] {
-    return this.answers.filter(answer => answer.hasChoice(new EMIChoice(row, col)));
+    return this.answers.filter((answer) => answer.hasChoice(new EMIChoice(row, col)));
   }
 
   /**

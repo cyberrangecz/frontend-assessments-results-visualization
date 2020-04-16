@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Kypo2AssessmentConfig} from '../model/config/kypo2-asssessment-config';
+import { Injectable } from '@angular/core';
+import { Kypo2AssessmentConfig } from '../model/config/kypo2-asssessment-config';
 
 /**
  * Service holding state of the library configuration

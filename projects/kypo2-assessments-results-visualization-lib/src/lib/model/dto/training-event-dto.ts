@@ -3,8 +3,7 @@ export class TrainingEventDTO {
   user_ref_id: number;
   level: number;
 
-  static isAssessmentAnsweredEvent(event: TrainingEventDTO ): boolean {
+  static isAssessmentAnsweredEvent(event: TrainingEventDTO): boolean {
     return event.type.endsWith('AssessmentAnswers');
   }
 }
-

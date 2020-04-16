@@ -1,5 +1,5 @@
-import {MCQTableRow} from './mcq-table-row';
-import {MCQ} from '../question/mcq/mcq';
+import { MCQ } from '../question/mcq/mcq';
+import { MCQTableRow } from './mcq-table-row';
 
 /**
  * Adapter class for multiple choice question table

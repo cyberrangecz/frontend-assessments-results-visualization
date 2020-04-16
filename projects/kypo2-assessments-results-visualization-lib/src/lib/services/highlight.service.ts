@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs';
-import {User} from 'kypo2-auth';
+import { User } from 'kypo2-auth';
+import { BehaviorSubject } from 'rxjs';
 
 /**
  * Service holding state of highlighted players
  */
 @Injectable()
 export class HighlightService {
-
   private highlightedPlayerSubject = new BehaviorSubject<User>(undefined);
   /**
    * Selected player whose answers should be highlighted

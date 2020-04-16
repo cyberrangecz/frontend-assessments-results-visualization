@@ -1,4 +1,4 @@
-import {User} from 'kypo2-auth';
+import { User } from 'kypo2-auth';
 
 /**
  * Abstract class representing answer of a question in assessment level

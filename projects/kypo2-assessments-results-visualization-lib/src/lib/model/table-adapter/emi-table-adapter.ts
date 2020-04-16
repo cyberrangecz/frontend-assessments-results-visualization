@@ -1,5 +1,5 @@
-import {EMITableRow} from './emi-table-row';
-import {EMI} from '../question/emi/emi';
+import { EMI } from '../question/emi/emi';
+import { EMITableRow } from './emi-table-row';
 
 /**
  * Adapter class for extended matching items table

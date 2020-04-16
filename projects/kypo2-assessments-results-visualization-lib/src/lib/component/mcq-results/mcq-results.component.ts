@@ -1,9 +1,9 @@
-import { Component, Input, OnInit} from '@angular/core';
-import {MCQ} from '../../model/question/mcq/mcq';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import {MCQTableAdapter} from '../../model/table-adapter/mcq-table-adapter';
-import {HighlightService} from '../../services/highlight.service';
-import {Highlightable} from '../shared/highlightable';
+import { MCQ } from '../../model/question/mcq/mcq';
+import { MCQTableAdapter } from '../../model/table-adapter/mcq-table-adapter';
+import { HighlightService } from '../../services/highlight.service';
+import { Highlightable } from '../shared/highlightable';
 
 /**
  * Component displaying result of a multiple choice question
@@ -11,10 +11,9 @@ import {Highlightable} from '../shared/highlightable';
 @Component({
   selector: 'kypo2-mcq-results',
   templateUrl: './mcq-results.component.html',
-  styleUrls: ['./../shared/emi-mcq-table.component.css']
+  styleUrls: ['./../shared/emi-mcq-table.component.css'],
 })
 export class MCQResultsComponent extends Highlightable implements OnInit {
-
   @Input() question: MCQ;
 
   /**
@@ -33,4 +32,3 @@ export class MCQResultsComponent extends Highlightable implements OnInit {
     this.dataSource = new MatTableDataSource(new MCQTableAdapter(this.question).rows);
   }
 }
-

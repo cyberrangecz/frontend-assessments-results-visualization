@@ -1,22 +1,19 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {AssessmentApi} from './services/assessment-api.service';
-import {Observable} from 'rxjs';
-import {Assessment} from './model/assessment';
-import {VisualizationSettings} from './model/visualization-settings';
-import {Kypo2TraineeModeInfo} from './model/kypo2-trainee-mode-info';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Assessment } from './model/assessment';
+import { Kypo2TraineeModeInfo } from './model/kypo2-trainee-mode-info';
+import { VisualizationSettings } from './model/visualization-settings';
+import { AssessmentApi } from './services/assessment-api.service';
 
 /**
  * Main component of the assessment visualization
  */
 @Component({
   selector: 'kypo2-assessment-results-viz',
-  template: `
-      <kypo2-assessment-results [assessments]="assessments$ | async"></kypo2-assessment-results>
-  `,
-  styles: []
+  template: ` <kypo2-assessment-results [assessments]="assessments$ | async"></kypo2-assessment-results> `,
+  styles: [],
 })
 export class Kypo2AssessmentResultsVisualizationComponent implements OnInit, OnChanges {
-
   /**
    * MANDATORY Id of a training definition related with the training instance to be visualized.
    *
@@ -35,13 +32,16 @@ export class Kypo2AssessmentResultsVisualizationComponent implements OnInit, OnC
   @Input() traineeModeInfo: Kypo2TraineeModeInfo;
 
   assessments$: Observable<Assessment[]>;
-  constructor(private assessmentFacade: AssessmentApi) { }
+  constructor(private assessmentFacade: AssessmentApi) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    const inputData = new VisualizationSettings(this.trainingDefinitionId, this.trainingInstanceId, this.traineeModeInfo);
+    const inputData = new VisualizationSettings(
+      this.trainingDefinitionId,
+      this.trainingInstanceId,
+      this.traineeModeInfo
+    );
     if (inputData.hasNecessaryIds()) {
       this.assessments$ = this.assessmentFacade.getAssessments(inputData);
     }

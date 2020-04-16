@@ -1,4 +1,4 @@
-import {LevelDTO} from './level-dto';
+import { LevelDTO } from './level-dto';
 
 export class AssessmentLevelDTO extends LevelDTO {
   assessment_type: string;

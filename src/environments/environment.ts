@@ -11,11 +11,13 @@ export const environment = {
     maxRetryAttempts: 3, // How many attempts to try to get user info from user and group service before emitting error
     guardMainPageRedirect: 'home', // Redirect from login page if user is logged in
     guardLoginPageRedirect: 'login', // Redirect to login page if user is not logged in
-    tokenInterceptorAllowedUrls: [ // all matching urls will have authorization token header
-      'https://kypo-devel.ics.muni.cz'
+    tokenInterceptorAllowedUrls: [
+      // all matching urls will have authorization token header
+      'https://kypo-devel.ics.muni.cz',
     ],
     userInfoRestUri: 'https://kypo-devel.ics.muni.cz:8084/kypo2-rest-user-and-group/api/v1/',
-    providers: [ // OIDC providers
+    providers: [
+      // OIDC providers
       {
         label: 'Login with MUNI',
         textColor: 'white',
@@ -29,9 +31,9 @@ export const environment = {
           logoutUrl: 'https://oidc.muni.cz/oidc/endsession',
           postLogoutRedirectUri: homeURL + '/logout-confirmed/',
           silentRefreshRedirectUri: homeURL + '/silent-refresh.html',
-          clearHashAfterLogin: true // remove token and other info from url after login
+          clearHashAfterLogin: true, // remove token and other info from url after login
         },
       },
-    ]
+    ],
   },
 };
