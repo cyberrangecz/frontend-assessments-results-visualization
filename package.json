@@ -11,8 +11,7 @@
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "build-library": "ng build kypo2-assessments-results-visualization-lib --prod",
     "create-package": "cd dist/kypo2-assessments-results-visualization-lib && npm pack",
-    "build-and-pack": "npm install && npm run build-library && npm run create-package",
-    "publish": "npm run build-and-pack && cd dist/kypo2-assessments-results-visualization-lib && npm publish --registry=http://kypo-storage.ics.muni.cz:8081/repository/npm-hosted"
+    "build-and-pack": "npm install && npm run build-library && npm run create-package"
   },
   "husky": {
     "hooks": {
@@ -33,9 +32,9 @@
     "@angular/platform-browser": "^9.0.0",
     "@angular/platform-browser-dynamic": "^9.0.0",
     "@angular/router": "^9.0.0",
-    "angular-oauth2-oidc": "^8.0.4",
+    "angular-oauth2-oidc": "^9.2.2",
     "core-js": "^2.5.4",
-    "kypo2-auth": "9.0.0",
+    "kypo2-auth": "9.1.0",
     "rxjs": "^6.5.4",
     "tslib": "^1.10.0",
     "typescript-collections": "^1.3.3",
