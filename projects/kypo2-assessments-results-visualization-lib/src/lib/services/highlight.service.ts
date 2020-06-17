@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
-import { User } from 'kypo2-auth';
 import { BehaviorSubject } from 'rxjs';
+import { Trainee } from '../model/trainee/trainee';
 
 /**
  * Service holding state of highlighted players
  */
 @Injectable()
 export class HighlightService {
-  private highlightedPlayerSubject = new BehaviorSubject<User>(undefined);
+  private highlightedTraineeSubject$ = new BehaviorSubject<Trainee>(undefined);
   /**
    * Selected player whose answers should be highlighted
    */
-  highlightedPlayer$ = this.highlightedPlayerSubject.asObservable();
+  highlightedPlayer$ = this.highlightedTraineeSubject$.asObservable();
 
   /**
    * Selects player to highlight his answers
-   * @param player player whose answers should be highlighted
+   * @param trainee trainee whose answers should be highlighted
    */
-  highlight(player: User) {
-    if (this.isAlreadyHighlighted(player)) {
-      this.highlightedPlayerSubject.next(null);
+  highlight(trainee: Trainee) {
+    if (this.isAlreadyHighlighted(trainee)) {
+      this.highlightedTraineeSubject$.next(undefined);
     } else {
-      this.highlightedPlayerSubject.next(player);
+      this.highlightedTraineeSubject$.next(trainee);
     }
   }
 
@@ -29,10 +29,11 @@ export class HighlightService {
    * Clears highlighted player
    */
   clear() {
-    this.highlightedPlayerSubject.next(null);
+    this.highlightedTraineeSubject$.next(null);
   }
 
-  private isAlreadyHighlighted(player: User): boolean {
-    return player.equals(this.highlightedPlayerSubject.getValue());
+  private isAlreadyHighlighted(trainee: Trainee): boolean {
+    const highlighted = this.highlightedTraineeSubject$.getValue();
+    return highlighted && trainee.id === highlighted.id;
   }
 }

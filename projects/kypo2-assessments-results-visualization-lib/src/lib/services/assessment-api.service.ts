@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User, UserDTO } from 'kypo2-auth';
 import { forkJoin, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Assessment } from '../model/assessment';
 import { AssessmentEvent } from '../model/assessment-event';
 import { AssessmentLevelDTO } from '../model/dto/assessment-level-dto';
 import { LevelDTO } from '../model/dto/level-dto';
+import { TraineeDTO } from '../model/dto/trainee-dto';
 import { TrainingAssessmentEventDTO } from '../model/dto/training-assessment-event-dto';
 import { TrainingDefinitionDTO } from '../model/dto/training-definition-dto';
 import { TrainingEventDTO } from '../model/dto/training-event-dto';
+import { Trainee } from '../model/trainee/trainee';
 import { VisualizationSettings } from '../model/visualization-settings';
 import { ConfigService } from './config.service';
 
@@ -47,10 +48,17 @@ export class AssessmentApi {
    * Sends http request to retrieve all trainees participating in training run
    * @param settings all ids and settings necessary to retrieve correct trainees
    */
-  private getTrainees(settings: VisualizationSettings): Observable<User[]> {
-    return this.http
-      .get<UserDTO[]>(this.createTraineesUrl(settings.trainingInstanceId))
-      .pipe(map((userDTOs) => userDTOs.map((userDTO) => User.fromDTO(userDTO))));
+  private getTrainees(settings: VisualizationSettings): Observable<Trainee[]> {
+    return this.http.get<TraineeDTO[]>(this.createTraineesUrl(settings.trainingInstanceId)).pipe(
+      map((traineeDTOs) =>
+        traineeDTOs.map((traineeDTO) => {
+          return {
+            id: traineeDTO.user_ref_id,
+            name: `${traineeDTO.given_name} ${traineeDTO.family_name}`,
+          };
+        })
+      )
+    );
   }
 
   /**
@@ -113,7 +121,7 @@ export class AssessmentApi {
    * @param assessmentEvents events to associate with trainees
    * @param trainees trainees to associate with events
    */
-  private associateEventsWithTrainees(assessmentEvents: AssessmentEvent[], trainees: User[]): AssessmentEvent[] {
+  private associateEventsWithTrainees(assessmentEvents: AssessmentEvent[], trainees: Trainee[]): AssessmentEvent[] {
     assessmentEvents.forEach((event) => {
       const matchedTrainee = trainees.find((trainee) => trainee.id === event.traineeId);
       if (matchedTrainee) {
@@ -132,10 +140,10 @@ export class AssessmentApi {
    */
   private associateEventsWithAnonymousTrainees(events: AssessmentEvent[], activeUserId: number): AssessmentEvent[] {
     events.forEach((event) => {
-      const trainee = new User([]);
-      trainee.id = event.traineeId;
-      trainee.name = event.traineeId === activeUserId ? 'you' : 'other player';
-      event.trainee = trainee;
+      event.trainee = {
+        id: event.traineeId,
+        name: event.traineeId === activeUserId ? 'you' : 'other player',
+      };
     });
     return events;
   }

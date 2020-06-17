@@ -1,7 +1,7 @@
 import { OnDestroy } from '@angular/core';
-import { User } from 'kypo2-auth';
 import { Answer } from '../../model/question/answer';
 import { Question } from '../../model/question/question';
+import { Trainee } from '../../model/trainee/trainee';
 import { HighlightService } from '../../services/highlight.service';
 
 /**
@@ -37,18 +37,18 @@ export abstract class Highlightable implements OnDestroy {
   }
 
   private subscribeEvents() {
-    this.highlightService.highlightedPlayer$.subscribe((player) => {
-      if (player) {
+    this.highlightService.highlightedPlayer$.subscribe((trainee) => {
+      if (trainee) {
         this.unhighlightPlayer();
-        this.highlightPlayer(player);
-      } else if (player === null) {
+        this.highlightPlayer(trainee);
+      } else if (trainee === null) {
         this.unhighlightPlayer();
       }
     });
   }
 
-  private highlightPlayer(player: User) {
-    this.question.answers.forEach((answer) => answer.tryHighlight(player));
+  private highlightPlayer(trainee: Trainee) {
+    this.question.answers.forEach((answer) => answer.tryHighlight(trainee));
   }
 
   private unhighlightPlayer() {
