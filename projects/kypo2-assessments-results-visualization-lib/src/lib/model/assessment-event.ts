@@ -1,5 +1,5 @@
-import { User } from 'kypo2-auth';
 import { TrainingAssessmentEventDTO } from './dto/training-assessment-event-dto';
+import { Trainee } from './trainee/trainee';
 
 /**
  * Assessment event recorded in a training run by trainee
@@ -8,7 +8,7 @@ export class AssessmentEvent {
   levelId: number;
   answers: string;
   traineeId: number;
-  trainee: User;
+  trainee: Trainee;
 
   constructor(eventDTO: TrainingAssessmentEventDTO) {
     this.levelId = eventDTO.level;

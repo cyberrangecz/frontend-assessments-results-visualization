@@ -1,14 +1,14 @@
-import { User } from 'kypo2-auth';
+import { Trainee } from '../trainee/trainee';
 
 /**
  * Abstract class representing answer of a question in assessment level
  */
 export abstract class Answer {
-  trainee: User;
+  trainee: Trainee;
   isCorrect: boolean;
   isHighlighted: boolean;
 
-  protected constructor(trainee: User) {
+  protected constructor(trainee: Trainee) {
     this.trainee = trainee;
   }
 
@@ -21,8 +21,8 @@ export abstract class Answer {
    * Highlights the answer if the answer is associated with provided trainee
    * @param trainee trainee to highlight
    */
-  tryHighlight(trainee: User) {
-    this.isHighlighted = this.trainee.equals(trainee);
+  tryHighlight(trainee: Trainee) {
+    this.isHighlighted = this.trainee.id === trainee.id;
   }
 
   /**

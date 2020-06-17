@@ -1,4 +1,4 @@
-import { User } from 'kypo2-auth';
+import { Trainee } from '../../trainee/trainee';
 import { Answer } from '../answer';
 import { EMIChoice } from './emi-choice';
 
@@ -8,7 +8,7 @@ import { EMIChoice } from './emi-choice';
 export class EMIAnswer extends Answer {
   choices: EMIChoice[] = [];
 
-  constructor(answerJSON, trainee: User) {
+  constructor(answerJSON, trainee: Trainee) {
     super(trainee);
     this.choices = answerJSON.pairs
       .map((pair) => new EMIChoice(pair.x, pair.y))

@@ -1,4 +1,3 @@
-import { User } from 'kypo2-auth';
 import { AssessmentEvent } from './assessment-event';
 import { AssessmentLevelDTO } from './dto/assessment-level-dto';
 import { Answer } from './question/answer';
@@ -9,6 +8,7 @@ import { FFQAnswer } from './question/ffq/ffq-answer';
 import { MCQ } from './question/mcq/mcq';
 import { MCQAnswer } from './question/mcq/mcq-answer';
 import { Question } from './question/question';
+import { Trainee } from './trainee/trainee';
 
 /**
  * Assessment level in a training run. Contains basic info about the assessment and questions with recorded answers
@@ -55,7 +55,7 @@ export class Assessment {
     });
   }
 
-  private answerJSONToAnswer(answerJSON, question: Question, trainee: User): Answer {
+  private answerJSONToAnswer(answerJSON, question: Question, trainee: Trainee): Answer {
     if (question instanceof FFQ) {
       return new FFQAnswer(answerJSON, trainee);
     }

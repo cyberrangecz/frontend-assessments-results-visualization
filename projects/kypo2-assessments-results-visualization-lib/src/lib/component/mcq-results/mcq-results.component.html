@@ -32,7 +32,7 @@
         <div class="player-answers">
           <span class="player-answer"
                 *ngFor="let answer of data.answers"
-                [ngClass]="{'selected': answer.selected}"
+                [ngClass]="{'selected': answer.isHighlighted}"
                 [matTooltip]="answer.trainee.name"
                 (click)="highlight(answer, $event)">
           </span>
