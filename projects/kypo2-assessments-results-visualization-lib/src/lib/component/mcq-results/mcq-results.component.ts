@@ -3,7 +3,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MCQ } from '../../model/question/mcq/mcq';
 import { MCQTableAdapter } from '../../model/table-adapter/mcq-table-adapter';
 import { HighlightService } from '../../services/highlight.service';
-import { Highlightable } from '../shared/highlightable';
+import { HighlightableDirective } from '../../directives/highlightable.directive';
 
 /**
  * Component displaying result of a multiple choice question
@@ -13,7 +13,7 @@ import { Highlightable } from '../shared/highlightable';
   templateUrl: './mcq-results.component.html',
   styleUrls: ['./../shared/emi-mcq-table.component.css'],
 })
-export class MCQResultsComponent extends Highlightable implements OnInit {
+export class MCQResultsComponent extends HighlightableDirective implements OnInit {
   @Input() question: MCQ;
 
   /**

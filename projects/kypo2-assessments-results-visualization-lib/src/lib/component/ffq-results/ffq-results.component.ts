@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { FFQ } from '../../model/question/ffq/ffq';
 import { HighlightService } from '../../services/highlight.service';
-import { Highlightable } from '../shared/highlightable';
+import { HighlightableDirective } from '../../directives/highlightable.directive';
 
 /**
  * Component displaying result of a free form question
@@ -12,7 +12,7 @@ import { Highlightable } from '../shared/highlightable';
   templateUrl: './ffq-results.component.html',
   styleUrls: ['./ffq-results.component.css'],
 })
-export class FFQResultsComponent extends Highlightable implements OnInit {
+export class FFQResultsComponent extends HighlightableDirective implements OnInit {
   @Input() question: FFQ;
 
   /**
