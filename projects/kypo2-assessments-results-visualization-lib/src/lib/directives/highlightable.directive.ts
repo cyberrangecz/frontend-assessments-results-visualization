@@ -1,13 +1,14 @@
-import { OnDestroy } from '@angular/core';
-import { Answer } from '../../model/question/answer';
-import { Question } from '../../model/question/question';
-import { Trainee } from '../../model/trainee/trainee';
-import { HighlightService } from '../../services/highlight.service';
+import { Directive, OnDestroy } from '@angular/core';
+import { Answer } from '../model/question/answer';
+import { Question } from '../model/question/question';
+import { Trainee } from '../model/trainee/trainee';
+import { HighlightService } from '../services/highlight.service';
 
 /**
  * Class representing behaviour of highlightable components
  */
-export abstract class Highlightable implements OnDestroy {
+@Directive()
+export abstract class HighlightableDirective implements OnDestroy {
   isAlive = true;
   abstract question: Question;
 

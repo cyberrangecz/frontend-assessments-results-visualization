@@ -3,7 +3,7 @@ import { Answer } from '../../model/question/answer';
 import { EMI } from '../../model/question/emi/emi';
 import { EMITableAdapter } from '../../model/table-adapter/emi-table-adapter';
 import { HighlightService } from '../../services/highlight.service';
-import { Highlightable } from '../shared/highlightable';
+import { HighlightableDirective } from '../../directives/highlightable.directive';
 
 /**
  * Component displaying result of a extended matching items
@@ -13,7 +13,7 @@ import { Highlightable } from '../shared/highlightable';
   templateUrl: './emi-results.component.html',
   styleUrls: ['./emi-results.component.css'],
 })
-export class EMIResultsComponent extends Highlightable implements OnInit {
+export class EMIResultsComponent extends HighlightableDirective implements OnInit {
   @Input() question: EMI;
   tableAdapters: EMITableAdapter[] = [];
 
