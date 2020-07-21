@@ -15,6 +15,7 @@ import { Kypo2AssessmentsResultsVisualizationModule } from 'projects/kypo2-asses
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { VISUALIZATION_CONFIG } from './custom-config';
 
 const routes: Routes = [
   {
@@ -43,7 +44,7 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    Kypo2AssessmentsResultsVisualizationModule.forRoot({ restBaseUrl: environment.restBaseUrl }),
+    Kypo2AssessmentsResultsVisualizationModule.forRoot(VISUALIZATION_CONFIG),
     Kypo2AuthModule.forRoot(environment.kypo2AuthConfig),
     RouterModule.forRoot(routes),
   ],
