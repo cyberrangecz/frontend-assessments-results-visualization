@@ -7,7 +7,7 @@ import { FFQResultsComponent } from './component/ffq-results/ffq-results.compone
 import { MCQResultsComponent } from './component/mcq-results/mcq-results.component';
 import { Kypo2AssessmentResultsVisualizationComponent } from './kypo2-assessment-results-visualization.component';
 import { Kypo2AssessmentsResultsVisualizationMaterialModule } from './kypo2-assessments-results-visualization-material.module';
-import { Kypo2AssessmentConfig } from './model/config/kypo2-asssessment-config';
+import { AssessmentVisualizationConfig } from './model/config/asssessment-visualization-config';
 import { AssessmentApi } from './services/assessment-api.service';
 import { ConfigService } from './services/config.service';
 
@@ -41,11 +41,11 @@ export class Kypo2AssessmentsResultsVisualizationModule {
    * @param kypo2AssessmentConfig configuration object of the visualization
    */
   static forRoot(
-    kypo2AssessmentConfig: Kypo2AssessmentConfig
+    kypo2AssessmentConfig: AssessmentVisualizationConfig
   ): ModuleWithProviders<Kypo2AssessmentsResultsVisualizationModule> {
     return {
       ngModule: Kypo2AssessmentsResultsVisualizationModule,
-      providers: [{ provide: Kypo2AssessmentConfig, useValue: kypo2AssessmentConfig }],
+      providers: [{ provide: AssessmentVisualizationConfig, useValue: kypo2AssessmentConfig }],
     };
   }
 }

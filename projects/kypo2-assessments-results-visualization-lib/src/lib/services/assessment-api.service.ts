@@ -149,19 +149,19 @@ export class AssessmentApi {
   }
 
   private createEventsUrl(trainingDefinitionId: number, trainingInstanceId: number): string {
-    const baseUrl = this.configService.config.restBaseUrl;
+    const baseUrl = this.configService.config.elasticSearchServiceUrl;
     return `${baseUrl}training-events/training-definitions/${trainingDefinitionId}/training-instances/${trainingInstanceId}`;
   }
 
   private createDefinitionInfoUrl(trainingInstanceId: number, trainingRunId: number = null): string {
-    const baseUrl = this.configService.config.restBaseUrl;
+    const baseUrl = this.configService.config.trainingServiceUrl;
     return trainingRunId !== null
       ? `${baseUrl}visualizations/training-runs/${trainingRunId}`
       : `${baseUrl}visualizations/training-instances/${trainingInstanceId}`;
   }
 
   private createTraineesUrl(trainingInstanceId: number): string {
-    const baseUrl = this.configService.config.restBaseUrl;
+    const baseUrl = this.configService.config.trainingServiceUrl;
     return `${baseUrl}visualizations/training-instances/${trainingInstanceId}/participants`;
   }
 }
