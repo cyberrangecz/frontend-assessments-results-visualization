@@ -150,7 +150,7 @@ export class AssessmentApi {
 
   private createEventsUrl(trainingDefinitionId: number, trainingInstanceId: number): string {
     const baseUrl = this.configService.config.elasticSearchServiceUrl;
-    return `${baseUrl}training-events/training-definitions/${trainingDefinitionId}/training-instances/${trainingInstanceId}`;
+    return `${baseUrl}training-platform-events/training-definitions/${trainingDefinitionId}/training-instances/${trainingInstanceId}`;
   }
 
   private createDefinitionInfoUrl(trainingInstanceId: number, trainingRunId: number = null): string {
