@@ -7,7 +7,7 @@ export const environment = {
   production: true,
   trainingServiceUrl: 'https://172.19.0.22/kypo2-rest-training',
   elasticSearchServiceUrl: 'https://172.19.0.22/kypo-elasticsearch-service/api/v1/',
-  kypo2AuthConfig: {
+  authConfig: {
     maxRetryAttempts: 3, // How many attempts to try to get user info from user and group service before emitting error
     guardMainPageRedirect: 'home', // Redirect from login page if user is logged in
     guardLoginPageRedirect: 'login', // Redirect to login page if user is not logged in
