@@ -25,8 +25,8 @@ To use the library you need to have installed:
 
 To use the library in your Angular application follow these steps:
 
-1. Run `npm install @kypo/assessment-visualization`
+1. Run `npm install @muni-kypo-crp/assessment-visualization`
 2. Create config class extending **Kypo2AssessmentConfig** from the library. Config contains following options:
    - restBaseUrl
-3. Import **Kypo2AssessmentsResultsVisualizationModule** from **@kypo/assessment-visualization** and add it to imports in your module with `Kypo2AssessmentsResultsVisualizationModule.forRoot(Kypo2AssessmentConfig)`.
+3. Import **Kypo2AssessmentsResultsVisualizationModule** from **@muni-kypo-crp/assessment-visualization** and add it to imports in your module with `Kypo2AssessmentsResultsVisualizationModule.forRoot(Kypo2AssessmentConfig)`.
 4. Use `<kypo2-assessment-results-viz>` element in your code and provide attributes `trainingDefinitionId`, `trainingInstanceId` and optionally `traineeModeInfo` .
