@@ -8,7 +8,7 @@ import { EMIChoice } from './emi-choice';
 export class EMIAnswer extends Answer {
   choices: EMIChoice[] = [];
 
-  constructor(answerJSON, trainee: Trainee) {
+  constructor(answerJSON: any, trainee: Trainee) {
     super(trainee);
     this.choices = answerJSON.pairs
       .map((pair) => new EMIChoice(pair.x, pair.y))

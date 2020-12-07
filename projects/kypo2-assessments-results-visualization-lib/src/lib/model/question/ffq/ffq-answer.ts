@@ -7,7 +7,7 @@ import { Answer } from '../answer';
 export class FFQAnswer extends Answer {
   text: string;
 
-  constructor(answerJSON, trainee: Trainee) {
+  constructor(answerJSON: any, trainee: Trainee) {
     super(trainee);
     this.text = answerJSON.text;
   }

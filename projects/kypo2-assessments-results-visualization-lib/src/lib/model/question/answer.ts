@@ -21,14 +21,14 @@ export abstract class Answer {
    * Highlights the answer if the answer is associated with provided trainee
    * @param trainee trainee to highlight
    */
-  tryHighlight(trainee: Trainee) {
+  tryHighlight(trainee: Trainee): void {
     this.isHighlighted = this.trainee.id === trainee.id;
   }
 
   /**
    * Stops being highlighted
    */
-  clearHighlight() {
+  clearHighlight(): void {
     this.isHighlighted = false;
   }
 }

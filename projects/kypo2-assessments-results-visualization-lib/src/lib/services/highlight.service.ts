@@ -17,7 +17,7 @@ export class HighlightService {
    * Selects player to highlight his answers
    * @param trainee trainee whose answers should be highlighted
    */
-  highlight(trainee: Trainee) {
+  highlight(trainee: Trainee): void {
     if (this.isAlreadyHighlighted(trainee)) {
       this.highlightedTraineeSubject$.next(undefined);
     } else {
@@ -28,7 +28,7 @@ export class HighlightService {
   /**
    * Clears highlighted player
    */
-  clear() {
+  clear(): void {
     this.highlightedTraineeSubject$.next(null);
   }
 

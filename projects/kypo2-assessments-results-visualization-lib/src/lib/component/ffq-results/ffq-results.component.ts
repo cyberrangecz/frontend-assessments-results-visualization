@@ -26,7 +26,7 @@ export class FFQResultsComponent extends HighlightableDirective implements OnIni
     super(highlightService);
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.dataSource = new MatTableDataSource(this.question.answers);
     this.isTest = this.question.correctAnswers.length > 0;
   }
@@ -35,7 +35,7 @@ export class FFQResultsComponent extends HighlightableDirective implements OnIni
    * Filters by answer
    * @param filterValue answer to filter by
    */
-  applyFilter(filterValue: string) {
+  applyFilter(filterValue: string): void {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

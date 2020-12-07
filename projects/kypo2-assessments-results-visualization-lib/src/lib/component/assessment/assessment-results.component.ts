@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Assessment } from '../../model/assessment';
 import { HighlightService } from '../../services/highlight.service';
 
@@ -11,10 +11,6 @@ import { HighlightService } from '../../services/highlight.service';
   styleUrls: ['./assessment-results.component.css'],
   providers: [HighlightService],
 })
-export class AssessmentResultsComponent implements OnInit {
+export class AssessmentResultsComponent {
   @Input() assessments: Assessment[];
-
-  constructor() {}
-
-  ngOnInit() {}
 }

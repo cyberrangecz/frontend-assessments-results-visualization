@@ -19,7 +19,7 @@ export class EmiTableComponent implements OnInit {
   displayedColumns = ['option', 'sum', 'percentage', 'answers'];
   dataSource;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.dataSource = new MatTableDataSource(this.tableData.rows);
   }
 
@@ -27,7 +27,7 @@ export class EmiTableComponent implements OnInit {
    * Calls service to highlight the answer
    * @param $event mouse event
    */
-  onHighlight(answer: Answer, $event: MouseEvent) {
+  onHighlight(answer: Answer, $event: MouseEvent): void {
     this.highlighted.emit({ answer, mouseEvent: $event });
   }
 }
