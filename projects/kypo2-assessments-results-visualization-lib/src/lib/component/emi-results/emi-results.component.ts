@@ -29,7 +29,7 @@ export class EMIResultsComponent extends HighlightableDirective implements OnIni
    * Calls service to highlight the answer
    * @param $event mouse event
    */
-  onHighlight($event: { answer: Answer; mouseEvent: MouseEvent }) {
+  onHighlight($event: { answer: Answer; mouseEvent: MouseEvent }): void {
     this.highlight($event.answer, $event.mouseEvent);
   }
 }

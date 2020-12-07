@@ -7,7 +7,7 @@ import { Answer } from '../answer';
 export class MCQAnswer extends Answer {
   traineeChoices: number[] = [];
 
-  constructor(answerJSON, trainee: Trainee) {
+  constructor(answerJSON: any, trainee: Trainee) {
     super(trainee);
     this.traineeChoices = answerJSON.choices.sort((a, b) => a - b);
   }

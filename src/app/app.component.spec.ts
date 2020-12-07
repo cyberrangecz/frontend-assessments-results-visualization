@@ -16,6 +16,7 @@ describe('AppComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     cd = fixture.componentRef.injector.get(ChangeDetectorRef);
   });
 

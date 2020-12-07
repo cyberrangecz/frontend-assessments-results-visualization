@@ -16,7 +16,7 @@ export class MCQ extends Question {
   correctChoices: number[] = [];
   answers: MCQAnswer[];
 
-  constructor(questionJSON, isTest: boolean) {
+  constructor(questionJSON: any, isTest: boolean) {
     super(questionJSON);
     this.type = 'MCQ';
     this.options = questionJSON.choices.sort((a, b) => a.order - b.order).map((choice) => choice.text);
@@ -31,7 +31,7 @@ export class MCQ extends Question {
   /**
    * Evaluates correctness of all associated answers
    */
-  evaluateAnswers() {
+  evaluateAnswers(): void {
     if (this.correctChoices.length > 0) {
       this.answers.forEach((answer) => {
         answer.isCorrect = answer.hasSameChoices(this.correctChoices);
@@ -63,7 +63,7 @@ export class MCQ extends Question {
    * Returns true if the choice is include in correct choices
    * @param choiceIndex index of a choice to compare
    */
-  isCorrectAnswer(choiceIndex: number) {
+  isCorrectAnswer(choiceIndex: number): boolean {
     return this.correctChoices.find((correctIndex) => choiceIndex === correctIndex) !== undefined;
   }
 

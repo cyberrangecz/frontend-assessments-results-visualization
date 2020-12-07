@@ -13,7 +13,7 @@ export class FFQ extends Question {
   correctAnswers: string[] = [];
   answers: FFQAnswer[];
 
-  constructor(questionJSON, isTest: boolean) {
+  constructor(questionJSON: any, isTest: boolean) {
     super(questionJSON);
     this.type = 'FFQ';
     if (isTest) {
@@ -24,7 +24,7 @@ export class FFQ extends Question {
   /**
    * Evaluates correctness of all associated answers
    */
-  evaluateAnswers() {
+  evaluateAnswers(): void {
     this.answers.forEach((answer) => {
       answer.isCorrect = this.correctAnswers.some((correctAnswer) => answer.hasSameText(correctAnswer));
     });

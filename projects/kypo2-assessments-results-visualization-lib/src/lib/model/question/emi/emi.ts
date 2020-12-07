@@ -18,7 +18,7 @@ export class EMI extends Question {
   answers: EMIAnswer[] = [];
   correctChoices: EMIChoice[] = [];
 
-  constructor(questionJSON, isTest: boolean) {
+  constructor(questionJSON: any, isTest: boolean) {
     super(questionJSON);
     this.type = 'EMI';
     this.cols = questionJSON.cols;
@@ -33,7 +33,7 @@ export class EMI extends Question {
   /**
    * Evaluates correctness of all associated answers
    */
-  evaluateAnswers() {
+  evaluateAnswers(): void {
     if (this.correctChoices.length > 0) {
       this.answers.forEach((answer) => (answer.isCorrect = answer.hasSameChoices(this.correctChoices)));
     }

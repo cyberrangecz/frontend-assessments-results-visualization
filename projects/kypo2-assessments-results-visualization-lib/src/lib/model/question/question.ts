@@ -11,7 +11,7 @@ export abstract class Question {
   type: string;
   answers: Answer[] = [];
 
-  protected constructor(questionJSON) {
+  protected constructor(questionJSON: any) {
     this.title = questionJSON.text;
     this.penalty = questionJSON.penalty;
     this.score = questionJSON.points;
@@ -21,5 +21,5 @@ export abstract class Question {
   /**
    * Evaluates if answer was answered correctly or not and stores the result in answer object
    */
-  abstract evaluateAnswers();
+  abstract evaluateAnswers(): void;
 }

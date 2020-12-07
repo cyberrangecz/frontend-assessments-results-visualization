@@ -38,7 +38,7 @@ export class Assessment {
    * Adds trainees' answers to questions from recorded assessment events
    * @param assessmentEvent recorded assessment event
    */
-  fillAnswers(assessmentEvent: AssessmentEvent) {
+  fillAnswers(assessmentEvent: AssessmentEvent): void {
     const answersJSON = JSON.parse(assessmentEvent.answers);
     this.questions.forEach((question) => {
       answersJSON

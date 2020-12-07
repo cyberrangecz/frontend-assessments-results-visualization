@@ -23,7 +23,7 @@ export abstract class HighlightableDirective implements OnDestroy {
   /**
    * Clears highlighting of the component
    */
-  clear() {
+  clear(): void {
     this.highlightService.clear();
   }
 
@@ -32,7 +32,7 @@ export abstract class HighlightableDirective implements OnDestroy {
    * @param answer answer to be selected
    * @param event mouse click event
    */
-  highlight(answer: Answer, event: MouseEvent) {
+  highlight(answer: Answer, event: MouseEvent): void {
     event.stopPropagation();
     this.highlightService.highlight(answer.trainee);
   }
