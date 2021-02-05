@@ -43,6 +43,10 @@ const routes: Routes = [
     SentinelAuthModule.forRoot(environment.authConfig),
     RouterModule.forRoot(routes),
   ],
+  providers: [
+    SentinelAuthGuardWithLogin,
+    SentinelNegativeAuthGuard
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
