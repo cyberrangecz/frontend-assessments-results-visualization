@@ -11,10 +11,11 @@ import { EMITableAdapter } from '../../../model/table-adapter/emi-table-adapter'
   templateUrl: './emi-table.component.html',
   styleUrls: ['./../../shared/emi-mcq-table.component.css'],
 })
+/* eslint-disable @angular-eslint/no-output-on-prefix */
 export class EmiTableComponent implements OnInit {
   @Input() tableData: EMITableAdapter;
   @Input() isTest: boolean;
-  @Output() highlighted = new EventEmitter<{ answer: Answer; mouseEvent: MouseEvent }>();
+  @Output() highlighted: EventEmitter<any> = new EventEmitter();
 
   displayedColumns = ['option', 'sum', 'percentage', 'answers'];
   dataSource;
@@ -25,9 +26,10 @@ export class EmiTableComponent implements OnInit {
 
   /**
    * Calls service to highlight the answer
+   * @param answer
    * @param $event mouse event
    */
   onHighlight(answer: Answer, $event: MouseEvent): void {
-    this.highlighted.emit({ answer, mouseEvent: $event });
+    this.highlighted.emit({ answer: Answer, mouseEvent: $event });
   }
 }

@@ -4,7 +4,7 @@
     <kypo2-emi-results-table
       [tableData]="tableAdapters[i]"
       [isTest]="question.correctChoices.length > 0"
-      (highlighted)="onHighlight($event)">
+      (highlighted)="highlighted($event)">
     </kypo2-emi-results-table>
   </div>
 
