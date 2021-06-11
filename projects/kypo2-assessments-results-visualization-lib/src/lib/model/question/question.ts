@@ -1,9 +1,11 @@
 import { Answer } from './answer';
+import { QuestionDTO } from '../dto/question-dto';
 
 /**
  * Abstract class representing a question in assessment
  */
 export abstract class Question {
+  id: number;
   title: string;
   order: number;
   score: number;
@@ -11,11 +13,12 @@ export abstract class Question {
   type: string;
   answers: Answer[] = [];
 
-  protected constructor(questionJSON: any) {
-    this.title = questionJSON.text;
-    this.penalty = questionJSON.penalty;
-    this.score = questionJSON.points;
-    this.order = questionJSON.order;
+  protected constructor(questionDTO: QuestionDTO) {
+    this.id = questionDTO.id;
+    this.title = questionDTO.text;
+    this.penalty = questionDTO.penalty;
+    this.score = questionDTO.points;
+    this.order = questionDTO.order;
   }
 
   /**

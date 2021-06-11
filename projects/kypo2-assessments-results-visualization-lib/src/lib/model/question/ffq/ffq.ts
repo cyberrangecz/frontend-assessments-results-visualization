@@ -1,5 +1,6 @@
 import { Question } from '../question';
 import { FFQAnswer } from './ffq-answer';
+import { QuestionDTO } from '../../dto/question-dto';
 
 /**
  *  Class representing a free form question
@@ -13,11 +14,13 @@ export class FFQ extends Question {
   correctAnswers: string[] = [];
   answers: FFQAnswer[];
 
-  constructor(questionJSON: any, isTest: boolean) {
-    super(questionJSON);
+  constructor(questionDTO: QuestionDTO, isTest: boolean) {
+    super(questionDTO);
     this.type = 'FFQ';
     if (isTest) {
-      this.correctAnswers = questionJSON.correct_choices;
+      this.correctAnswers = questionDTO.choices
+        .filter((choiceDTO) => choiceDTO.correct)
+        .map((choiceDTO) => choiceDTO.text);
     }
   }
 

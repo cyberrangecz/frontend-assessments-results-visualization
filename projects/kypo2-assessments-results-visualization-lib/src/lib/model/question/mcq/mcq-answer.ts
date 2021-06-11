@@ -5,18 +5,18 @@ import { Answer } from '../answer';
  * Class representing an answer to a multiple choice question where traineeChoices are indexes of options selected as correct by trainee
  */
 export class MCQAnswer extends Answer {
-  traineeChoices: number[] = [];
+  traineeChoices: string[] = [];
 
   constructor(answerJSON: any, trainee: Trainee) {
     super(trainee);
-    this.traineeChoices = answerJSON.choices.sort((a, b) => a - b);
+    this.traineeChoices = answerJSON.answers;
   }
 
   /**
    * Compares trainees choices in this answer with provided answers. True if they are matching, false otherwise
    * @param choices choices to compare with the answer
    */
-  hasSameChoices(choices: number[]): boolean {
+  hasSameChoices(choices: string[]): boolean {
     if (
       this.traineeChoices === null ||
       this.traineeChoices === undefined ||
@@ -47,7 +47,7 @@ export class MCQAnswer extends Answer {
    * True if at least one choice selected as answer is same as the one provided, false otherwise
    * @param choiceIndex index of a choice to match
    */
-  hasMatchingChoice(choiceIndex: number): boolean {
-    return this.traineeChoices.filter((userChoice) => userChoice === choiceIndex).length > 0;
+  hasMatchingChoice(choice: string): boolean {
+    return this.traineeChoices.filter((userChoice) => userChoice === choice).length > 0;
   }
 }
