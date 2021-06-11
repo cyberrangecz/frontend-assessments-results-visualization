@@ -1,6 +1,7 @@
 import { Question } from '../question';
 import { EMIAnswer } from './emi-answer';
 import { EMIChoice } from './emi-choice';
+import { QuestionDTO } from '../../dto/question-dto';
 
 /**
  * Class representing a extended matching items question
@@ -18,14 +19,14 @@ export class EMI extends Question {
   answers: EMIAnswer[] = [];
   correctChoices: EMIChoice[] = [];
 
-  constructor(questionJSON: any, isTest: boolean) {
-    super(questionJSON);
+  constructor(questionDTO: QuestionDTO, isTest: boolean) {
+    super(questionDTO);
     this.type = 'EMI';
-    this.cols = questionJSON.cols;
-    this.rows = questionJSON.rows;
+    this.cols = questionDTO.extended_matching_options.map((optionDTO) => optionDTO.text);
+    this.rows = questionDTO.extended_matching_statements.map((statementDTO) => statementDTO.text);
     if (isTest) {
-      this.correctChoices = questionJSON.correct_answers
-        .map((correctAnswerJSON) => new EMIChoice(correctAnswerJSON.x, correctAnswerJSON.y))
+      this.correctChoices = questionDTO.extended_matching_statements
+        .map((statementDTO) => new EMIChoice(statementDTO.order, statementDTO.correct_option_order))
         .sort((choiceA, choiceB) => choiceA.x - choiceB.x);
     }
   }

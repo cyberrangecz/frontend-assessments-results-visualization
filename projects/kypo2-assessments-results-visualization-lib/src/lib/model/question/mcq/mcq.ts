@@ -1,5 +1,6 @@
 import { Question } from '../question';
 import { MCQAnswer } from './mcq-answer';
+import { QuestionDTO } from '../../dto/question-dto';
 
 /**
  * Class representing a multiple choice question
@@ -13,18 +14,17 @@ import { MCQAnswer } from './mcq-answer';
  */
 export class MCQ extends Question {
   options: string[] = [];
-  correctChoices: number[] = [];
+  correctChoices: string[] = [];
   answers: MCQAnswer[];
 
-  constructor(questionJSON: any, isTest: boolean) {
-    super(questionJSON);
+  constructor(questionDTO: QuestionDTO, isTest: boolean) {
+    super(questionDTO);
     this.type = 'MCQ';
-    this.options = questionJSON.choices.sort((a, b) => a.order - b.order).map((choice) => choice.text);
+    this.options = questionDTO.choices.sort((a, b) => a.order - b.order).map((choice) => choice.text);
     if (isTest) {
-      this.correctChoices = questionJSON.choices
-        .filter((choice) => choice.is_correct)
-        .map((correctChoice) => correctChoice.order)
-        .sort((a, b) => a - b);
+      this.correctChoices = questionDTO.choices
+        .filter((choice) => choice.correct)
+        .map((correctChoice) => correctChoice.text);
     }
   }
 
@@ -41,37 +41,37 @@ export class MCQ extends Question {
 
   /**
    * Calculates total share of the answer and returns result as percentage (number 0 - 100)
-   * @param optionIndex index of a option which share should be calculated
+   * @param option content of the option which share should be calculated
    */
-  calculateMatchingAnswersShare(optionIndex: number): number {
+  calculateMatchingAnswersShare(option: string): number {
     if (this.answers.length <= 0) {
       return 0;
     }
-    const matchingAnswers = this.filterAnswersByChoice(optionIndex);
+    const matchingAnswers = this.filterAnswersByChoice(option);
     return (matchingAnswers.length / this.answers.length) * 100;
   }
 
   /**
    * Calculates total number of same answers
-   * @param optionIndex index of a option which count should be calculated
+   * @param option context of the option which count should be calculated
    */
-  calculateSameAnswersCount(optionIndex: number): number {
-    return this.filterAnswersByChoice(optionIndex).length;
+  calculateSameAnswersCount(option: string): number {
+    return this.filterAnswersByChoice(option).length;
   }
 
   /**
    * Returns true if the choice is include in correct choices
-   * @param choiceIndex index of a choice to compare
+   * @param choice content of the choice choice to compare
    */
-  isCorrectAnswer(choiceIndex: number): boolean {
-    return this.correctChoices.find((correctIndex) => choiceIndex === correctIndex) !== undefined;
+  isCorrectAnswer(choice: string): boolean {
+    return this.correctChoices.find((correctChoice) => choice === correctChoice) !== undefined;
   }
 
   /**
    * Filters answers including selected choice
-   * @param choiceIndex index of a choice to compare
+   * @param choice content of the choice to compare
    */
-  filterAnswersByChoice(choiceIndex: number): MCQAnswer[] {
-    return this.answers.filter((answer) => answer.hasMatchingChoice(choiceIndex));
+  filterAnswersByChoice(choice: string): MCQAnswer[] {
+    return this.answers.filter((answer) => answer.hasMatchingChoice(choice));
   }
 }

@@ -9,7 +9,7 @@ export class FFQAnswer extends Answer {
 
   constructor(answerJSON: any, trainee: Trainee) {
     super(trainee);
-    this.text = answerJSON.text;
+    this.text = answerJSON.answers[0];
   }
 
   /**

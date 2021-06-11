@@ -9,6 +9,7 @@ import { MCQ } from './question/mcq/mcq';
 import { MCQAnswer } from './question/mcq/mcq-answer';
 import { Question } from './question/question';
 import { Trainee } from './trainee/trainee';
+import { QuestionDTO } from './dto/question-dto';
 
 /**
  * Assessment level in a training run. Contains basic info about the assessment and questions with recorded answers
@@ -29,9 +30,7 @@ export class Assessment {
     this.maxScore = levelDTO.max_score;
     this.order = levelDTO.order;
     this.title = levelDTO.title;
-    this.questions = this.questionsJSONToQuestions(JSON.parse(levelDTO.questions), this.isTest).sort(
-      (a, b) => a.order - b.order
-    );
+    this.questions = this.questionsDTOsToQuestions(levelDTO.questions, this.isTest).sort((a, b) => a.order - b.order);
   }
 
   /**
@@ -42,7 +41,7 @@ export class Assessment {
     const answersJSON = JSON.parse(assessmentEvent.answers);
     this.questions.forEach((question) => {
       answersJSON
-        .filter((answerJSON) => answerJSON.question_order === question.order)
+        .filter((answerJSON) => answerJSON.questionId === question.id)
         .forEach((matchedAnswerJSON) => {
           const answer = this.answerJSONToAnswer(matchedAnswerJSON, question, assessmentEvent.trainee);
           if (answer.wasAnswered()) {
@@ -69,18 +68,18 @@ export class Assessment {
     return null;
   }
 
-  private questionsJSONToQuestions(questionsJSON, isTest: boolean): Question[] {
-    return questionsJSON.map((questionJSON) => this.questionJSONToQuestion(questionJSON, isTest));
+  private questionsDTOsToQuestions(questionsDTOs: QuestionDTO[], isTest: boolean): Question[] {
+    return questionsDTOs.map((questionJSON) => this.questionDTOToQuestion(questionJSON, isTest));
   }
 
-  private questionJSONToQuestion(questionJSON, isTest: boolean): Question {
-    switch (questionJSON.question_type) {
+  private questionDTOToQuestion(questionDTO: QuestionDTO, isTest: boolean): Question {
+    switch (questionDTO.question_type) {
       case 'FFQ':
-        return new FFQ(questionJSON, isTest);
+        return new FFQ(questionDTO, isTest);
       case 'EMI':
-        return new EMI(questionJSON, isTest);
+        return new EMI(questionDTO, isTest);
       case 'MCQ':
-        return new MCQ(questionJSON, isTest);
+        return new MCQ(questionDTO, isTest);
       default:
         console.error('Could not map question from JSON to any of known types');
     }

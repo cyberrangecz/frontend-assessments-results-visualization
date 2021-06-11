@@ -10,8 +10,8 @@ export class EMIAnswer extends Answer {
 
   constructor(answerJSON: any, trainee: Trainee) {
     super(trainee);
-    this.choices = answerJSON.pairs
-      .map((pair) => new EMIChoice(pair.x, pair.y))
+    this.choices = answerJSON.answers
+      .map((pair) => new EMIChoice(pair.statementOrder, pair.optionOrder))
       .sort((choiceA, choiceB) => choiceA.x - choiceB.x);
   }
 
