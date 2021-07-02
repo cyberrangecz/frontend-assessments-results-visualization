@@ -1,11 +1,11 @@
 export const baseURL = 'https://172.19.0.22';
 export const homeURL = 'https://localhost:4200';
-export const trainingURL = baseURL + '/kypo2-rest-training/api/v1/';
-export const userAngGroupURL = baseURL + '/kypo2-rest-user-and-group/api/v1/';
+export const trainingURL = baseURL + '/kypo-rest-training/api/v1/';
+export const userAngGroupURL = baseURL + '/kypo-rest-user-and-group/api/v1/';
 
 export const environment = {
   production: true,
-  trainingServiceUrl: 'https://172.19.0.22/kypo2-rest-training',
+  trainingServiceUrl: 'https://172.19.0.22/kypo-rest-training',
   elasticSearchServiceUrl: 'https://172.19.0.22/kypo-elasticsearch-service/api/v1/',
   authConfig: {
     maxRetryAttempts: 3, // How many attempts to try to get user info from user and group service before emitting error
