@@ -1,1 +1,2 @@
+12.0.3 Add build of example app. Rename endpoints from kypo2 to kypo.
 12.0.2 Update gitlab CI
