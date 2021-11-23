@@ -2,7 +2,7 @@ export const baseURL = 'https://172.19.0.22';
 export const homeURL = 'https://localhost:4200';
 export const environment = {
   production: false,
-  trainingServiceUrl: 'https://172.19.0.22/kypo-rest-training',
+  trainingServiceUrl: 'https://172.19.0.22/kypo-rest-training/api/v1/',
   elasticSearchServiceUrl: 'https://172.19.0.22/kypo-elasticsearch-service/api/v1/',
   authConfig: {
     guardMainPageRedirect: 'home', // Redirect from login page if user is logged in
@@ -18,7 +18,7 @@ export const environment = {
         backgroundColor: '#002776',
         oidcConfig: {
           issuer: 'https://172.19.0.22:8443/csirtmu-dummy-issuer-server/',
-          clientId: '0bf33f00-2700-4efb-ab09-186076f85c7d',
+          clientId: '4bfa4a2a-51a0-43ca-96e1-d73fd78f36c9',
           redirectUri: homeURL, // redirect after successful login
           scope: 'openid email profile',
           logoutUrl: 'https://172.19.0.22/csirtmu-dummy-issuer-server/endsession/endsession',
