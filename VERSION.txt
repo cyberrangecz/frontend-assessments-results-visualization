@@ -1,3 +1,4 @@
+13.0.0 Update to Angular 13, CI/CD optimization
 12.0.4 Update to new d3v7
 12.0.3 Add build of example app. Rename endpoints from kypo2 to kypo.
 12.0.2 Update gitlab CI
