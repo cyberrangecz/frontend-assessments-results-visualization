@@ -9,7 +9,7 @@ import { HighlightableDirective } from '../../directives/highlightable.directive
  * Component displaying result of a multiple choice question
  */
 @Component({
-  selector: 'kypo2-mcq-results',
+  selector: 'kypo-mcq-results',
   templateUrl: './mcq-results.component.html',
   styleUrls: ['./../shared/emi-mcq-table.component.css'],
 })

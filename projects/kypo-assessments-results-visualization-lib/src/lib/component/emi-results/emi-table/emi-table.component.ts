@@ -7,7 +7,7 @@ import { EMITableAdapter } from '../../../model/table-adapter/emi-table-adapter'
  * Component displaying table of extended matching items result
  */
 @Component({
-  selector: 'kypo2-emi-results-table',
+  selector: 'kypo-emi-results-table',
   templateUrl: './emi-table.component.html',
   styleUrls: ['./../../shared/emi-mcq-table.component.css'],
 })

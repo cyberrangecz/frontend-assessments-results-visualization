@@ -1,7 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/kypo2-assessments-results-visualization-lib",
-  "deleteDestPath": false,
+  "dest": "../../dist/kypo-assessments-results-visualization-lib",
   "lib": {
     "entryFile": "src/public_api.ts"
   }

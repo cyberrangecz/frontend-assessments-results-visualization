@@ -9,7 +9,7 @@ import { HighlightableDirective } from '../../directives/highlightable.directive
  * Component displaying result of a extended matching items
  */
 @Component({
-  selector: 'kypo2-emi-results',
+  selector: 'kypo-emi-results',
   templateUrl: './emi-results.component.html',
   styleUrls: ['./emi-results.component.css'],
 })

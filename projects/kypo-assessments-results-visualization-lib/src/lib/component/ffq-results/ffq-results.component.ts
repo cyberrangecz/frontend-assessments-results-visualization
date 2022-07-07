@@ -8,7 +8,7 @@ import { HighlightableDirective } from '../../directives/highlightable.directive
  * Component displaying result of a free form question
  */
 @Component({
-  selector: 'kypo2-ffq-results',
+  selector: 'kypo-ffq-results',
   templateUrl: './ffq-results.component.html',
   styleUrls: ['./ffq-results.component.css'],
 })
