@@ -33,4 +33,4 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatTooltipModule,
   ],
 })
-export class Kypo2AssessmentsResultsVisualizationMaterialModule {}
+export class KypoAssessmentsResultsVisualizationMaterialModule {}

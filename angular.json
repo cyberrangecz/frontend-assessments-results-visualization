@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "kypo2-assessments-results-visualization": {
+    "kypo-assessments-results-visualization": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/kypo2-assessments-results-visualization",
+            "outputPath": "dist/kypo-assessments-results-visualization",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -54,6 +54,20 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "local": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.local.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": ""
@@ -61,18 +75,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "kypo2-assessments-results-visualization:build"
+            "browserTarget": "kypo-assessments-results-visualization:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "kypo2-assessments-results-visualization:build:production"
+              "browserTarget": "kypo-assessments-results-visualization:build:production"
+            },
+            "local": {
+              "browserTarget": "kypo-assessments-results-visualization:build:local"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "kypo2-assessments-results-visualization:build"
+            "browserTarget": "kypo-assessments-results-visualization:build"
           }
         },
         "test": {
@@ -103,7 +120,7 @@
         }
       }
     },
-    "kypo2-assessments-results-visualization-e2e": {
+    "kypo-assessments-results-visualization-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -111,49 +128,49 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "kypo2-assessments-results-visualization:serve:development"
+            "devServerTarget": "kypo-assessments-results-visualization:serve:development"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "kypo2-assessments-results-visualization:serve:production"
+              "devServerTarget": "kypo-assessments-results-visualization:serve:production"
             }
           }
         }
       }
     },
-    "kypo2-assessments-results-visualization-lib": {
-      "root": "projects/kypo2-assessments-results-visualization-lib",
-      "sourceRoot": "projects/kypo2-assessments-results-visualization-lib/src",
+    "kypo-assessments-results-visualization-lib": {
+      "root": "projects/kypo-assessments-results-visualization-lib",
+      "sourceRoot": "projects/kypo-assessments-results-visualization-lib/src",
       "projectType": "library",
-      "prefix": "kypo2",
+      "prefix": "kypo",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/kypo2-assessments-results-visualization-lib/tsconfig.lib.json",
-            "project": "projects/kypo2-assessments-results-visualization-lib/ng-package.json"
+            "tsConfig": "projects/kypo-assessments-results-visualization-lib/tsconfig.lib.json",
+            "project": "projects/kypo-assessments-results-visualization-lib/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/kypo2-assessments-results-visualization-lib/ng-package.prod.json",
-              "tsConfig": "projects/kypo2-assessments-results-visualization-lib/tsconfig.lib.prod.json"
+              "project": "projects/kypo-assessments-results-visualization-lib/ng-package.prod.json",
+              "tsConfig": "projects/kypo-assessments-results-visualization-lib/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/kypo2-assessments-results-visualization-lib/src/test.ts",
-            "tsConfig": "projects/kypo2-assessments-results-visualization-lib/tsconfig.spec.json",
-            "karmaConfig": "projects/kypo2-assessments-results-visualization-lib/karma.conf.js"
+            "main": "projects/kypo-assessments-results-visualization-lib/src/test.ts",
+            "tsConfig": "projects/kypo-assessments-results-visualization-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/kypo-assessments-results-visualization-lib/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/kypo2-assessments-results-visualization-lib/**/*.ts",
-              "projects/kypo2-assessments-results-visualization-lib/**/*.component.html"
+              "projects/kypo-assessments-results-visualization-lib/**/*.ts",
+              "projects/kypo-assessments-results-visualization-lib/**/*.component.html"
             ]
           }
         }

@@ -1,4 +1,4 @@
-import { Kypo2TraineeModeInfo } from './kypo2-trainee-mode-info';
+import { KypoTraineeModeInfo } from './kypo-trainee-mode-info';
 
 /**
  * Settings of the visualization. Resolved from inputs of the main component
@@ -9,7 +9,7 @@ export class VisualizationSettings {
   trainingRunId: number;
   activeTraineeId: number;
 
-  constructor(trainingDefinitionId: number, trainingInstanceId: number, traineeModeInfo: Kypo2TraineeModeInfo = null) {
+  constructor(trainingDefinitionId: number, trainingInstanceId: number, traineeModeInfo: KypoTraineeModeInfo = null) {
     this.trainingDefinitionId = trainingDefinitionId;
     this.trainingInstanceId = trainingInstanceId;
     if (traineeModeInfo !== null && !traineeModeInfo !== undefined) {

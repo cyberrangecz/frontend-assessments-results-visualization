@@ -6,7 +6,7 @@ import { HighlightService } from '../../services/highlight.service';
  * Component displaying result of one assessment. Contains components of assessment questions
  */
 @Component({
-  selector: 'kypo2-assessment-results',
+  selector: 'kypo-assessment-results',
   templateUrl: './assessment-results.component.html',
   styleUrls: ['./assessment-results.component.css'],
   providers: [HighlightService],

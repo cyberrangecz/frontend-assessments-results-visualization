@@ -7,9 +7,9 @@
           <mat-card-title>Question {{question.order + 1}}:  {{ question.title }}</mat-card-title>
           <mat-card-subtitle> {{ question.type }}</mat-card-subtitle>
           <mat-card-content>
-            <kypo2-ffq-results *ngSwitchCase="'FFQ'" [question]="question"></kypo2-ffq-results>
-            <kypo2-mcq-results *ngSwitchCase="'MCQ'" [question]="question"></kypo2-mcq-results>
-            <kypo2-emi-results *ngSwitchCase="'EMI'" [question]="question"></kypo2-emi-results>
+            <kypo-ffq-results *ngSwitchCase="'FFQ'" [question]="question"></kypo-ffq-results>
+            <kypo-mcq-results *ngSwitchCase="'MCQ'" [question]="question"></kypo-mcq-results>
+            <kypo-emi-results *ngSwitchCase="'EMI'" [question]="question"></kypo-emi-results>
           </mat-card-content>
         </mat-card>
       </ng-container>

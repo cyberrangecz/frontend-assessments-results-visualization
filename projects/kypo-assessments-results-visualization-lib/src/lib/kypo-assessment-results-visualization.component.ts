@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Assessment } from './model/assessment';
-import { Kypo2TraineeModeInfo } from './model/kypo2-trainee-mode-info';
+import { KypoTraineeModeInfo } from './model/kypo-trainee-mode-info';
 import { VisualizationSettings } from './model/visualization-settings';
 import { AssessmentApi } from './services/assessment-api.service';
 
@@ -9,11 +9,11 @@ import { AssessmentApi } from './services/assessment-api.service';
  * Main component of the assessment visualization
  */
 @Component({
-  selector: 'kypo2-assessment-results-viz',
-  template: ` <kypo2-assessment-results [assessments]="assessments$ | async"></kypo2-assessment-results> `,
+  selector: 'kypo-assessment-results-viz',
+  template: ` <kypo-assessment-results [assessments]="assessments$ | async"></kypo-assessment-results> `,
   styles: [],
 })
-export class Kypo2AssessmentResultsVisualizationComponent implements OnChanges {
+export class KypoAssessmentResultsVisualizationComponent implements OnChanges {
   /**
    * MANDATORY Id of a training definition related with the training instance to be visualized.
    *
@@ -29,7 +29,7 @@ export class Kypo2AssessmentResultsVisualizationComponent implements OnChanges {
    * OPTIONAL info about trainee and his training run. Switches the visualization to a  trainee point-of-view mode instead of organizers
    * Anonymises names, logins, emails etc of other users
    */
-  @Input() traineeModeInfo: Kypo2TraineeModeInfo;
+  @Input() traineeModeInfo: KypoTraineeModeInfo;
 
   assessments$: Observable<Assessment[]>;
   constructor(private assessmentFacade: AssessmentApi) {}
