@@ -1,3 +1,116 @@
+### 14.0.1 Rename from kypo2 to kypo.
+* d5daca1 -- [CI/CD] Update packages.json version based on GitLab tag.
+*   1740768 -- Merge branch 'rename-from-kypo2-to-kypo' into 'master'
+|\  
+| * 13f7074 -- Rename Kypo2 to Kypo. Add local environment and json server
+|/  
+* c1a7ad3 -- [CI/CD] CHANGELOG.md file updated with commits between the current and previous tag.
+* 895ed30 -- [CI/CD] Update packages.json version based on GitLab tag.
+*   9254922 -- Merge branch '40-update-to-angular-14' into 'master'
+|\  
+| * 8751149 -- Resolve "Update to Angular 14"
+|/  
+* 7939f4b -- [CI/CD] CHANGELOG.md file updated with commits between the current and previous tag.
+* ef1da58 -- [CI/CD] Update packages.json version based on GitLab tag.
+*   6d7e22d -- Merge branch '39-update-to-angular-13' into 'master'
+|\  
+| * 3015f57 -- Resolve "Update to Angular 13"
+|/  
+* 2d077d1 -- [CI/CD] CHANGELOG.md file updated with commits between the current and previous tag.
+* 1634fb9 -- [CI/CD] Update packages.json version based on GitLab tag.
+*   57de60a -- Merge branch '38-bump-version-of-d3' into 'master'
+|\  
+| * 9db4365 -- Resolve "Bump version of d3"
+|/  
+*   5c9d39f -- Merge branch '37-add-license-file' into 'master'
+|\  
+| * e4f8170 -- Add license file
+|/  
+* 0e82e47 -- [CI/CD] CHANGELOG.md file updated with commits between the current and previous tag.
+* ccaa999 -- [CI/CD] Update packages.json version based on GitLab tag.
+*   f6c2698 -- Merge branch '36-create-new-tag' into 'master'
+|\  
+| * 3eea502 -- Tag description
+|/  
+*   c688ee6 -- Merge branch '35-add-build-of-example-app-to-ci' into 'master'
+|\  
+| * e536fe6 -- Add build example app
+|/  
+*   a31bc42 -- Merge branch '34-fix-local-config-paths' into 'master'
+|\  
+| * a437068 -- Fix paths
+|/  
+* 9fa3769 -- [CI/CD] CHANGELOG.md file updated with commits between the current and previous tag.
+* 1270cd0 -- [CI/CD] Update packages.json version based on GitLab tag.
+*   6e0ae5e -- Merge branch '33-simplify-gitlab-ci-cd-using-csirt-mu-docker-image' into 'master'
+|\  
+| * 53616b1 -- Update gitlab CI
+|/  
+* 00b08b2 -- Update project package.json version based on GitLab tag. Done by CI
+*   84439f0 -- Merge branch '32-fix-visualization-after-assessment-changes' into 'master'
+|\  
+| * ff0587d -- Resolve "Fix visualization after assessment changes"
+|/  
+* 99f0dd4 -- Update project package.json version based on GitLab tag. Done by CI
+*   815d215 -- Merge branch '31-update-to-angular-12' into 'master'
+|\  
+| * ba9b32b -- Resolve "Update to Angular 12"
+|/  
+*   09873f5 -- Merge branch '30-update-oidc-configuration' into 'master'
+|\  
+| * 8c268e0 -- Update prod oidc issuer
+|/  
+* 9b459d5 -- Update project package.json version based on GitLab tag. Done by CI
+*   c6578c8 -- Merge branch '29-update-to-angular-11' into 'master'
+|\  
+| * 2dcc3d5 -- Resolve "Update to Angular 11"
+|/  
+*   27d15f2 -- Merge branch '28-recreate-package-lock-for-new-package-registry' into 'master'
+|\  
+| * 2ac4b32 -- recreate package lock
+|/  
+*   69f728b -- Merge branch '26-migrate-from-tslint-to-eslint' into 'master'
+|\  
+| * 7c51de7 -- Resolve "Migrate from tslint to eslint"
+|/  
+* c40f0a3 -- Update project package.json version based on GitLab tag. Done by CI
+*   9f57bd3 -- Merge branch '27-rename-package-scope-to-muni-kypo-crp' into 'master'
+|\  
+| * 10d3cec -- Rename package scope
+|/  
+* 011236e -- Update project package.json version based on GitLab tag. Done by CI
+*   a8072a9 -- Merge branch '24-rename-package-to-kypo-assessment-visualization' into 'master'
+|\  
+| * 7baadab -- Resolve "Rename package to @kypo/assessment-visualization"
+|/  
+*   afb830a -- Merge branch '23-replace-kypo2-auth-dependency-with-sentinel-auth' into 'master'
+|\  
+| * f038d27 -- Replace kypo2-auth dependency with sentinel/auth
+|/  
+*   41264fc -- Merge branch '22-clear-personal-data-of-developers-from-the-source-code' into 'master'
+|\  
+| * 1589495 -- Remove personal data
+|/  
+* f6b4f11 -- Update project package.json version based on GitLab tag. Done by CI
+*   f89ca59 -- Merge branch '21-update-endpoint-for-training-events' into 'master'
+|\  
+| * 9027999 -- Updated training-events to training-platform-events to match new backend endpoint
+|/  
+*   8497cf3 -- Merge branch '20-use-cypress-image-in-ci' into 'master'
+|\  
+| * 248d5b6 -- Resolve "Use Cypress image in CI"
+|/  
+* 4bead6f -- Update project package.json version based on GitLab tag. Done by CI
+*   d2d4df0 -- Merge branch '19-update-config-to-support-new-elasticsearch-backend-service' into 'master'
+|\  
+| * c2dbfa2 -- Refactor config and add support to elasticsearch service
+|/  
+* 1e49e7d -- Update project package.json version based on GitLab tag. Done by CI
+*   77c9fbe -- Merge branch '18-update-to-angular-10' into 'master'
+|\  
+| * 027d8e7 -- Resolve "Update to Angular 10"
+|/  
+* a74007b -- Update project package.json version based on GitLab tag. Done by CI
 ### 14.0.0 Update to Angular 14
 * 895ed30 -- [CI/CD] Update packages.json version based on GitLab tag.
 *   9254922 -- Merge branch '40-update-to-angular-14' into 'master'
