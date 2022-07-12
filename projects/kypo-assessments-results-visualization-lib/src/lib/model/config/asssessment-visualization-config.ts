@@ -3,5 +3,4 @@
  */
 export class AssessmentVisualizationConfig {
   trainingServiceUrl: string;
-  elasticSearchServiceUrl: string;
 }

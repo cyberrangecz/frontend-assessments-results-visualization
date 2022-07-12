@@ -1,5 +1,5 @@
-import { EMI } from '../question/emi/emi';
 import { EMITableRow } from './emi-table-row';
+import { EmiAnswers } from '../emi-answers';
 
 /**
  * Adapter class for extended matching items table
@@ -7,14 +7,15 @@ import { EMITableRow } from './emi-table-row';
 export class EMITableAdapter {
   rows: EMITableRow[];
 
-  constructor(question: EMI, rowIndex: number) {
-    this.rows = question.cols.map((col, colIndex) => {
+  constructor(answer: EmiAnswers) {
+    const totalAnswers = answer.options.reduce((sum, answer) => sum + answer.participants.length, 0);
+    this.rows = answer.options.map((option) => {
       const row = new EMITableRow();
-      row.option = col;
-      row.isCorrect = question.isCorrectAnswer(rowIndex, colIndex);
-      row.answers = question.filterAnswersByChoice(rowIndex, colIndex);
-      row.answeredCount = question.calculateSameAnswersCount(rowIndex, colIndex);
-      row.answeredPercentage = question.calculateMatchingAnswersShare(rowIndex, colIndex);
+      row.option = option.text;
+      row.isCorrect = option.correct;
+      row.participants = option.participants;
+      row.answeredCount = option.participants.length;
+      row.answeredPercentage = (option.participants.length * 100) / totalAnswers;
       return row;
     });
   }

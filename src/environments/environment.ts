@@ -2,8 +2,7 @@ export const baseURL = 'https://172.19.0.22';
 export const homeURL = 'https://localhost:4200';
 export const environment = {
   production: false,
-  trainingServiceUrl: 'https://172.19.0.22/kypo-rest-training/api/v1/',
-  elasticSearchServiceUrl: 'https://172.19.0.22/kypo-elasticsearch-service/api/v1/',
+  trainingServiceUrl: baseURL + '/kypo-rest-training/api/v1/',
   authConfig: {
     guardMainPageRedirect: 'home', // Redirect from login page if user is logged in
     guardLoginPageRedirect: 'login', // Redirect to login page if user is not logged in
