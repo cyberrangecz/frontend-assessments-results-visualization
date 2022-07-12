@@ -3,5 +3,4 @@ import { environment } from '../environments/environment';
 
 export const VISUALIZATION_CONFIG: AssessmentVisualizationConfig = {
   trainingServiceUrl: environment.trainingServiceUrl,
-  elasticSearchServiceUrl: environment.elasticSearchServiceUrl,
 };

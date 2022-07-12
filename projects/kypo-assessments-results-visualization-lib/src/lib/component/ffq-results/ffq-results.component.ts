@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { FFQ } from '../../model/question/ffq/ffq';
 import { HighlightService } from '../../services/highlight.service';
 import { HighlightableDirective } from '../../directives/highlightable.directive';
+import { Question } from '../../model/question';
+import { FFQTableAdapter } from '../../model/table-adapter/ffq-table-adapter';
 
 /**
  * Component displaying result of a free form question
@@ -13,22 +14,21 @@ import { HighlightableDirective } from '../../directives/highlightable.directive
   styleUrls: ['./ffq-results.component.css'],
 })
 export class FFQResultsComponent extends HighlightableDirective implements OnInit {
-  @Input() question: FFQ;
+  @Input() question: Question;
+  @Input() isTest: boolean;
 
   /**
    * Columns of the table
    */
   displayedColumns = ['name', 'answer'];
   dataSource;
-  isTest: boolean;
 
   constructor(highlightService: HighlightService) {
     super(highlightService);
   }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource(this.question.answers);
-    this.isTest = this.question.correctAnswers.length > 0;
+    this.dataSource = new MatTableDataSource(new FFQTableAdapter(this.question).rows);
   }
 
   /**

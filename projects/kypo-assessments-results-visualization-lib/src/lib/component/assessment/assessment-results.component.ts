@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Assessment } from '../../model/assessment';
 import { HighlightService } from '../../services/highlight.service';
+import { Assessment } from '../../model/assessment';
 
 /**
  * Component displaying result of one assessment. Contains components of assessment questions

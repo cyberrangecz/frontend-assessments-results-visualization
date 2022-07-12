@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Trainee } from '../model/trainee/trainee';
+import { Participant } from '../model/participant';
 
 /**
- * Service holding state of highlighted players
+ * Service holding state of highlighted participants
  */
 @Injectable()
 export class HighlightService {
-  private highlightedTraineeSubject$ = new BehaviorSubject<Trainee>(undefined);
+  private highlightedParticipantSubject$ = new BehaviorSubject<Participant>(undefined);
   /**
-   * Selected player whose answers should be highlighted
+   * Selected participant whose answers should be highlighted
    */
-  highlightedPlayer$ = this.highlightedTraineeSubject$.asObservable();
+  highlightedParticipant$ = this.highlightedParticipantSubject$.asObservable();
 
   /**
-   * Selects player to highlight his answers
-   * @param trainee trainee whose answers should be highlighted
+   * Selects participant to highlight his answers
+   * @param participant participant whose answers should be highlighted
    */
-  highlight(trainee: Trainee): void {
-    if (this.isAlreadyHighlighted(trainee)) {
-      this.highlightedTraineeSubject$.next(undefined);
+  highlight(participant: Participant): void {
+    if (this.isAlreadyHighlighted(participant)) {
+      this.highlightedParticipantSubject$.next(undefined);
     } else {
-      this.highlightedTraineeSubject$.next(trainee);
+      this.highlightedParticipantSubject$.next(participant);
     }
   }
 
@@ -29,11 +29,11 @@ export class HighlightService {
    * Clears highlighted player
    */
   clear(): void {
-    this.highlightedTraineeSubject$.next(null);
+    this.highlightedParticipantSubject$.next(null);
   }
 
-  private isAlreadyHighlighted(trainee: Trainee): boolean {
-    const highlighted = this.highlightedTraineeSubject$.getValue();
-    return highlighted && trainee.id === highlighted.id;
+  private isAlreadyHighlighted(participant: Participant): boolean {
+    const highlighted = this.highlightedParticipantSubject$.getValue();
+    return highlighted && participant.userRefId === highlighted.userRefId;
   }
 }

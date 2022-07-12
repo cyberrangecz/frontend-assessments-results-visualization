@@ -1,8 +1,8 @@
 import { Directive, OnDestroy } from '@angular/core';
-import { Answer } from '../model/question/answer';
-import { Question } from '../model/question/question';
-import { Trainee } from '../model/trainee/trainee';
 import { HighlightService } from '../services/highlight.service';
+import { Question } from '../model/question';
+import { Participant } from '../model/participant';
+import { EmiAnswers } from '../model/emi-answers';
 
 /**
  * Class representing behaviour of highlightable components
@@ -29,30 +29,54 @@ export abstract class HighlightableDirective implements OnDestroy {
 
   /**
    * Highlights selected answer
-   * @param answer answer to be selected
+   * @param participant
    * @param event mouse click event
    */
-  highlight(answer: Answer, event: MouseEvent): void {
+  highlight(participant: Participant, event: MouseEvent): void {
     event.stopPropagation();
-    this.highlightService.highlight(answer.trainee);
+    this.highlightService.highlight(participant);
   }
 
   private subscribeEvents() {
-    this.highlightService.highlightedPlayer$.subscribe((trainee) => {
-      if (trainee) {
-        this.unhighlightPlayer();
-        this.highlightPlayer(trainee);
-      } else if (trainee === null) {
-        this.unhighlightPlayer();
+    this.highlightService.highlightedParticipant$.subscribe((participant) => {
+      if (participant) {
+        this.unhighlightParticipant();
+        this.highlightParticipant(participant);
+      } else if (participant === null) {
+        this.unhighlightParticipant();
       }
     });
   }
 
-  private highlightPlayer(trainee: Trainee) {
-    this.question.answers.forEach((answer) => answer.tryHighlight(trainee));
+  private highlightParticipant(selectedParticipant: Participant) {
+    this.question.answers.forEach((answer) => {
+      if (answer.participants) {
+        answer.participants.forEach((participant) => {
+          if (participant.userRefId === selectedParticipant.userRefId) {
+            participant.isHighlighted = true;
+          }
+        });
+      } else {
+        (answer as EmiAnswers).options.forEach((option) =>
+          option.participants.forEach((participant) => {
+            if (participant.userRefId === selectedParticipant.userRefId) {
+              participant.isHighlighted = true;
+            }
+          })
+        );
+      }
+    });
   }
 
-  private unhighlightPlayer() {
-    this.question.answers.forEach((answer) => answer.clearHighlight());
+  private unhighlightParticipant() {
+    this.question.answers.forEach((answer) => {
+      if (answer.participants) {
+        answer.participants.forEach((participant) => (participant.isHighlighted = false));
+      } else {
+        (answer as EmiAnswers).options.forEach((option) =>
+          option.participants.forEach((participant) => (participant.isHighlighted = false))
+        );
+      }
+    });
   }
 }

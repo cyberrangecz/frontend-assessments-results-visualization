@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { Answer } from '../../../model/question/answer';
 import { EMITableAdapter } from '../../../model/table-adapter/emi-table-adapter';
+import { Participant } from '../../../model/participant';
 
 /**
  * Component displaying table of extended matching items result
@@ -11,11 +11,10 @@ import { EMITableAdapter } from '../../../model/table-adapter/emi-table-adapter'
   templateUrl: './emi-table.component.html',
   styleUrls: ['./../../shared/emi-mcq-table.component.css'],
 })
-/* eslint-disable @angular-eslint/no-output-on-prefix */
 export class EmiTableComponent implements OnInit {
   @Input() tableData: EMITableAdapter;
   @Input() isTest: boolean;
-  @Output() highlighted: EventEmitter<any> = new EventEmitter();
+  @Output() highlighted: EventEmitter<{ participant: Participant; mouseEvent: MouseEvent }> = new EventEmitter();
 
   displayedColumns = ['option', 'sum', 'percentage', 'answers'];
   dataSource;
@@ -26,10 +25,10 @@ export class EmiTableComponent implements OnInit {
 
   /**
    * Calls service to highlight the answer
-   * @param answer
+   * @param participant
    * @param $event mouse event
    */
-  onHighlight(answer: Answer, $event: MouseEvent): void {
-    this.highlighted.emit({ answer: Answer, mouseEvent: $event });
+  onHighlight(participant: Participant, $event: MouseEvent): void {
+    this.highlighted.emit({ participant: participant, mouseEvent: $event });
   }
 }
