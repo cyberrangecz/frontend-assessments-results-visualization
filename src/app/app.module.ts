@@ -21,12 +21,12 @@ const routes: Routes = [
   {
     path: 'login',
     component: SentinelAuthProviderListComponent,
-    canActivate: [SentinelNegativeAuthGuard],
+    //canActivate: [SentinelNegativeAuthGuard],
   },
   {
     path: 'home',
     component: HomeComponent,
-    canActivate: [SentinelAuthGuardWithLogin],
+    //canActivate: [SentinelAuthGuardWithLogin],
   },
 ];
 

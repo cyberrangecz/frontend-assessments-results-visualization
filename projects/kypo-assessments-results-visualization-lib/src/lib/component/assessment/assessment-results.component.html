@@ -3,7 +3,7 @@
     <ng-container *ngFor="let assessment of assessments; let i = index">
       <h1>Assessment {{i + 1}}# {{ assessment.title }}</h1>
       <ng-container *ngFor="let question of assessment.questions" [ngSwitch]="question.questionType">
-        <mat-card>
+        <mat-card appearance="outlined">
           <mat-card-title>Question {{question.order + 1}}:  {{ question.text }}</mat-card-title>
           <mat-card-subtitle> {{ question.questionType }}</mat-card-subtitle>
           <mat-card-content>
