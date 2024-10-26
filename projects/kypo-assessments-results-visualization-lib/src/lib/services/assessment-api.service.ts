@@ -14,7 +14,10 @@ import { AssessmentDTO } from '../model/DTO/assessment-dto';
 export class AssessmentApi {
   private readonly visualizationsEndpoint = `${this.configService.config.trainingServiceUrl}visualizations`;
 
-  constructor(private http: HttpClient, private configService: ConfigService) {}
+  constructor(
+    private http: HttpClient,
+    private configService: ConfigService,
+  ) {}
 
   /**
    * Sends http request to retrieve all assessments to be displayed in the visualization

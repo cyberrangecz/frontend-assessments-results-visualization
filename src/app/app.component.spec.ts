@@ -1,13 +1,13 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { ChangeDetectorRef } from '@angular/core';
 
 describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
-  let cd: ChangeDetectorRef;
+  let _cd: ChangeDetectorRef;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
     }).compileComponents();
@@ -16,8 +16,7 @@ describe('AppComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    cd = fixture.componentRef.injector.get(ChangeDetectorRef);
+    _cd = fixture.componentRef.injector.get(ChangeDetectorRef);
   });
 
   it('should create', () => {

@@ -62,7 +62,7 @@ export abstract class HighlightableDirective implements OnDestroy {
             if (participant.userRefId === selectedParticipant.userRefId) {
               participant.isHighlighted = true;
             }
-          })
+          }),
         );
       }
     });
@@ -74,7 +74,7 @@ export abstract class HighlightableDirective implements OnDestroy {
         answer.participants.forEach((participant) => (participant.isHighlighted = false));
       } else {
         (answer as EmiAnswers).options.forEach((option) =>
-          option.participants.forEach((participant) => (participant.isHighlighted = false))
+          option.participants.forEach((participant) => (participant.isHighlighted = false)),
         );
       }
     });
