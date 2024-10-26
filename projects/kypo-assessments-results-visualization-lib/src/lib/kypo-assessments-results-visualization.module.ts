@@ -39,7 +39,7 @@ export class KypoAssessmentsResultsVisualizationModule {
    * @param kypoAssessmentConfig configuration object of the visualization
    */
   static forRoot(
-    kypoAssessmentConfig: AssessmentVisualizationConfig
+    kypoAssessmentConfig: AssessmentVisualizationConfig,
   ): ModuleWithProviders<KypoAssessmentsResultsVisualizationModule> {
     return {
       ngModule: KypoAssessmentsResultsVisualizationModule,

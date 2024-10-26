@@ -17,7 +17,7 @@ export class FFQTableAdapter {
           row.participant = participant;
           return row;
         });
-      })
+      }),
     );
   }
 }
