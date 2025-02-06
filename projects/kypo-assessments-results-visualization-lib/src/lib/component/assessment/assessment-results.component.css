@@ -1,23 +1,23 @@
 mat-card {
-  margin: 10px;
+    margin: 10px;
 }
 
 kypo-ffq-results, kypo-mcq-results, kypo-emi-results {
-  margin: 10px;
+    margin: 10px;
 }
 
 mat-card-title {
-  color: #002776
+    color: #002776
 }
 
 h1 {
-  padding: 10px;
-  background: #3f51b5;
-  color: white;
-  border-radius: 4px;
+    padding: 10px;
+    background: #3f51b5;
+    color: white;
+    border-radius: 4px;
 }
 
 .viz-content {
-  background: #fafafa;
+    background: #fafafa;
 }
 

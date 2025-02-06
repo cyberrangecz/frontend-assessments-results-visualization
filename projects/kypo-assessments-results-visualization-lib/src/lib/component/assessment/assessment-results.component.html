@@ -1,27 +1,27 @@
 <div class="mat-typography">
-  <div class="viz-content">
-    <ng-container *ngFor="let assessment of assessments; let i = index">
-      <h1>Assessment {{i + 1}}# {{ assessment.title }}</h1>
-      <ng-container *ngFor="let question of assessment.questions" [ngSwitch]="question.questionType">
-        <mat-card appearance="outlined">
-          <mat-card-title>Question {{question.order + 1}}:  {{ question.text }}</mat-card-title>
-          <mat-card-subtitle> {{ question.questionType }}</mat-card-subtitle>
-          <mat-card-content>
-            <kypo-ffq-results *ngSwitchCase="'FFQ'"
-                              [question]="question"
-                              [isTest]="assessment.assessmentType === 'TEST'"
-            ></kypo-ffq-results>
-            <kypo-mcq-results *ngSwitchCase="'MCQ'"
-                              [question]="question"
-                              [isTest]="assessment.assessmentType === 'TEST'"
-            ></kypo-mcq-results>
-            <kypo-emi-results *ngSwitchCase="'EMI'"
-                              [question]="question"
-                              [isTest]="assessment.assessmentType === 'TEST'"
-            ></kypo-emi-results>
-          </mat-card-content>
-        </mat-card>
-      </ng-container>
-    </ng-container>
-  </div>
+    <div class="viz-content">
+        <ng-container *ngFor="let assessment of assessments; let i = index">
+            <h1>Assessment {{ i + 1 }}# {{ assessment.title }}</h1>
+            <ng-container *ngFor="let question of assessment.questions" [ngSwitch]="question.questionType">
+                <mat-card appearance="outlined">
+                    <mat-card-title>Question {{ question.order + 1 }}:  {{ question.text }}</mat-card-title>
+                    <mat-card-subtitle> {{ question.questionType }}</mat-card-subtitle>
+                    <mat-card-content>
+                        <kypo-ffq-results *ngSwitchCase="'FFQ'"
+                                          [question]="question"
+                                          [isTest]="assessment.assessmentType === 'TEST'"
+                        ></kypo-ffq-results>
+                        <kypo-mcq-results *ngSwitchCase="'MCQ'"
+                                          [question]="question"
+                                          [isTest]="assessment.assessmentType === 'TEST'"
+                        ></kypo-mcq-results>
+                        <kypo-emi-results *ngSwitchCase="'EMI'"
+                                          [question]="question"
+                                          [isTest]="assessment.assessmentType === 'TEST'"
+                        ></kypo-emi-results>
+                    </mat-card-content>
+                </mat-card>
+            </ng-container>
+        </ng-container>
+    </div>
 </div>

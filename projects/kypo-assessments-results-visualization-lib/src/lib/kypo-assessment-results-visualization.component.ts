@@ -18,6 +18,7 @@ export class KypoAssessmentResultsVisualizationComponent implements OnChanges {
   @Input() trainingInstanceId: number;
 
   assessments$: Observable<Assessment[]>;
+
   constructor(private assessmentFacade: AssessmentApi) {}
 
   ngOnChanges(): void {
