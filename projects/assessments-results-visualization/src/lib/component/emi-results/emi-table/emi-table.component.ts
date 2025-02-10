@@ -7,7 +7,7 @@ import { Participant } from '../../../model/participant';
  * Component displaying table of extended matching items result
  */
 @Component({
-  selector: 'kypo-emi-results-table',
+  selector: 'crczp-emi-results-table',
   templateUrl: './emi-table.component.html',
   styleUrls: ['./../../shared/emi-mcq-table.component.css'],
 })

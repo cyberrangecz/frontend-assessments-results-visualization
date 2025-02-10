@@ -15,18 +15,18 @@ module.exports = function () {
                     "participants": [{
                         "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                         "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACKUlEQVR4Xu3YsWkAQRBDURflxP24/xZsx19M8K1IsAcvWRghpffx9f35819/38cabjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxiyzgBqM6ZpEF3GBUxyyygBuM6phFFnCDUR2zyAJuMKpjFlnADUZ1zCILuMGojllkATcY1TGLLOAGozpmkQXcYFTHLLKAG4wIe27x8Nzi4bnFw3OLh+cWD88tHp5bPDy3eHhu8fDc4uG5xcNzi4fnFg/PLR6eWzwY/N+zgBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGIx4MFlnADUY8GCyygBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGoxrMsAXcYFTHLLKAG4zqmEUWcINRHbPIAm4wqmMWWcANRnXMIgu4waiOWWQBNxjVMYss4AajOmaRBdxgVMcssoAbjOqYRRZwg1Eds8gCbjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxixjMMphlMMuojlnEYJbBLINZRnXMIgazDGYZzDKqYxYxmGUwy2CWUR2ziMEsg1kGs4zqmEUMZhnMMphlVMcsYjDLYJbBLKM6ZhGDWQazDGYZ1TGLGMwymGUwy6iOWcRglsEsg1lGdcwiBrMMZhnMMqpjFjGYZTDLYJZRHbOIwSyDWQazjOqYRQxmGcwymGVUxyxiMMtglsEs4xeVA1bN5nvCPAAAAABJRU5ErkJggg==",
-                        "mail": "\"kypo-admin@example.com\"",
+                        "mail": "\"demo-admin@example.com\"",
                         "user_ref_id": 1,
-                        "sub": "kypo-admin",
+                        "sub": "demo-admin",
                         "full_name": "\"Demo Admin\"",
                         "given_name": "Demo",
                         "family_name": "Admin"
                     }, {
                         "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                         "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACH0lEQVR4Xu3PMW4lMAzE0Fw1W+T+N/jbczAFoyIwMMVrBIiWvz6fz9dv/Xz/+/wWWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBlvGnz3MlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR5isGWwZbBlnJZ5iMGWwZbBlnFa5iEGWwZbBlvGaZmHGGwZbBlsGadlHmKwZbBlsGWclnmIwZbBlsGWcVrmIQZbBlsGW8ZpmYcYbBlsGWwZp2UeYrBlsGWwZZyWeYjBlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR7yAv7BOC3zkBfwD8ZpmYe8gH8wTss85AX8g3Fa5iEv4B+M0zIPeQH/YJyWecgL+AfjtMxDXsA/GKdlHvIC/sE4LfOQF/APxmmZh7yAfzBOyzzkBfyDcVrmIS/gH4zTMg95Af9gnJZ5yAv4ByNi08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKb7DyiMjif0SLAsAAAAAElFTkSuQmCC",
-                        "mail": "\"kypo-user@example.com\"",
+                        "mail": "\"demo-user@example.com\"",
                         "user_ref_id": 2,
-                        "sub": "kypo-user",
+                        "sub": "demo-user",
                         "full_name": "\"Demo User\"",
                         "given_name": "Demo",
                         "family_name": "User"
@@ -43,9 +43,9 @@ module.exports = function () {
                     "participants": [{
                         "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                         "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACH0lEQVR4Xu3PMW4lMAzE0Fw1W+T+N/jbczAFoyIwMMVrBIiWvz6fz9dv/Xz/+/wWWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBlvGnz3MlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR5isGWwZbBlnJZ5iMGWwZbBlnFa5iEGWwZbBlvGaZmHGGwZbBlsGadlHmKwZbBlsGWclnmIwZbBlsGWcVrmIQZbBlsGW8ZpmYcYbBlsGWwZp2UeYrBlsGWwZZyWeYjBlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR7yAv7BOC3zkBfwD8ZpmYe8gH8wTss85AX8g3Fa5iEv4B+M0zIPeQH/YJyWecgL+AfjtMxDXsA/GKdlHvIC/sE4LfOQF/APxmmZh7yAfzBOyzzkBfyDcVrmIS/gH4zTMg95Af9gnJZ5yAv4ByNi08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKb7DyiMjif0SLAsAAAAAElFTkSuQmCC",
-                        "mail": "\"kypo-user@example.com\"",
+                        "mail": "\"demo-user@example.com\"",
                         "user_ref_id": 2,
-                        "sub": "kypo-user",
+                        "sub": "demo-user",
                         "full_name": "\"Demo User\"",
                         "given_name": "Demo",
                         "family_name": "User"
@@ -56,9 +56,9 @@ module.exports = function () {
                     "participants": [{
                         "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                         "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACKUlEQVR4Xu3YsWkAQRBDURflxP24/xZsx19M8K1IsAcvWRghpffx9f35819/38cabjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxiyzgBqM6ZpEF3GBUxyyygBuM6phFFnCDUR2zyAJuMKpjFlnADUZ1zCILuMGojllkATcY1TGLLOAGozpmkQXcYFTHLLKAG4wIe27x8Nzi4bnFw3OLh+cWD88tHp5bPDy3eHhu8fDc4uG5xcNzi4fnFg/PLR6eWzwY/N+zgBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGIx4MFlnADUY8GCyygBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGoxrMsAXcYFTHLLKAG4zqmEUWcINRHbPIAm4wqmMWWcANRnXMIgu4waiOWWQBNxjVMYss4AajOmaRBdxgVMcssoAbjOqYRRZwg1Eds8gCbjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxixjMMphlMMuojlnEYJbBLINZRnXMIgazDGYZzDKqYxYxmGUwy2CWUR2ziMEsg1kGs4zqmEUMZhnMMphlVMcsYjDLYJbBLKM6ZhGDWQazDGYZ1TGLGMwymGUwy6iOWcRglsEsg1lGdcwiBrMMZhnMMqpjFjGYZTDLYJZRHbOIwSyDWQazjOqYRQxmGcwymGVUxyxiMMtglsEs4xeVA1bN5nvCPAAAAABJRU5ErkJggg==",
-                        "mail": "\"kypo-admin@example.com\"",
+                        "mail": "\"demo-admin@example.com\"",
                         "user_ref_id": 1,
-                        "sub": "kypo-admin",
+                        "sub": "demo-admin",
                         "full_name": "\"Demo Admin\"",
                         "given_name": "Demo",
                         "family_name": "Admin"
@@ -81,18 +81,18 @@ module.exports = function () {
                         "participants": [{
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACKUlEQVR4Xu3YsWkAQRBDURflxP24/xZsx19M8K1IsAcvWRghpffx9f35819/38cabjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxiyzgBqM6ZpEF3GBUxyyygBuM6phFFnCDUR2zyAJuMKpjFlnADUZ1zCILuMGojllkATcY1TGLLOAGozpmkQXcYFTHLLKAG4wIe27x8Nzi4bnFw3OLh+cWD88tHp5bPDy3eHhu8fDc4uG5xcNzi4fnFg/PLR6eWzwY/N+zgBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGIx4MFlnADUY8GCyygBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGoxrMsAXcYFTHLLKAG4zqmEUWcINRHbPIAm4wqmMWWcANRnXMIgu4waiOWWQBNxjVMYss4AajOmaRBdxgVMcssoAbjOqYRRZwg1Eds8gCbjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxixjMMphlMMuojlnEYJbBLINZRnXMIgazDGYZzDKqYxYxmGUwy2CWUR2ziMEsg1kGs4zqmEUMZhnMMphlVMcsYjDLYJbBLKM6ZhGDWQazDGYZ1TGLGMwymGUwy6iOWcRglsEsg1lGdcwiBrMMZhnMMqpjFjGYZTDLYJZRHbOIwSyDWQazjOqYRQxmGcwymGVUxyxiMMtglsEs4xeVA1bN5nvCPAAAAABJRU5ErkJggg==",
-                            "mail": "\"kypo-admin@example.com\"",
+                            "mail": "\"demo-admin@example.com\"",
                             "user_ref_id": 1,
-                            "sub": "kypo-admin",
+                            "sub": "demo-admin",
                             "full_name": "\"Demo Admin\"",
                             "given_name": "Demo",
                             "family_name": "Admin"
                         }, {
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACH0lEQVR4Xu3PMW4lMAzE0Fw1W+T+N/jbczAFoyIwMMVrBIiWvz6fz9dv/Xz/+/wWWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBlvGnz3MlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR5isGWwZbBlnJZ5iMGWwZbBlnFa5iEGWwZbBlvGaZmHGGwZbBlsGadlHmKwZbBlsGWclnmIwZbBlsGWcVrmIQZbBlsGW8ZpmYcYbBlsGWwZp2UeYrBlsGWwZZyWeYjBlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR7yAv7BOC3zkBfwD8ZpmYe8gH8wTss85AX8g3Fa5iEv4B+M0zIPeQH/YJyWecgL+AfjtMxDXsA/GKdlHvIC/sE4LfOQF/APxmmZh7yAfzBOyzzkBfyDcVrmIS/gH4zTMg95Af9gnJZ5yAv4ByNi08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKb7DyiMjif0SLAsAAAAAElFTkSuQmCC",
-                            "mail": "\"kypo-user@example.com\"",
+                            "mail": "\"demo-user@example.com\"",
                             "user_ref_id": 2,
-                            "sub": "kypo-user",
+                            "sub": "demo-user",
                             "full_name": "\"Demo User\"",
                             "given_name": "Demo",
                             "family_name": "User"
@@ -114,9 +114,9 @@ module.exports = function () {
                         "participants": [{
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACKUlEQVR4Xu3YsWkAQRBDURflxP24/xZsx19M8K1IsAcvWRghpffx9f35819/38cabjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxiyzgBqM6ZpEF3GBUxyyygBuM6phFFnCDUR2zyAJuMKpjFlnADUZ1zCILuMGojllkATcY1TGLLOAGozpmkQXcYFTHLLKAG4wIe27x8Nzi4bnFw3OLh+cWD88tHp5bPDy3eHhu8fDc4uG5xcNzi4fnFg/PLR6eWzwY/N+zgBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGIx4MFlnADUY8GCyygBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGoxrMsAXcYFTHLLKAG4zqmEUWcINRHbPIAm4wqmMWWcANRnXMIgu4waiOWWQBNxjVMYss4AajOmaRBdxgVMcssoAbjOqYRRZwg1Eds8gCbjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxixjMMphlMMuojlnEYJbBLINZRnXMIgazDGYZzDKqYxYxmGUwy2CWUR2ziMEsg1kGs4zqmEUMZhnMMphlVMcsYjDLYJbBLKM6ZhGDWQazDGYZ1TGLGMwymGUwy6iOWcRglsEsg1lGdcwiBrMMZhnMMqpjFjGYZTDLYJZRHbOIwSyDWQazjOqYRQxmGcwymGVUxyxiMMtglsEs4xeVA1bN5nvCPAAAAABJRU5ErkJggg==",
-                            "mail": "\"kypo-admin@example.com\"",
+                            "mail": "\"demo-admin@example.com\"",
                             "user_ref_id": 1,
-                            "sub": "kypo-admin",
+                            "sub": "demo-admin",
                             "full_name": "\"Demo Admin\"",
                             "given_name": "Demo",
                             "family_name": "Admin"
@@ -131,9 +131,9 @@ module.exports = function () {
                         "participants": [{
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACH0lEQVR4Xu3PMW4lMAzE0Fw1W+T+N/jbczAFoyIwMMVrBIiWvz6fz9dv/Xz/+/wWWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBlvGnz3MlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR5isGWwZbBlnJZ5iMGWwZbBlnFa5iEGWwZbBlvGaZmHGGwZbBlsGadlHmKwZbBlsGWclnmIwZbBlsGWcVrmIQZbBlsGW8ZpmYcYbBlsGWwZp2UeYrBlsGWwZZyWeYjBlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR7yAv7BOC3zkBfwD8ZpmYe8gH8wTss85AX8g3Fa5iEv4B+M0zIPeQH/YJyWecgL+AfjtMxDXsA/GKdlHvIC/sE4LfOQF/APxmmZh7yAfzBOyzzkBfyDcVrmIS/gH4zTMg95Af9gnJZ5yAv4ByNi08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKb7DyiMjif0SLAsAAAAAElFTkSuQmCC",
-                            "mail": "\"kypo-user@example.com\"",
+                            "mail": "\"demo-user@example.com\"",
                             "user_ref_id": 2,
-                            "sub": "kypo-user",
+                            "sub": "demo-user",
                             "full_name": "\"Demo User\"",
                             "given_name": "Demo",
                             "family_name": "User"
@@ -151,9 +151,9 @@ module.exports = function () {
                         "participants": [{
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACKUlEQVR4Xu3YsWkAQRBDURflxP24/xZsx19M8K1IsAcvWRghpffx9f35819/38cabjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxiyzgBqM6ZpEF3GBUxyyygBuM6phFFnCDUR2zyAJuMKpjFlnADUZ1zCILuMGojllkATcY1TGLLOAGozpmkQXcYFTHLLKAG4wIe27x8Nzi4bnFw3OLh+cWD88tHp5bPDy3eHhu8fDc4uG5xcNzi4fnFg/PLR6eWzwY/N+zgBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGIx4MFlnADUY8GCyygBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGoxrMsAXcYFTHLLKAG4zqmEUWcINRHbPIAm4wqmMWWcANRnXMIgu4waiOWWQBNxjVMYss4AajOmaRBdxgVMcssoAbjOqYRRZwg1Eds8gCbjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxixjMMphlMMuojlnEYJbBLINZRnXMIgazDGYZzDKqYxYxmGUwy2CWUR2ziMEsg1kGs4zqmEUMZhnMMphlVMcsYjDLYJbBLKM6ZhGDWQazDGYZ1TGLGMwymGUwy6iOWcRglsEsg1lGdcwiBrMMZhnMMqpjFjGYZTDLYJZRHbOIwSyDWQazjOqYRQxmGcwymGVUxyxiMMtglsEs4xeVA1bN5nvCPAAAAABJRU5ErkJggg==",
-                            "mail": "\"kypo-admin@example.com\"",
+                            "mail": "\"demo-admin@example.com\"",
                             "user_ref_id": 1,
-                            "sub": "kypo-admin",
+                            "sub": "demo-admin",
                             "full_name": "\"Demo Admin\"",
                             "given_name": "Demo",
                             "family_name": "Admin"
@@ -168,9 +168,9 @@ module.exports = function () {
                         "participants": [{
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACH0lEQVR4Xu3PMW4lMAzE0Fw1W+T+N/jbczAFoyIwMMVrBIiWvz6fz9dv/Xz/+/wWWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBlvGnz3MlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR5isGWwZbBlnJZ5iMGWwZbBlnFa5iEGWwZbBlvGaZmHGGwZbBlsGadlHmKwZbBlsGWclnmIwZbBlsGWcVrmIQZbBlsGW8ZpmYcYbBlsGWwZp2UeYrBlsGWwZZyWeYjBlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR7yAv7BOC3zkBfwD8ZpmYe8gH8wTss85AX8g3Fa5iEv4B+M0zIPeQH/YJyWecgL+AfjtMxDXsA/GKdlHvIC/sE4LfOQF/APxmmZh7yAfzBOyzzkBfyDcVrmIS/gH4zTMg95Af9gnJZ5yAv4ByNi08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKb7DyiMjif0SLAsAAAAAElFTkSuQmCC",
-                            "mail": "\"kypo-user@example.com\"",
+                            "mail": "\"demo-user@example.com\"",
                             "user_ref_id": 2,
-                            "sub": "kypo-user",
+                            "sub": "demo-user",
                             "full_name": "\"Demo User\"",
                             "given_name": "Demo",
                             "family_name": "User"
@@ -188,9 +188,9 @@ module.exports = function () {
                         "participants": [{
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACH0lEQVR4Xu3PMW4lMAzE0Fw1W+T+N/jbczAFoyIwMMVrBIiWvz6fz9dv/Xz/+/wWWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBlvGnz3MlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR5isGWwZbBlnJZ5iMGWwZbBlnFa5iEGWwZbBlvGaZmHGGwZbBlsGadlHmKwZbBlsGWclnmIwZbBlsGWcVrmIQZbBlsGW8ZpmYcYbBlsGWwZp2UeYrBlsGWwZZyWeYjBlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR7yAv7BOC3zkBfwD8ZpmYe8gH8wTss85AX8g3Fa5iEv4B+M0zIPeQH/YJyWecgL+AfjtMxDXsA/GKdlHvIC/sE4LfOQF/APxmmZh7yAfzBOyzzkBfyDcVrmIS/gH4zTMg95Af9gnJZ5yAv4ByNi08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKb7DyiMjif0SLAsAAAAAElFTkSuQmCC",
-                            "mail": "\"kypo-user@example.com\"",
+                            "mail": "\"demo-user@example.com\"",
                             "user_ref_id": 2,
-                            "sub": "kypo-user",
+                            "sub": "demo-user",
                             "full_name": "\"Demo User\"",
                             "given_name": "Demo",
                             "family_name": "User"
@@ -201,9 +201,9 @@ module.exports = function () {
                         "participants": [{
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACKUlEQVR4Xu3YsWkAQRBDURflxP24/xZsx19M8K1IsAcvWRghpffx9f35819/38cabjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxiyzgBqM6ZpEF3GBUxyyygBuM6phFFnCDUR2zyAJuMKpjFlnADUZ1zCILuMGojllkATcY1TGLLOAGozpmkQXcYFTHLLKAG4wIe27x8Nzi4bnFw3OLh+cWD88tHp5bPDy3eHhu8fDc4uG5xcNzi4fnFg/PLR6eWzwY/N+zgBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGIx4MFlnADUY8GCyygBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGoxrMsAXcYFTHLLKAG4zqmEUWcINRHbPIAm4wqmMWWcANRnXMIgu4waiOWWQBNxjVMYss4AajOmaRBdxgVMcssoAbjOqYRRZwg1Eds8gCbjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxixjMMphlMMuojlnEYJbBLINZRnXMIgazDGYZzDKqYxYxmGUwy2CWUR2ziMEsg1kGs4zqmEUMZhnMMphlVMcsYjDLYJbBLKM6ZhGDWQazDGYZ1TGLGMwymGUwy6iOWcRglsEsg1lGdcwiBrMMZhnMMqpjFjGYZTDLYJZRHbOIwSyDWQazjOqYRQxmGcwymGVUxyxiMMtglsEs4xeVA1bN5nvCPAAAAABJRU5ErkJggg==",
-                            "mail": "\"kypo-admin@example.com\"",
+                            "mail": "\"demo-admin@example.com\"",
                             "user_ref_id": 1,
-                            "sub": "kypo-admin",
+                            "sub": "demo-admin",
                             "full_name": "\"Demo Admin\"",
                             "given_name": "Demo",
                             "family_name": "Admin"
@@ -235,18 +235,18 @@ module.exports = function () {
                     "participants": [{
                         "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                         "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACKUlEQVR4Xu3YsWkAQRBDURflxP24/xZsx19M8K1IsAcvWRghpffx9f35819/38cabjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxiyzgBqM6ZpEF3GBUxyyygBuM6phFFnCDUR2zyAJuMKpjFlnADUZ1zCILuMGojllkATcY1TGLLOAGozpmkQXcYFTHLLKAG4wIe27x8Nzi4bnFw3OLh+cWD88tHp5bPDy3eHhu8fDc4uG5xcNzi4fnFg/PLR6eWzwY/N+zgBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGIx4MFlnADUY8GCyygBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGoxrMsAXcYFTHLLKAG4zqmEUWcINRHbPIAm4wqmMWWcANRnXMIgu4waiOWWQBNxjVMYss4AajOmaRBdxgVMcssoAbjOqYRRZwg1Eds8gCbjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxixjMMphlMMuojlnEYJbBLINZRnXMIgazDGYZzDKqYxYxmGUwy2CWUR2ziMEsg1kGs4zqmEUMZhnMMphlVMcsYjDLYJbBLKM6ZhGDWQazDGYZ1TGLGMwymGUwy6iOWcRglsEsg1lGdcwiBrMMZhnMMqpjFjGYZTDLYJZRHbOIwSyDWQazjOqYRQxmGcwymGVUxyxiMMtglsEs4xeVA1bN5nvCPAAAAABJRU5ErkJggg==",
-                        "mail": "\"kypo-admin@example.com\"",
+                        "mail": "\"demo-admin@example.com\"",
                         "user_ref_id": 1,
-                        "sub": "kypo-admin",
+                        "sub": "demo-admin",
                         "full_name": "\"Demo Admin\"",
                         "given_name": "Demo",
                         "family_name": "Admin"
                     }, {
                         "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                         "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACH0lEQVR4Xu3PMW4lMAzE0Fw1W+T+N/jbczAFoyIwMMVrBIiWvz6fz9dv/Xz/+/wWWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBlvGnz3MlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR5isGWwZbBlnJZ5iMGWwZbBlnFa5iEGWwZbBlvGaZmHGGwZbBlsGadlHmKwZbBlsGWclnmIwZbBlsGWcVrmIQZbBlsGW8ZpmYcYbBlsGWwZp2UeYrBlsGWwZZyWeYjBlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR7yAv7BOC3zkBfwD8ZpmYe8gH8wTss85AX8g3Fa5iEv4B+M0zIPeQH/YJyWecgL+AfjtMxDXsA/GKdlHvIC/sE4LfOQF/APxmmZh7yAfzBOyzzkBfyDcVrmIS/gH4zTMg95Af9gnJZ5yAv4ByNi08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKb7DyiMjif0SLAsAAAAAElFTkSuQmCC",
-                        "mail": "\"kypo-user@example.com\"",
+                        "mail": "\"demo-user@example.com\"",
                         "user_ref_id": 2,
-                        "sub": "kypo-user",
+                        "sub": "demo-user",
                         "full_name": "\"Demo User\"",
                         "given_name": "Demo",
                         "family_name": "User"
@@ -269,18 +269,18 @@ module.exports = function () {
                         "participants": [{
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACKUlEQVR4Xu3YsWkAQRBDURflxP24/xZsx19M8K1IsAcvWRghpffx9f35819/38cabjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxiyzgBqM6ZpEF3GBUxyyygBuM6phFFnCDUR2zyAJuMKpjFlnADUZ1zCILuMGojllkATcY1TGLLOAGozpmkQXcYFTHLLKAG4wIe27x8Nzi4bnFw3OLh+cWD88tHp5bPDy3eHhu8fDc4uG5xcNzi4fnFg/PLR6eWzwY/N+zgBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGIx4MFlnADUY8GCyygBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGoxrMsAXcYFTHLLKAG4zqmEUWcINRHbPIAm4wqmMWWcANRnXMIgu4waiOWWQBNxjVMYss4AajOmaRBdxgVMcssoAbjOqYRRZwg1Eds8gCbjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxixjMMphlMMuojlnEYJbBLINZRnXMIgazDGYZzDKqYxYxmGUwy2CWUR2ziMEsg1kGs4zqmEUMZhnMMphlVMcsYjDLYJbBLKM6ZhGDWQazDGYZ1TGLGMwymGUwy6iOWcRglsEsg1lGdcwiBrMMZhnMMqpjFjGYZTDLYJZRHbOIwSyDWQazjOqYRQxmGcwymGVUxyxiMMtglsEs4xeVA1bN5nvCPAAAAABJRU5ErkJggg==",
-                            "mail": "\"kypo-admin@example.com\"",
+                            "mail": "\"demo-admin@example.com\"",
                             "user_ref_id": 1,
-                            "sub": "kypo-admin",
+                            "sub": "demo-admin",
                             "full_name": "\"Demo Admin\"",
                             "given_name": "Demo",
                             "family_name": "Admin"
                         }, {
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACH0lEQVR4Xu3PMW4lMAzE0Fw1W+T+N/jbczAFoyIwMMVrBIiWvz6fz9dv/Xz/+/wWWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBlvGnz3MlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR5isGWwZbBlnJZ5iMGWwZbBlnFa5iEGWwZbBlvGaZmHGGwZbBlsGadlHmKwZbBlsGWclnmIwZbBlsGWcVrmIQZbBlsGW8ZpmYcYbBlsGWwZp2UeYrBlsGWwZZyWeYjBlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR7yAv7BOC3zkBfwD8ZpmYe8gH8wTss85AX8g3Fa5iEv4B+M0zIPeQH/YJyWecgL+AfjtMxDXsA/GKdlHvIC/sE4LfOQF/APxmmZh7yAfzBOyzzkBfyDcVrmIS/gH4zTMg95Af9gnJZ5yAv4ByNi08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKb7DyiMjif0SLAsAAAAAElFTkSuQmCC",
-                            "mail": "\"kypo-user@example.com\"",
+                            "mail": "\"demo-user@example.com\"",
                             "user_ref_id": 2,
-                            "sub": "kypo-user",
+                            "sub": "demo-user",
                             "full_name": "\"Demo User\"",
                             "given_name": "Demo",
                             "family_name": "User"
@@ -306,9 +306,9 @@ module.exports = function () {
                         "participants": [{
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACH0lEQVR4Xu3PMW4lMAzE0Fw1W+T+N/jbczAFoyIwMMVrBIiWvz6fz9dv/Xz/+/wWWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBlvGnz3MlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR5isGWwZbBlnJZ5iMGWwZbBlnFa5iEGWwZbBlvGaZmHGGwZbBlsGadlHmKwZbBlsGWclnmIwZbBlsGWcVrmIQZbBlsGW8ZpmYcYbBlsGWwZp2UeYrBlsGWwZZyWeYjBlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR7yAv7BOC3zkBfwD8ZpmYe8gH8wTss85AX8g3Fa5iEv4B+M0zIPeQH/YJyWecgL+AfjtMxDXsA/GKdlHvIC/sE4LfOQF/APxmmZh7yAfzBOyzzkBfyDcVrmIS/gH4zTMg95Af9gnJZ5yAv4ByNi08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKb7DyiMjif0SLAsAAAAAElFTkSuQmCC",
-                            "mail": "\"kypo-user@example.com\"",
+                            "mail": "\"demo-user@example.com\"",
                             "user_ref_id": 2,
-                            "sub": "kypo-user",
+                            "sub": "demo-user",
                             "full_name": "\"Demo User\"",
                             "given_name": "Demo",
                             "family_name": "User"
@@ -319,9 +319,9 @@ module.exports = function () {
                         "participants": [{
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACKUlEQVR4Xu3YsWkAQRBDURflxP24/xZsx19M8K1IsAcvWRghpffx9f35819/38cabjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxiyzgBqM6ZpEF3GBUxyyygBuM6phFFnCDUR2zyAJuMKpjFlnADUZ1zCILuMGojllkATcY1TGLLOAGozpmkQXcYFTHLLKAG4wIe27x8Nzi4bnFw3OLh+cWD88tHp5bPDy3eHhu8fDc4uG5xcNzi4fnFg/PLR6eWzwY/N+zgBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGIx4MFlnADUY8GCyygBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGoxrMsAXcYFTHLLKAG4zqmEUWcINRHbPIAm4wqmMWWcANRnXMIgu4waiOWWQBNxjVMYss4AajOmaRBdxgVMcssoAbjOqYRRZwg1Eds8gCbjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxixjMMphlMMuojlnEYJbBLINZRnXMIgazDGYZzDKqYxYxmGUwy2CWUR2ziMEsg1kGs4zqmEUMZhnMMphlVMcsYjDLYJbBLKM6ZhGDWQazDGYZ1TGLGMwymGUwy6iOWcRglsEsg1lGdcwiBrMMZhnMMqpjFjGYZTDLYJZRHbOIwSyDWQazjOqYRQxmGcwymGVUxyxiMMtglsEs4xeVA1bN5nvCPAAAAABJRU5ErkJggg==",
-                            "mail": "\"kypo-admin@example.com\"",
+                            "mail": "\"demo-admin@example.com\"",
                             "user_ref_id": 1,
-                            "sub": "kypo-admin",
+                            "sub": "demo-admin",
                             "full_name": "\"Demo Admin\"",
                             "given_name": "Demo",
                             "family_name": "Admin"
@@ -343,9 +343,9 @@ module.exports = function () {
                         "participants": [{
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACH0lEQVR4Xu3PMW4lMAzE0Fw1W+T+N/jbczAFoyIwMMVrBIiWvz6fz9dv/Xz/+/wWWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBlvGnz3MlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR5isGWwZbBlnJZ5iMGWwZbBlnFa5iEGWwZbBlvGaZmHGGwZbBlsGadlHmKwZbBlsGWclnmIwZbBlsGWcVrmIQZbBlsGW8ZpmYcYbBlsGWwZp2UeYrBlsGWwZZyWeYjBlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR7yAv7BOC3zkBfwD8ZpmYe8gH8wTss85AX8g3Fa5iEv4B+M0zIPeQH/YJyWecgL+AfjtMxDXsA/GKdlHvIC/sE4LfOQF/APxmmZh7yAfzBOyzzkBfyDcVrmIS/gH4zTMg95Af9gnJZ5yAv4ByNi08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKb7DyiMjif0SLAsAAAAAElFTkSuQmCC",
-                            "mail": "\"kypo-user@example.com\"",
+                            "mail": "\"demo-user@example.com\"",
                             "user_ref_id": 2,
-                            "sub": "kypo-user",
+                            "sub": "demo-user",
                             "full_name": "\"Demo User\"",
                             "given_name": "Demo",
                             "family_name": "User"
@@ -360,9 +360,9 @@ module.exports = function () {
                         "participants": [{
                             "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                             "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACKUlEQVR4Xu3YsWkAQRBDURflxP24/xZsx19M8K1IsAcvWRghpffx9f35819/38cabjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxiyzgBqM6ZpEF3GBUxyyygBuM6phFFnCDUR2zyAJuMKpjFlnADUZ1zCILuMGojllkATcY1TGLLOAGozpmkQXcYFTHLLKAG4wIe27x8Nzi4bnFw3OLh+cWD88tHp5bPDy3eHhu8fDc4uG5xcNzi4fnFg/PLR6eWzwY/N+zgBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGIx4MFlnADUY8GCyygBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGoxrMsAXcYFTHLLKAG4zqmEUWcINRHbPIAm4wqmMWWcANRnXMIgu4waiOWWQBNxjVMYss4AajOmaRBdxgVMcssoAbjOqYRRZwg1Eds8gCbjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxixjMMphlMMuojlnEYJbBLINZRnXMIgazDGYZzDKqYxYxmGUwy2CWUR2ziMEsg1kGs4zqmEUMZhnMMphlVMcsYjDLYJbBLKM6ZhGDWQazDGYZ1TGLGMwymGUwy6iOWcRglsEsg1lGdcwiBrMMZhnMMqpjFjGYZTDLYJZRHbOIwSyDWQazjOqYRQxmGcwymGVUxyxiMMtglsEs4xeVA1bN5nvCPAAAAABJRU5ErkJggg==",
-                            "mail": "\"kypo-admin@example.com\"",
+                            "mail": "\"demo-admin@example.com\"",
                             "user_ref_id": 1,
-                            "sub": "kypo-admin",
+                            "sub": "demo-admin",
                             "full_name": "\"Demo Admin\"",
                             "given_name": "Demo",
                             "family_name": "Admin"
@@ -380,18 +380,18 @@ module.exports = function () {
                     "participants": [{
                         "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                         "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACKUlEQVR4Xu3YsWkAQRBDURflxP24/xZsx19M8K1IsAcvWRghpffx9f35819/38cabjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxiyzgBqM6ZpEF3GBUxyyygBuM6phFFnCDUR2zyAJuMKpjFlnADUZ1zCILuMGojllkATcY1TGLLOAGozpmkQXcYFTHLLKAG4wIe27x8Nzi4bnFw3OLh+cWD88tHp5bPDy3eHhu8fDc4uG5xcNzi4fnFg/PLR6eWzwY/N+zgBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGIx4MFlnADUY8GCyygBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGoxrMsAXcYFTHLLKAG4zqmEUWcINRHbPIAm4wqmMWWcANRnXMIgu4waiOWWQBNxjVMYss4AajOmaRBdxgVMcssoAbjOqYRRZwg1Eds8gCbjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxixjMMphlMMuojlnEYJbBLINZRnXMIgazDGYZzDKqYxYxmGUwy2CWUR2ziMEsg1kGs4zqmEUMZhnMMphlVMcsYjDLYJbBLKM6ZhGDWQazDGYZ1TGLGMwymGUwy6iOWcRglsEsg1lGdcwiBrMMZhnMMqpjFjGYZTDLYJZRHbOIwSyDWQazjOqYRQxmGcwymGVUxyxiMMtglsEs4xeVA1bN5nvCPAAAAABJRU5ErkJggg==",
-                        "mail": "\"kypo-admin@example.com\"",
+                        "mail": "\"demo-admin@example.com\"",
                         "user_ref_id": 1,
-                        "sub": "kypo-admin",
+                        "sub": "demo-admin",
                         "full_name": "\"Demo Admin\"",
                         "given_name": "Demo",
                         "family_name": "Admin"
                     }, {
                         "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                         "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACH0lEQVR4Xu3PMW4lMAzE0Fw1W+T+N/jbczAFoyIwMMVrBIiWvz6fz9dv/Xz/+/wWWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBltGDAweYrBlsGWwZcTA4CEGWwZbBlvGnz3MlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR5isGWwZbBlnJZ5iMGWwZbBlnFa5iEGWwZbBlvGaZmHGGwZbBlsGadlHmKwZbBlsGWclnmIwZbBlsGWcVrmIQZbBlsGW8ZpmYcYbBlsGWwZp2UeYrBlsGWwZZyWeYjBlsGWwZZxWuYhBlsGWwZbxmmZhxhsGWwZbBmnZR7yAv7BOC3zkBfwD8ZpmYe8gH8wTss85AX8g3Fa5iEv4B+M0zIPeQH/YJyWecgL+AfjtMxDXsA/GKdlHvIC/sE4LfOQF/APxmmZh7yAfzBOyzzkBfyDcVrmIS/gH4zTMg95Af9gnJZ5yAv4ByNi08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKaLwXQxmC4G08VguhhMF4PpYjBdDKb7DyiMjif0SLAsAAAAAElFTkSuQmCC",
-                        "mail": "\"kypo-user@example.com\"",
+                        "mail": "\"demo-user@example.com\"",
                         "user_ref_id": 2,
-                        "sub": "kypo-user",
+                        "sub": "demo-user",
                         "full_name": "\"Demo User\"",
                         "given_name": "Demo",
                         "family_name": "User"

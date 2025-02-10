@@ -5,8 +5,8 @@ import { EMIResultsComponent } from './component/emi-results/emi-results.compone
 import { EmiTableComponent } from './component/emi-results/emi-table/emi-table.component';
 import { FFQResultsComponent } from './component/ffq-results/ffq-results.component';
 import { MCQResultsComponent } from './component/mcq-results/mcq-results.component';
-import { KypoAssessmentResultsVisualizationComponent } from './kypo-assessment-results-visualization.component';
-import { KypoAssessmentsResultsVisualizationMaterialModule } from './kypo-assessments-results-visualization-material.module';
+import { AssessmentResultsVisualizationComponent } from './assessment-results-visualization.component';
+import { AssessmentsResultsVisualizationMaterialModule } from './assessments-results-visualization-material.module';
 import { AssessmentVisualizationConfig } from './model/config/asssessment-visualization-config';
 import { AssessmentApi } from './services/assessment-api.service';
 import { ConfigService } from './services/config.service';
@@ -15,35 +15,35 @@ import { ConfigService } from './services/config.service';
  * Main module of the visualization. To use in your app, import with forRoot() method and pass config object
  */
 @NgModule({
-  imports: [CommonModule, KypoAssessmentsResultsVisualizationMaterialModule],
+  imports: [CommonModule, AssessmentsResultsVisualizationMaterialModule],
   declarations: [
-    KypoAssessmentResultsVisualizationComponent,
+    AssessmentResultsVisualizationComponent,
     FFQResultsComponent,
     MCQResultsComponent,
     EMIResultsComponent,
     AssessmentResultsComponent,
     EmiTableComponent,
   ],
-  exports: [KypoAssessmentResultsVisualizationComponent],
+  exports: [AssessmentResultsVisualizationComponent],
   providers: [AssessmentApi, ConfigService],
 })
-export class KypoAssessmentsResultsVisualizationModule {
-  constructor(@Optional() @SkipSelf() parentModule: KypoAssessmentsResultsVisualizationModule) {
+export class AssessmentsResultsVisualizationModule {
+  constructor(@Optional() @SkipSelf() parentModule: AssessmentsResultsVisualizationModule) {
     if (parentModule) {
-      throw new Error('KypoAssessmentsResultsVisualizationModule is already loaded. Import it in the main module only');
+      throw new Error('AssessmentsResultsVisualizationModule is already loaded. Import it in the main module only');
     }
   }
 
   /**
    * Use this method to import in your app. Pass config object
-   * @param kypoAssessmentConfig configuration object of the visualization
+   * @param assessmentConfig configuration object of the visualization
    */
   static forRoot(
-    kypoAssessmentConfig: AssessmentVisualizationConfig,
-  ): ModuleWithProviders<KypoAssessmentsResultsVisualizationModule> {
+    assessmentConfig: AssessmentVisualizationConfig,
+  ): ModuleWithProviders<AssessmentsResultsVisualizationModule> {
     return {
-      ngModule: KypoAssessmentsResultsVisualizationModule,
-      providers: [{ provide: AssessmentVisualizationConfig, useValue: kypoAssessmentConfig }],
+      ngModule: AssessmentsResultsVisualizationModule,
+      providers: [{ provide: AssessmentVisualizationConfig, useValue: assessmentConfig }],
     };
   }
 }

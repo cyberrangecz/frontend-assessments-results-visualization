@@ -7,11 +7,11 @@ import { AssessmentApi } from './services/assessment-api.service';
  * Main component of the assessment visualization
  */
 @Component({
-  selector: 'kypo-assessment-results-viz',
-  template: ` <kypo-assessment-results [assessments]="assessments$ | async"></kypo-assessment-results> `,
+  selector: 'crczp-assessment-results-visualization',
+  template: ` <crczp-assessment-results [assessments]="assessments$ | async"></crczp-assessment-results> `,
   styles: [],
 })
-export class KypoAssessmentResultsVisualizationComponent implements OnChanges {
+export class AssessmentResultsVisualizationComponent implements OnChanges {
   /**
    * Id of a training instance to be visualized
    */

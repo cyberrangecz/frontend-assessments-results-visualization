@@ -9,7 +9,7 @@ import { FFQTableAdapter } from '../../model/table-adapter/ffq-table-adapter';
  * Component displaying result of a free form question
  */
 @Component({
-  selector: 'kypo-ffq-results',
+  selector: 'crczp-ffq-results',
   templateUrl: './ffq-results.component.html',
   styleUrls: ['./ffq-results.component.css'],
 })

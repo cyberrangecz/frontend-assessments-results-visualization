@@ -18,11 +18,11 @@
             "dom"
         ],
         "paths": {
-            "kypo-assessments-results-visualization-lib": [
-                "dist/kypo-assessments-results-visualization-lib"
+            "assessments-results-visualization": [
+                "dist/assessments-results-visualization"
             ],
-            "kypo-assessments-results-visualization-lib/*": [
-                "dist/kypo-assessments-results-visualization-lib/*"
+            "assessments-results-visualization/*": [
+                "dist/assessments-results-visualization/*"
             ]
         },
         "useDefineForClassFields": false

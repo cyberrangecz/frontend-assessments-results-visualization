@@ -9,7 +9,7 @@ import { Question } from '../../model/question';
  * Component displaying result of a multiple choice question
  */
 @Component({
-  selector: 'kypo-mcq-results',
+  selector: 'crczp-mcq-results',
   templateUrl: './mcq-results.component.html',
   styleUrls: ['./../shared/emi-mcq-table.component.css'],
 })

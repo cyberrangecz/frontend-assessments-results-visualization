@@ -1,7 +1,7 @@
 export const BASE_URL = 'https://172.19.0.22';
 export const HOME_URL = 'https://localhost:4200';
-export const trainingURL = BASE_URL + '/kypo-rest-training/api/v1/';
-export const userAngGroupURL = BASE_URL + '/kypo-rest-user-and-group/api/v1/';
+export const trainingURL = BASE_URL + '/training/api/v1/';
+export const userAngGroupURL = BASE_URL + '/user-and-group/api/v1/';
 
 export const environment = {
     production: true,

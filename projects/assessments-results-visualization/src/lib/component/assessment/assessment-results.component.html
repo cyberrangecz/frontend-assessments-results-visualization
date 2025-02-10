@@ -7,18 +7,18 @@
                     <mat-card-title>Question {{ question.order + 1 }}:  {{ question.text }}</mat-card-title>
                     <mat-card-subtitle> {{ question.questionType }}</mat-card-subtitle>
                     <mat-card-content>
-                        <kypo-ffq-results *ngSwitchCase="'FFQ'"
+                        <crczp-ffq-results *ngSwitchCase="'FFQ'"
                                           [question]="question"
                                           [isTest]="assessment.assessmentType === 'TEST'"
-                        ></kypo-ffq-results>
-                        <kypo-mcq-results *ngSwitchCase="'MCQ'"
+                        ></crczp-ffq-results>
+                        <crczp-mcq-results *ngSwitchCase="'MCQ'"
                                           [question]="question"
                                           [isTest]="assessment.assessmentType === 'TEST'"
-                        ></kypo-mcq-results>
-                        <kypo-emi-results *ngSwitchCase="'EMI'"
+                        ></crczp-mcq-results>
+                        <crczp-emi-results *ngSwitchCase="'EMI'"
                                           [question]="question"
                                           [isTest]="assessment.assessmentType === 'TEST'"
-                        ></kypo-emi-results>
+                        ></crczp-emi-results>
                     </mat-card-content>
                 </mat-card>
             </ng-container>

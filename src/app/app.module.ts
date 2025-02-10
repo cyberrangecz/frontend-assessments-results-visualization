@@ -4,8 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import {
-    KypoAssessmentsResultsVisualizationModule
-} from 'projects/kypo-assessments-results-visualization-lib/src/public_api';
+    AssessmentsResultsVisualizationModule
+} from '../../projects/assessments-results-visualization/src/public_api';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -41,7 +41,7 @@ const routes: Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        KypoAssessmentsResultsVisualizationModule.forRoot(VISUALIZATION_CONFIG),
+        AssessmentsResultsVisualizationModule.forRoot(VISUALIZATION_CONFIG),
         SentinelAuthModule.forRoot(environment.authConfig),
         RouterModule.forRoot(routes),
     ],

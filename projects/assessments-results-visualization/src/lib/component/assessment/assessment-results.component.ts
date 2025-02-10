@@ -6,7 +6,7 @@ import { Assessment } from '../../model/assessment';
  * Component displaying result of one assessment. Contains components of assessment questions
  */
 @Component({
-  selector: 'kypo-assessment-results',
+  selector: 'crczp-assessment-results',
   templateUrl: './assessment-results.component.html',
   styleUrls: ['./assessment-results.component.css'],
   providers: [HighlightService],

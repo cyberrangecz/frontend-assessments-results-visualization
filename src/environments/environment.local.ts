@@ -1,11 +1,11 @@
 export const BASE_URL = 'https://172.19.0.22';
 export const HOME_URL = 'https://localhost:4200';
 export const localURL = 'http://localhost:3000';
-export const userAngGroupURL = BASE_URL + '/kypo-rest-user-and-group/api/v1/';
+export const userAngGroupURL = BASE_URL + '/user-and-group/api/v1/';
 
 export const environment = {
     production: false,
-    trainingServiceUrl: localURL + '/kypo-rest-training/api/v1/',
+    trainingServiceUrl: localURL + '/training/api/v1/',
     authConfig: {
         guardMainPageRedirect: 'home', // Redirect from login page if user is logged in
         guardLoginPageRedirect: 'login', // Redirect to login page if user is not logged in

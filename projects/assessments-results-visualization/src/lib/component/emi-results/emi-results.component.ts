@@ -11,7 +11,7 @@ import { Participant } from '../../model/participant';
  * Component displaying result of a extended matching items
  */
 @Component({
-  selector: 'kypo-emi-results',
+  selector: 'crczp-emi-results',
   templateUrl: './emi-results.component.html',
   styleUrls: ['./emi-results.component.css'],
 })
