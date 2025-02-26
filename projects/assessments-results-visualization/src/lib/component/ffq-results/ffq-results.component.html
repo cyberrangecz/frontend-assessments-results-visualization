@@ -1,8 +1,14 @@
-<div (click)="clear()">
-    <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter by answer">
+<div class="content" (click)="clear()">
+    <mat-form-field
+        class="filter"
+        subscriptSizing="dynamic">
+        <input
+            class="filter-input"
+            matInput
+               (keyup)="applyFilter($event.target.value)"
+               placeholder="Filter by answer"/>
     </mat-form-field>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="table">
         <div></div>
         <!-- Name Column -->
         <ng-container matColumnDef="name">

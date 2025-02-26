@@ -9,25 +9,25 @@ import { Question } from '../../model/question';
  * Component displaying result of a multiple choice question
  */
 @Component({
-  selector: 'crczp-mcq-results',
-  templateUrl: './mcq-results.component.html',
-  styleUrls: ['./../shared/emi-mcq-table.component.css'],
+    selector: 'crczp-mcq-results',
+    templateUrl: './mcq-results.component.html',
+    styleUrls: ['./../emi-mcq-table-shared.component.css'],
 })
 export class MCQResultsComponent extends HighlightableDirective implements OnInit {
-  @Input() question: Question;
-  @Input() isTest: boolean;
+    @Input() question: Question;
+    @Input() isTest: boolean;
 
-  /**
-   * Columns of the table
-   */
-  displayedColumns = ['option', 'sum', 'percentage', 'answers'];
-  dataSource;
+    /**
+     * Columns of the table
+     */
+    displayedColumns = ['option', 'sum', 'percentage', 'answers'];
+    dataSource;
 
-  constructor(highlightService: HighlightService) {
-    super(highlightService);
-  }
+    constructor(highlightService: HighlightService) {
+        super(highlightService);
+    }
 
-  ngOnInit(): void {
-    this.dataSource = new MatTableDataSource(new MCQTableAdapter(this.question).rows);
-  }
+    ngOnInit(): void {
+        this.dataSource = new MatTableDataSource(new MCQTableAdapter(this.question).rows);
+    }
 }

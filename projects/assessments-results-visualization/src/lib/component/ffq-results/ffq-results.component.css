@@ -7,18 +7,32 @@
 }
 
 .incorrect {
-    color: red;
+    color: var(--error-40);
 }
 
 td {
     cursor: pointer;
 }
 
-table {
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+    border: 1px solid var(--neutral-70);
+    border-radius: 1rem;
+}
+
+.filter {
     width: 100%;
 }
 
-mat-form-field {
-    font-size: 14px;
+.filter-input {
+    font-size: 1rem;
+}
+
+.table {
     width: 100%;
+    padding: 1rem;
 }

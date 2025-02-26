@@ -12,25 +12,25 @@ import { MatTooltipModule } from '@angular/material/tooltip';
  * Material imports and for assessment visualization
  */
 @NgModule({
-  imports: [
-    MatButtonModule,
-    MatTableModule,
-    MatCardModule,
-    MatDividerModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTooltipModule,
-  ],
-  exports: [
-    MatButtonModule,
-    MatTableModule,
-    MatCardModule,
-    MatDividerModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatTooltipModule,
-  ],
+    imports: [
+        MatButtonModule,
+        MatTableModule,
+        MatCardModule,
+        MatDividerModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatTooltipModule,
+    ],
+    exports: [
+        MatButtonModule,
+        MatTableModule,
+        MatCardModule,
+        MatDividerModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatTooltipModule,
+    ],
 })
 export class AssessmentsResultsVisualizationMaterialModule {}

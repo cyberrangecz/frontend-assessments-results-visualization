@@ -6,9 +6,9 @@ import { AssessmentVisualizationConfig } from '../model/config/asssessment-visua
  */
 @Injectable()
 export class ConfigService {
-  config: AssessmentVisualizationConfig;
+    config: AssessmentVisualizationConfig;
 
-  constructor(config: AssessmentVisualizationConfig) {
-    this.config = config;
-  }
+    constructor(config: AssessmentVisualizationConfig) {
+        this.config = config;
+    }
 }

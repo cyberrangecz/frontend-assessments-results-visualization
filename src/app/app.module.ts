@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, RouterOutlet, Routes } from '@angular/router';
 import {
     AssessmentsResultsVisualizationModule
 } from '../../projects/assessments-results-visualization/src/public_api';
@@ -13,6 +13,7 @@ import { VISUALIZATION_CONFIG } from './custom-config';
 import { SentinelAuthProviderListComponent } from '@sentinel/auth/components';
 import { SentinelAuthGuardWithLogin, SentinelNegativeAuthGuard } from '@sentinel/auth/guards';
 import { SentinelAuthModule } from '@sentinel/auth';
+import { SentinelLayout1Module, SentinelLayout1SansProvidersModule } from '@sentinel/layout/layout1';
 
 const routes: Routes = [
     {
@@ -42,8 +43,11 @@ const routes: Routes = [
         BrowserAnimationsModule,
         HttpClientModule,
         AssessmentsResultsVisualizationModule.forRoot(VISUALIZATION_CONFIG),
+        SentinelLayout1Module,
         SentinelAuthModule.forRoot(environment.authConfig),
         RouterModule.forRoot(routes),
+        RouterOutlet,
+        SentinelLayout1SansProvidersModule
     ],
     providers: [
         SentinelAuthGuardWithLogin,

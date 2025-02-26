@@ -15,35 +15,37 @@ import { ConfigService } from './services/config.service';
  * Main module of the visualization. To use in your app, import with forRoot() method and pass config object
  */
 @NgModule({
-  imports: [CommonModule, AssessmentsResultsVisualizationMaterialModule],
-  declarations: [
-    AssessmentResultsVisualizationComponent,
-    FFQResultsComponent,
-    MCQResultsComponent,
-    EMIResultsComponent,
-    AssessmentResultsComponent,
-    EmiTableComponent,
-  ],
-  exports: [AssessmentResultsVisualizationComponent],
-  providers: [AssessmentApi, ConfigService],
+    imports: [CommonModule, AssessmentsResultsVisualizationMaterialModule],
+    declarations: [
+        AssessmentResultsVisualizationComponent,
+        FFQResultsComponent,
+        MCQResultsComponent,
+        EMIResultsComponent,
+        AssessmentResultsComponent,
+        EmiTableComponent,
+    ],
+    exports: [AssessmentResultsVisualizationComponent],
+    providers: [AssessmentApi, ConfigService],
 })
 export class AssessmentsResultsVisualizationModule {
-  constructor(@Optional() @SkipSelf() parentModule: AssessmentsResultsVisualizationModule) {
-    if (parentModule) {
-      throw new Error('AssessmentsResultsVisualizationModule is already loaded. Import it in the main module only');
+    constructor(@Optional() @SkipSelf() parentModule: AssessmentsResultsVisualizationModule) {
+        if (parentModule) {
+            throw new Error(
+                'AssessmentsResultsVisualizationModule is already loaded. Import it in the main module only',
+            );
+        }
     }
-  }
 
-  /**
-   * Use this method to import in your app. Pass config object
-   * @param assessmentConfig configuration object of the visualization
-   */
-  static forRoot(
-    assessmentConfig: AssessmentVisualizationConfig,
-  ): ModuleWithProviders<AssessmentsResultsVisualizationModule> {
-    return {
-      ngModule: AssessmentsResultsVisualizationModule,
-      providers: [{ provide: AssessmentVisualizationConfig, useValue: assessmentConfig }],
-    };
-  }
+    /**
+     * Use this method to import in your app. Pass config object
+     * @param assessmentConfig configuration object of the visualization
+     */
+    static forRoot(
+        assessmentConfig: AssessmentVisualizationConfig,
+    ): ModuleWithProviders<AssessmentsResultsVisualizationModule> {
+        return {
+            ngModule: AssessmentsResultsVisualizationModule,
+            providers: [{ provide: AssessmentVisualizationConfig, useValue: assessmentConfig }],
+        };
+    }
 }

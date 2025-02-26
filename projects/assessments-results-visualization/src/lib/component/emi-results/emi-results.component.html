@@ -1,10 +1,12 @@
-<div class="container" (click)="clear()">
-    <div class="emi" *ngFor="let answer of question.answers; let i = index">
-        <h3>Row {{ i + 1 }}: {{ answer.text }}</h3>
-        <crczp-emi-results-table
-            [tableData]="tableAdapters[i]"
-            [isTest]="isTest"
-            (highlighted)="highlighted($event)">
-        </crczp-emi-results-table>
-    </div>
+<div class="list" (click)="clear()">
+    @for(answer of question.answers; track answer){
+        <div>
+            <h3 class="row-title">{{ answer.text }}</h3>
+            <crczp-emi-results-table
+                [tableData]="tableAdapters[$index]"
+                [isTest]="isTest"
+                (highlighted)="highlighted($event)">
+            </crczp-emi-results-table>
+        </div>
+    }
 </div>

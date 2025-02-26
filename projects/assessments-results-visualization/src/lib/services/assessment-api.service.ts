@@ -12,20 +12,20 @@ import { AssessmentDTO } from '../model/DTO/assessment-dto';
  */
 @Injectable()
 export class AssessmentApi {
-  private readonly visualizationsEndpoint = `${this.configService.config.trainingServiceUrl}visualizations`;
+    private readonly visualizationsEndpoint = `${this.configService.config.trainingServiceUrl}visualizations`;
 
-  constructor(
-    private http: HttpClient,
-    private configService: ConfigService,
-  ) {}
+    constructor(
+        private http: HttpClient,
+        private configService: ConfigService,
+    ) {}
 
-  /**
-   * Sends http request to retrieve all assessments to be displayed in the visualization
-   * @param instanceId id of instance
-   */
-  getAssessments(instanceId: number): Observable<Assessment[]> {
-    return this.http
-      .get<AssessmentDTO[]>(`${this.visualizationsEndpoint}/training-instances/${instanceId}/assessments`)
-      .pipe(map((response) => AssessmentMapper.fromDTOs(response)));
-  }
+    /**
+     * Sends http request to retrieve all assessments to be displayed in the visualization
+     * @param instanceId id of instance
+     */
+    getAssessments(instanceId: number): Observable<Assessment[]> {
+        return this.http
+            .get<AssessmentDTO[]>(`${this.visualizationsEndpoint}/training-instances/${instanceId}/assessments`)
+            .pipe(map((response) => AssessmentMapper.fromDTOs(response)));
+    }
 }

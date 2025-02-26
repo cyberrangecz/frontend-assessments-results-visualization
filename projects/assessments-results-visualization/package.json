@@ -1,6 +1,7 @@
 {
-    "name": "@cyberrangecz-platform/assessment-visualization",
+    "name": "@crczp/assessment-visualization",
     "version": "0.0.1",
+    "license": "MIT",
     "peerDependencies": {
         "@angular/common": "^18.2.13",
         "@angular/core": "^18.2.13",
