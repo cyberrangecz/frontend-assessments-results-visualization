@@ -16,9 +16,9 @@
         "build-library": "ng build assessments-results-visualization --configuration production",
         "create-package": "cd dist/assessments-results-visualization && npm pack",
         "copy-static-files": "cp LICENSE dist/assessments-results-visualization && echo \"\n---\nSources: $(git remote get-url origin)\" >> dist/assessments-results-visualization/README.md",
-        "build-and-pack": "npm install && npm run build-library && npm run create-package",
+        "build-and-pack": "npm install && npm run build-library && npm run copy-static-files && npm run create-package",
         "ci-update-version": "cd projects/assessments-results-visualization/ && npm version $TAG_VERSION",
-        "ci-build-and-pack": "npm ci --cache .npm --prefer-offline && npm run build-library && npm run create-package",
+        "ci-build-and-pack": "npm ci --cache .npm --prefer-offline && npm run build-library && npm run copy-static-files && npm run create-package",
         "ci-publish-package": "cd dist/assessments-results-visualization && npm publish",
         "prepare": "husky"
     },
