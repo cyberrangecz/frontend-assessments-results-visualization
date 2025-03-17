@@ -231,7 +231,7 @@ module.exports = function () {
                 "text": "How did you connect to the client?",
                 "order": 0,
                 "answers": [{
-                    "text": "Graphical user interface of KYPO",
+                    "text": "Using GUI",
                     "participants": [{
                         "iss": "https://172.19.0.22:443/csirtmu-dummy-issuer-server/",
                         "picture": "iVBORw0KGgoAAAANSUhEUgAAAEsAAABLCAYAAAA4TnrqAAACKUlEQVR4Xu3YsWkAQRBDURflxP24/xZsx19M8K1IsAcvWRghpffx9f35819/38cabjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxiyzgBqM6ZpEF3GBUxyyygBuM6phFFnCDUR2zyAJuMKpjFlnADUZ1zCILuMGojllkATcY1TGLLOAGozpmkQXcYFTHLLKAG4wIe27x8Nzi4bnFw3OLh+cWD88tHp5bPDy3eHhu8fDc4uG5xcNzi4fnFg/PLR6eWzwY/N+zgBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGIx4MFlnADUY8GCyygBuMeDBYZAE3GPFgsMgCbjDiwWCRBdxgxIPBIgu4wYgHg0UWcIMRDwaLLOAGoxrMsAXcYFTHLLKAG4zqmEUWcINRHbPIAm4wqmMWWcANRnXMIgu4waiOWWQBNxjVMYss4AajOmaRBdxgVMcssoAbjOqYRRZwg1Eds8gCbjCqYxZZwA1GdcwiC7jBqI5ZZAE3GNUxixjMMphlMMuojlnEYJbBLINZRnXMIgazDGYZzDKqYxYxmGUwy2CWUR2ziMEsg1kGs4zqmEUMZhnMMphlVMcsYjDLYJbBLKM6ZhGDWQazDGYZ1TGLGMwymGUwy6iOWcRglsEsg1lGdcwiBrMMZhnMMqpjFjGYZTDLYJZRHbOIwSyDWQazjOqYRQxmGcwymGVUxyxiMMtglsEs4xeVA1bN5nvCPAAAAABJRU5ErkJggg==",
